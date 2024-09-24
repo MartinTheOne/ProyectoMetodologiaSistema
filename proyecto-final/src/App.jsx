@@ -13,7 +13,7 @@ function App() {
       <Router >
         <NavBar />
         <div className='bg-[#0E3C09] opacity-25 pt-20'><h1 className="text-[5px]">-</h1></div>
-        <div style={{ paddingTop: '200px', paddingLeft:'800px' }}>
+        <div>
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/tienda" element={<Tienda />} />
