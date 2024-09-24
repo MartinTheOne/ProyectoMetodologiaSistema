@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineHome } from "react-icons/ai";
 import { LuStore } from "react-icons/lu";
 import { AiTwotoneHome } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
@@ -14,7 +15,7 @@ const Navbar = () => {
       <ul className="flex space-x-8 mr-8">
         <li>
           <Link to="/home" className="flex items-center space-x-1">
-            <AiTwotoneHome className="text-2xl" />
+            <AiOutlineHome  className="text-2xl"/>
             <h4 className="text-lg">Sobre Nosotros</h4>
           </Link>
         </li>
