@@ -10,9 +10,8 @@ function App() {
 
   return (
     <div >
-      <Router >
-        <NavBar />
-        <div className='bg-[#0E3C09] opacity-25 pt-20'><h1 className="text-[5px]">-</h1></div>
+      <Router>
+        <NavBar/>
         <div>
           <Routes>
             <Route path="/home" element={<Home />} />
