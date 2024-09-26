@@ -7,13 +7,15 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-  
+
     <nav id='pppp' className="bg-[#9BC885] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 border-b-[7px] border-b-[#0E3C09] border-opacity-25 ">
-      <div className="ml-4 w-[90px] h-[90px] cursor-pointer border rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-opacity-25 border-r-[#efefef] border-l-[#efefef] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
-        <h1 className="text-[30px] mt-6 font-julius text-center text-[#0E3C09] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-          OLYS
-        </h1>
-      </div>
+      <Link to="/home" >
+        <div className="ml-4 w-[90px] h-[90px] cursor-pointer border rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-opacity-25 border-r-[#efefef] border-l-[#efefef] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
+          <h1 className="text-[30px] mt-6 font-julius text-center text-[#0E3C09] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+            OLYS
+          </h1>
+        </div>
+      </Link>
 
       <ul className="flex space-x-8 mr-8">
         <li>
