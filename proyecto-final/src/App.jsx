@@ -6,6 +6,7 @@ import Novedades from './components/shared/Vistas/Novedades.jsx'
 import Tienda from './components/shared/Vistas/Tienda.jsx'
 import Carrito from "./components/shared/Vistas/Carrito.jsx";
 import Menu from "./components/shared/Vistas/Menu.jsx";
+import ArmarBowl from "./components/shared/Vistas/ArmarBowl.jsx";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/tienda" element={<Tienda />} />
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/novedades" element={<Novedades />} />
+            <Route path="/armarBowl"element={<ArmarBowl/>} />
           </Routes>
         </div>
       </Router>
