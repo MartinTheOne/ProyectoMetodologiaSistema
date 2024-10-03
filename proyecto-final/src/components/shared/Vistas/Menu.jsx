@@ -13,7 +13,7 @@ const Menu = () => {
         { img: "../../../../img/EnsaladaPollo.webp", name: "Ensalada César", price: "$200", ing: ["Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"] },
         { img: "../../../../img/EnsaladaPollo.webp", name: "Ensalada Griega", price: "$11.99", ing: ["Tomate", "Pepino", "Cebolla roja", "Aceitunas", "Queso feta"] },
         { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada Caprese", price: "$10.99", ing: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite de oliva"] },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada de Quinoa", price: "$13.99", ing: ["Quinoa", "Vegetales mixtos", "Aguacate", "Vinagreta de limón"] }
+        { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada de Quinoa", price: "$13.99", ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"] }
     ];
 
     const openModal = (product) => {

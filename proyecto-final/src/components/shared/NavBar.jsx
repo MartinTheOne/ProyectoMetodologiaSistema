@@ -37,9 +37,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/novedades" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
+          <Link to="/nutricionista" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
             <BsInfoCircle className="text-2xl" />
-            <h4 className="text-lg">Novedades</h4>
+            <h4 className="text-lg">Nutricionista</h4>
           </Link>
         </li>
       </ul>

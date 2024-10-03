@@ -1,15 +1,85 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
-const ArmarBowlInfo = ({ isOpen, onRequestClose, producto: bowlIngredientes }) => {
-    if (!bowlIngredientes) {
+const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir,setMostrarICon }) => {
+    if (!productos) {
         return null;
     }
+
+    const initialProductosElegidos = JSON.parse(localStorage.getItem('productosElegidos')) || {
+        Base: [],
+        Ingrediente: [],
+        Proteina: [],
+        Aderezo: [],
+        Premium: [],
+        Queso: []
+    };
+
+    const [selectedIds, setSelectedIds] = useState([]);
+    const [productosElegidos, setProductosElegidos] = useState(initialProductosElegidos);
+
+    useEffect(() => {
+
+        setSelectedIds(productosElegidos[tipoProducto] || []);
+    }, [isOpen, tipoProducto, productosElegidos]);
+
+
+
+    const handleCheckBox = (e, id) => {
+        if (e.target.checked) {
+            if (selectedIds.length < cantidadElegir) {
+                setSelectedIds([...selectedIds, id]);
+            } else {
+                alert(`No puedes seleccionar más de ${cantidadElegir} ${tipoProducto}.`);
+            }
+        } else {
+            setSelectedIds(selectedIds.filter(selectedId => selectedId !== id));
+        }
+    };
+
+    const handlerClick = () => {
+        const limitePorTipo = {
+            Base: 1,
+            Ingrediente: 4,
+            Proteina: 1,
+            Aderezo: 2,
+            Premium: 1,
+            Queso: 1
+        };
+
+        if (selectedIds.length !== limitePorTipo[tipoProducto]) {
+            alert(`Debes seleccionar exactamente ${limitePorTipo[tipoProducto]} ${tipoProducto}.`);
+            return;
+        }
+
+   
+        const nuevosProductosElegidos = {
+            ...productosElegidos,
+            [tipoProducto]: [...selectedIds] 
+        };
+
+        setProductosElegidos(nuevosProductosElegidos);
+        localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
+
+ 
+        clearSelection();
+        setIsOpen(false)
+        setMostrarICon(true)
+    };
+
+   
+    const clearSelection = () => {
+        setSelectedIds([]);
+    };
 
     return (
         <Modal
             isOpen={isOpen}
-            onRequestClose={onRequestClose}
+            
+            onRequestClose={() => {
+                clearSelection();
+                onRequestClose();
+            }}
             contentLabel="Detalles del producto"
             style={{
                 overlay: {
@@ -34,7 +104,10 @@ const ArmarBowlInfo = ({ isOpen, onRequestClose, producto: bowlIngredientes }) =
             }}
         >
             <button
-                onClick={onRequestClose}
+                onClick={() => {
+                    clearSelection();
+                    onRequestClose();
+                }}
                 style={{
                     position: 'absolute',
                     top: '10px',
@@ -62,10 +135,10 @@ const ArmarBowlInfo = ({ isOpen, onRequestClose, producto: bowlIngredientes }) =
                 fontWeight: 'bold',
                 textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
             }}>
-                {bowlIngredientes.name.toUpperCase()}
+                {tipoProducto}
             </h2>
             <div style={{
-                backgroundColor: '#ffffff   ',
+                backgroundColor: '#ffffff',
                 borderRadius: '15px',
                 width: '80%',
                 height: '125px',
@@ -74,9 +147,8 @@ const ArmarBowlInfo = ({ isOpen, onRequestClose, producto: bowlIngredientes }) =
                 justifyContent: 'center',
                 alignItems: 'center',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-
             }}>
-                <div  style={{ color: '#9BC885', fontSize: '50px', fontFamily: "julios" }}>OLYS</div>
+                <div style={{ color: '#9BC885', fontSize: '50px', fontFamily: "julius" }}>OLYS</div>
             </div>
             <h3 style={{
                 fontSize: '20px',
@@ -85,7 +157,7 @@ const ArmarBowlInfo = ({ isOpen, onRequestClose, producto: bowlIngredientes }) =
                 fontWeight: 'bold',
                 textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
             }}>
-                ELEGÍ {bowlIngredientes.cantidad}
+                ELEGÍ {cantidadElegir}
             </h3>
             <ul className='' style={{
                 padding: 0,
@@ -95,59 +167,31 @@ const ArmarBowlInfo = ({ isOpen, onRequestClose, producto: bowlIngredientes }) =
                 width: '100%',
             }}>
                 <div className='flex flex-col gap-10 text-[30px]'>
-                    <div id='santy' className='flex justify-between'>
-
-                        <div className=''>
-                            <h2>VERDES</h2>
-                            {bowlIngredientes.BaseVerde && bowlIngredientes.BaseVerde.map((productos, index) => (
-                                <li key={index} style={{
+                    <div className='flex flex-col justify-between'>
+                        <div className=' '>
+                            {productos.map((prod) => (
+                                <li key={prod.id} style={{
                                     marginBottom: '8px',
                                     fontSize: '20px',
                                     textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                                     textAlign: "left",
                                     marginLeft: "85px",
-
                                 }}>
-                                    <input className='mr-2 ' type="checkBox" id={index} />
-                                    {productos}
+                                    <input
+                                        className='mr-2'
+                                        type="checkbox"
+                                        id={prod.id}
+                                        checked={selectedIds.includes(prod.id)}
+                                        onChange={(e) => handleCheckBox(e, prod.id)}
+                                    />
+                                    {prod.nombre}
                                 </li>
                             ))}
                         </div>
-
                         <div>
-                            <h2>PASTAS</h2>
-                            {bowlIngredientes.BasePastas && bowlIngredientes.BasePastas.map((productos, index) => (
-                                <li key={index} style={{
-                                    marginBottom: '8px',
-                                    fontSize: '20px',
-                                    textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-                                    textAlign: "left",
-                                    marginLeft: "85px",
-
-                                }}>
-                                    <input className='mr-2 ' type="checkBox" id={index} />
-                                    {productos}
-                                </li>
-                            ))}
-                        </div>
-
-                    </div>
-                    <div className='text-center '>
-                        <div className='text-center'>
-                            <h2>ARROZ</h2>
-                            {bowlIngredientes.BaseArroz && bowlIngredientes.BaseArroz.map((productos, index) => (
-                                <li key={index} style={{
-                                    marginBottom: '8px',
-                                    fontSize: '20px',
-                                    textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-                                    textAlign: "left",
-                                    marginLeft: "85px",
-
-                                }}>
-                                    <input className='mr-2 ' type="checkBox" id={index} />
-                                    {productos}
-                                </li>
-                            ))}
+                            <button 
+                            className='bg-[#0E3C09] rounded-lg text-[30px] p-2'
+                            onClick={handlerClick}>Confirmar</button>
                         </div>
                     </div>
                 </div>

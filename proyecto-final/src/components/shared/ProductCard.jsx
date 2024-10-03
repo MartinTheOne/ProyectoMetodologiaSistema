@@ -15,7 +15,7 @@ const ProductCard = ({ product, index, openModal }) => {
                     Comprar
                 </button>
                 <button onClick={() => openModal(product)} className='bg-[#3e9634] font-julius text-[#0E3C09] py-2 px-4 rounded-md hover:bg-green-600'>
-                    Ver mÃ¡s
+                    Ver mas
                 </button>
             </div>
         </div>
