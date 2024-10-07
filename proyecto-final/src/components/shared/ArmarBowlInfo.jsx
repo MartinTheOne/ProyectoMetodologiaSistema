@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
-const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir,setMostrarICon }) => {
+const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir,setMostrarIcon,VerBotonPresionado }) => {
     if (!productos) {
         return null;
     }
@@ -46,26 +46,28 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
             Premium: 1,
             Queso: 1
         };
-
+    
         if (selectedIds.length !== limitePorTipo[tipoProducto]) {
             alert(`Debes seleccionar exactamente ${limitePorTipo[tipoProducto]} ${tipoProducto}.`);
             return;
         }
-
-   
+    
         const nuevosProductosElegidos = {
             ...productosElegidos,
-            [tipoProducto]: [...selectedIds] 
+            [tipoProducto]: [...selectedIds]
         };
-
+    
         setProductosElegidos(nuevosProductosElegidos);
         localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
-
- 
+    
+        // Aquí agregas el id al estado
+        setMostrarIcon((prev) => [...prev, VerBotonPresionado]);
+    
         clearSelection();
-        setIsOpen(false)
-        setMostrarICon(true)
+        setIsOpen(false);
     };
+    
+    
 
    
     const clearSelection = () => {

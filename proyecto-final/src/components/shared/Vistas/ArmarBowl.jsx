@@ -9,7 +9,8 @@ Modal.setAppElement('#root');
 const ArmarBowl = () => {
     const [productos, setProductos] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [mostrarIcon, setMostrarIcon] = useState(false);
+    const [mostrarIcon, setMostrarIcon] = useState([]); 
+    const [VerBotonPresionado, SetVerBotonPresionado] = useState();
     const [selectedTipoProduct, setSelectedTipoProduct] = useState(null);
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [cantidadElegir, setCantidadElegir] = useState(null);
@@ -34,13 +35,14 @@ const ArmarBowl = () => {
     }, [selectedTipoProduct, productos]);
 
     const salads = [
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Base", cantidad: 1 },
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Ingrediente", cantidad: 4 },
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Proteina", cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Queso", cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Premium", cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Aderezo", cantidad: 2 },
+        {id: 1, img: "../../../../img/EnsaladaPollo.webp", name: "Base", cantidad: 1, MostrarIcon: mostrarIcon.includes(1) ? true : false},
+        {id: 2, img: "../../../../img/EnsaladaPollo.webp", name: "Ingrediente", cantidad: 4, MostrarIcon: mostrarIcon.includes(2) ? true : false},
+        {id: 3, img: "../../../../img/EnsaladaPollo.webp", name: "Proteina", cantidad: 1, MostrarIcon: mostrarIcon.includes(3) ? true : false},
+        {id: 4, img: "../../../../img/EnsaladaTomate.jpg", name: "Queso", cantidad: 1, MostrarIcon: mostrarIcon.includes(4) ? true : false},
+        {id: 5, img: "../../../../img/EnsaladaTomate.jpg", name: "Premium", cantidad: 1, MostrarIcon: mostrarIcon.includes(5) ? true : false},
+        {id: 6, img: "../../../../img/EnsaladaTomate.jpg", name: "Aderezo", cantidad: 2, MostrarIcon: mostrarIcon.includes(6) ? true : false},
     ];
+    
 
     const openModal = (product) => {
         setSelectedTipoProduct(product.name);
@@ -59,25 +61,26 @@ const ArmarBowl = () => {
                 id='Primera_fila'
                 className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[600px]'
             >
-                {salads.map((salad, index) => (
+                {salads.map((salad) => (
                     <ArmarBowlCard
-                        key={index}
+                        key={salad.id}
                         product={salad}
-                        index={index}
                         openModal={openModal}
-                        mostrarIcon={mostrarIcon} 
+                        setSetVerBotonPresionado={SetVerBotonPresionado}
+                        mostrarIcon={mostrarIcon}
                     />
                 ))}
             </div>
             <div>              
                 <ArmarBowlInfo
-                    isOpen={modalIsOpen}
-                    setIsOpen={setModalIsOpen}
-                    onRequestClose={closeModal}
-                    productos={productosFiltrados}
-                    tipoProducto={selectedTipoProduct}
-                    cantidadElegir={cantidadElegir}
-                    setMostrarICon={setMostrarIcon}
+                  isOpen={modalIsOpen}
+                  setIsOpen={setModalIsOpen}
+                  onRequestClose={closeModal}
+                  productos={productosFiltrados}
+                  tipoProducto={selectedTipoProduct}
+                  cantidadElegir={cantidadElegir}
+                  setMostrarIcon={setMostrarIcon}  // Pasar setMostrarIcon como prop
+                  VerBotonPresionado={VerBotonPresionado}
                 />          
             </div>
         </div>
