@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MenuInfo from './MenuInfo';
 import Modal from 'react-modal';
-import ProductCard from '../Productos/ProductCard'; 
+import ProductCard from '../Productos/ProductCard';
 
 Modal.setAppElement('#root');
 
@@ -26,31 +26,36 @@ const Menu = () => {
     };
 
     return (
-        <div id='Sobre_nosotros' className="bg-[#9BC885]">
-            <div 
-                id='Primera_fila' 
-                className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[600px]'
-            >
-                {salads.map((salad, index) => (
-                    <ProductCard 
-                        key={index} 
-                        product={salad} 
-                        index={index} 
-                        openModal={openModal} 
 
-                    />
-                ))}
+        <div>
+            
+
+            <div id='Sobre_nosotros' className="bg-[#9BC885]">
+                <div
+                    id='Primera_fila'
+                    className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[600px]'
+                >
+                    {salads.map((salad, index) => (
+                        <ProductCard
+                            key={index}
+                            product={salad}
+                            index={index}
+                            openModal={openModal}
+
+                        />
+                    ))}
+                </div>
+
+                <MenuInfo
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    producto={selectedProduct}
+                />
+                <div className='h-[5000px]'></div>
+
             </div>
-
-            <MenuInfo
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                producto={selectedProduct}
-            />
-             <div className='h-[5000px]'></div>
-
         </div>
-        
+
     );
 
 }

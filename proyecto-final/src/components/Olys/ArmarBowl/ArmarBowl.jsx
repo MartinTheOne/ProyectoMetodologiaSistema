@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import ArmarBowlCard from '../ArmarBowl/ArmarBowlCard';
-import ArmarBowlInfo from '../ArmarBowl/ArmarBowlInfo';
+import ArmarBowlCard from '../ArmarBowl/ArmarBowlCard.jsx';
+import ArmarBowlInfo from '../ArmarBowl/ArmarBowlInfo.jsx';
 import axios from 'axios';
 
 Modal.setAppElement('#root');
@@ -56,7 +56,7 @@ const ArmarBowl = () => {
     };
 
     return (
-        <div id='Sobre_nosotros' className="bg-[#9BC885]">
+        <div id='Sobre_nosotros' className="mb-20 bg-[#9BC885]">
             <div
                 id='Primera_fila'
                 className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[600px]'

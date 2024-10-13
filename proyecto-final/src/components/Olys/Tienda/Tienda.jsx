@@ -42,7 +42,7 @@ const Tienda = () => {
 
             </Link>
         
-            <Link to="/armarBowl">
+            <Link to="/armar-bowl">
                 <div className="text-center">
                     <h2 className="mt-4 text-xl font-semibold text-[#d9e5d3]">Arma tu Bowl</h2>
                     <div className="bg-white p-3 rounded-xl shadow-lg">

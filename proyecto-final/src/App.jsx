@@ -75,7 +75,7 @@ function LayoutWithSidebarOrNavbar() {
           <Route path="/tienda" element={<Tienda />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/nutricionista" element={<Nutricionista />} />
-          <Route path="/armar-Bowl" element={<ArmarBowl />} />
+          <Route path="/armar-bowl" element={<ArmarBowl />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/*" element={<RoutesProtected />} />
         </Routes>
