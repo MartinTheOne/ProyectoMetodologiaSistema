@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { isTokenvalid } from "../utils/isTokenValid";
+import { isTokenvalid } from "../../utils/isTokenValid";
 
 const ProtectedRoute=({children})=>{
     const token=localStorage.getItem('token');

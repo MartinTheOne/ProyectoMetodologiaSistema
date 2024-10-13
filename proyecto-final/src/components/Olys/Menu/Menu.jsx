@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import MenuInfo from '../MenuInfo';
+import MenuInfo from './MenuInfo';
 import Modal from 'react-modal';
-import ProductCard from '../ProductCard'; 
+import ProductCard from '../Productos/ProductCard'; 
 
 Modal.setAppElement('#root');
 

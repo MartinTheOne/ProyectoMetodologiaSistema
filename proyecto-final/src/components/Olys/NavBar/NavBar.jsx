@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
 
-    <nav id='pppp' className="bg-[#9BC885] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 border-b-[7px] border-b-[#0E3C09] border-opacity-25 ">
+    <nav id='pppp' className="z-10 bg-[#9BC885] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 border-b-[7px] border-b-[#0E3C09] border-opacity-25 ">
       <Link to="/home" >
         <div className="ml-4 w-[90px] h-[90px] cursor-pointer border rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-opacity-25 border-r-[#efefef] border-l-[#efefef] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
           <h1 className="text-[30px] mt-6 font-julius text-center text-[#0E3C09] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
@@ -19,7 +19,7 @@ const Navbar = () => {
 
       <ul className="flex space-x-8 mr-8">
         <li>
-          <Link to="/home" className="flex items-center space-x-1 text-[#0E3C09]  opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
+          <Link to="/" className="flex items-center space-x-1 text-[#0E3C09]  opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
             <AiOutlineHome className="text-2xl" />
             <h4 className="text-lg text-shadow">Sobre Nosotros</h4>
           </Link>

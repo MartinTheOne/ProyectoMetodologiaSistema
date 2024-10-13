@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import ArmarBowlCard from '../ArmarBowlCard';
-import ArmarBowlInfo from '../ArmarBowlInfo';
+import ArmarBowlCard from '../ArmarBowl/ArmarBowlCard';
+import ArmarBowlInfo from '../ArmarBowl/ArmarBowlInfo';
 import axios from 'axios';
 
 Modal.setAppElement('#root');

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { isTokenvalid } from "../utils/isTokenValid";
-import pelado from "../../img/Pelado.png";
+import { isTokenvalid } from "../../utils/isTokenValid";
+import pelado from "../../../img/Pelado.png";
 
 const Login = () => {
   const [pass, setPass] = useState("");
@@ -12,7 +12,7 @@ const Login = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token && isTokenvalid(token)) {
-      navigate('/admin');
+      navigate('/admin/dashboard');
     }
   }, [navigate]); 
 
@@ -30,7 +30,7 @@ const Login = () => {
         if (token) {
           console.log("Inicio de sesión exitoso");
           localStorage.setItem('token', token);
-          navigate('/admin');
+          navigate('/admin/dashboard');
         }
       }
     } catch (error) {

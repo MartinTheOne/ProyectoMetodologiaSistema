@@ -8,10 +8,9 @@ const Sidebar = () => {
     const navigate=useNavigate()
 
     const menuItems = [
-        { name: "Dashboard", icon: FaTachometerAlt, href: "" },
-        { name: "GestionPedidos", icon: FaShoppingCart, href: "" },
-        { name: "GestionProductos", icon: FaBoxes, href: "" },
-        { name: "Ir al menu", icon: FaHome, href: "/home" },
+        { name: "Dashboard", icon: FaTachometerAlt, href: "/admin/dashboard" },
+        { name: "Gestion Pedidos", icon: FaShoppingCart, href: "/admin/gestion-pedidos" },
+        { name: "Gestion Productos", icon: FaBoxes, href: "/admin/gestion-productos"},
     ];
 
     const toggleSidebar = () => setIsOpen(!isOpen);
