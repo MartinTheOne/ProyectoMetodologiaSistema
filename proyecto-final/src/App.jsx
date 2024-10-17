@@ -26,14 +26,7 @@ function App() {
 function RoutesProtected() {
   return (
     <Routes>
-      <Route
-        path="/admin/dashboard"
-        element={
-          <ProtectedRoute>
-            <DashBoard />
-          </ProtectedRoute>
-        }
-      />
+  
       <Route
         path="/admin/gestion-pedidos"
         element={
