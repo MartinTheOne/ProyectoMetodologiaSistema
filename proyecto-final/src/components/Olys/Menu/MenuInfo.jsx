@@ -22,7 +22,7 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
                     height: '550px',
                     margin: 'auto',
                     padding: '20px',
-                    backgroundColor: "#9BC885",
+                    backgroundColor: "#72bf78",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
