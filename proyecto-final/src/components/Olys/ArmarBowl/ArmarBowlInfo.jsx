@@ -94,7 +94,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                     height: '650px',
                     margin: 'auto',
                     padding: '20px',
-                    backgroundColor: "#9BC885",
+                    backgroundColor: "#72bf78   ",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -192,7 +192,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                         </div>
                         <div>
                             <button 
-                            className='bg-[#0E3C09] rounded-lg text-[30px] p-2'
+                            className='bg-[#3aa762] rounded-lg text-[20px] p-2'
                             onClick={handlerClick}>Confirmar</button>
                         </div>
                     </div>
