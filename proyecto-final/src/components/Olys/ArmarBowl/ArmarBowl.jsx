@@ -83,7 +83,20 @@ const ArmarBowl = () => {
                 </div>
             </div>
 
-            <div id='Sobre_nosotros' className="mb-20 bg-[#9BC885]">
+            <div className="flex justify-center mt-[100px]">
+                <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
+                    ARMA TU BOLW
+                </h2>
+            </div>
+
+            <div className="flex justify-center mt-[60px]">
+                 <h3 className='font-julius text-[#0E3C09] text-5xl font-extrabold text-center'>
+                      COMO MAS TE GUSTE <br /> EN 6 PASOS
+                </h3>
+            </div>
+
+
+            <div id='ArmarBolw' className="mb-20">
                 <div
                     id='Primera_fila'
                     className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[50px]'
@@ -111,6 +124,7 @@ const ArmarBowl = () => {
                     />
                 </div>
             </div>
+            
         </div>
     );
 };
