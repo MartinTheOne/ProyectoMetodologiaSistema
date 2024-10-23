@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
-import { AiOutlineHome } from "react-icons/ai";
+import React, { useEffect, useState } from 'react';
 import { LuStore } from "react-icons/lu";
 import { IoCartOutline } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import Carrito from '../Carrito/Carrito.jsx';
 
 const Navbar = () => {
-  const [cartOpen, setCartOpen] = useState(false); // Controlar si el carrito está abierto
+  const [cartOpen, setCartOpen] = useState(false);
+  const [Contadorprod, setContadorProd] = useState(null);
 
+  const actualizarContadorCarrito = () => {
+    const savedCart = localStorage.getItem("carrito");
+    if (savedCart) {
+      const prod=JSON.parse(savedCart)
+      const cantidadProd = prod.map(p=>p.cantidad);
+     setContadorProd(cantidadProd.reduce((acumulador, valorActual) => acumulador + valorActual, 0))
+
+    }
+  };
+
+  useEffect(() => {
+
+    actualizarContadorCarrito();
+    window.addEventListener('updateCartCounter', actualizarContadorCarrito);
+    return () => {
+      window.removeEventListener('updateCartCounter', actualizarContadorCarrito);
+    };
+  }, [cartOpen]);
   return (
     <>
       <nav id='pppp' className="z-10 bg-[#72bf78] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 border-b-[7px] border-b-[#0E3C09] border-opacity-25">
@@ -26,7 +45,7 @@ const Navbar = () => {
               <h4 className="text-lg">Tienda</h4>
             </Link>
           </li>
-          
+
           <li>
             <Link to="/nutricionista" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
               <BsInfoCircle className="text-2xl" />
@@ -35,36 +54,23 @@ const Navbar = () => {
           </li>
 
           <li>
-            <button 
-              onClick={() => setCartOpen(true)} 
+            <button
+              onClick={() => setCartOpen(true)}
               className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius"
             >
               <IoCartOutline className="text-2xl" />
+              {Contadorprod > 0 && (
+                <span className="absolute mb-8 border pt-1 border-[#0E3C09] text-black text-xs rounded-full h-[15px] w-[15px] flex items-center justify-center">
+                  {Contadorprod}
+                </span>
+              )}
               <h4 className="text-lg">Carrito</h4>
             </button>
           </li>
         </ul>
       </nav>
 
-      {/* Panel lateral del carrito */}
-      <div
-        className={`fixed top-0 right-0 w-[350px] h-full bg-[#72bf78] shadow-lg transform ${
-          cartOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-20`}
-      >
-        <div className="p-4">
-          <button 
-            className="text-gray-500 float-right" 
-            onClick={() => setCartOpen(false)}
-          >
-            ✕
-          </button>
-          <h2 className="text-2xl font-julius font-bold">Carrito</h2>
-          {/* Aquí puedes agregar los productos */}
-          <p className='font-julius'>No hay productos en el carrito.</p>
-        </div>
-      </div>
-
+      <Carrito setCartOpen={setCartOpen} cartOpen={cartOpen}  />
       {/* Fondo oscuro para cuando el carrito esté abierto */}
       {cartOpen && (
         <div

@@ -7,16 +7,17 @@ import Carrito from "./components/Olys/Carrito/Carrito.jsx";
 import Menu from "./components/Olys/Menu/Menu.jsx";
 import ArmarBowl from "./components/Olys/ArmarBowl/ArmarBowl.jsx";
 import Login from "./components/OLYS_ADMIN/Login.jsx";
-import DashBoard from "./components/OLYS_ADMIN/DashBoard.jsx";
 import Sidebar from './components/OLYS_ADMIN/SideBar.jsx';
 import ProtectedRoute from "./components/OLYS_ADMIN/ProtectedRoute.jsx";
 import GestionPedidos from "./components/OLYS_ADMIN/GestionPedido.jsx";
 import GestionProductos from "./components/OLYS_ADMIN/GestionProductos.jsx";
+import ScrollTop from "./componentUtils/ScrollTop.js"
 
 function App() {
   return (
     <div id="Controlador_abuelo_Router">
       <Router>
+        <ScrollTop/>
         <LayoutWithSidebarOrNavbar />
       </Router>
     </div>
