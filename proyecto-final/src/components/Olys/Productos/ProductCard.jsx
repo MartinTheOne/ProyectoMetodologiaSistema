@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
-const ProductCard = ({ product, agregarAlCarrito }) => {
+const ProductCard = ({ product, agregarAlCarrito,openModal }) => {
     const[Notificacion,setNotificacion] = useState(true);
+
 
     const Notifiqueishon = () => {
         if (Notificacion) {
@@ -13,6 +14,17 @@ const ProductCard = ({ product, agregarAlCarrito }) => {
         }
     }
     useEffect(() => {
+
+        const manejarEvento = (event) => {
+            setNotificacion(event.detail.nuevoEstado);
+          };
+      
+          // Escuchar el evento en el objeto global 'window'
+          window.addEventListener('cambiarEstado', manejarEvento);
+      
+          // Limpiar el listener al desmontar el componente
+        
+
         const notyf = new Notyf({
             duration: 3000,
             position: {
@@ -29,6 +41,9 @@ const ProductCard = ({ product, agregarAlCarrito }) => {
            
         });
         window.notyf = notyf;
+        return () => {
+            window.removeEventListener('cambiarEstado', manejarEvento);
+          };
     }, []);
     return (
         <div className={`shadow-2xl border border-black border-opacity-10 rounded-t-[35px] rounded-b-[10px] w-[520px] h-[650px] flex flex-col justify-between items-center group hover:h-[700px] transition-all duration-300`}>
@@ -45,7 +60,7 @@ const ProductCard = ({ product, agregarAlCarrito }) => {
                     className='bg-[#3aa762] font-julius text-[#0E3C09] py-2 px-4 rounded-md hover:bg-green-600'>
                     Agregar al carrito
                 </button>
-                <button className='bg-[#3aa762] font-julius text-[#0E3C09] py-2 px-4 rounded-md hover:bg-green-600'>
+                <button onClick={ () => openModal(product)} className='bg-[#3aa762] font-julius text-[#0E3C09] py-2 px-4 rounded-md hover:bg-green-600'>
                     Ver más
                 </button>
             </div>

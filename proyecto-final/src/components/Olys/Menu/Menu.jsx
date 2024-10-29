@@ -95,6 +95,7 @@ const Menu = () => {
                             key={index}
                             product={salad}
                             agregarAlCarrito={agregarAlCarrito} // Pasamos la función
+                            openModal={openModal}
                         />
                     ))}
                 </div>

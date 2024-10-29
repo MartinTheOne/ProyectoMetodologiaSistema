@@ -62,7 +62,7 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
                 fontWeight: 'bold',
                 textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
             }}>
-                {producto.name.toUpperCase()}
+                {producto.name}
             </h2>
             <div style={{
                 backgroundColor: '#ffffff   ',
@@ -104,7 +104,7 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
                         marginLeft: "85px",
                         
                     }}>
-                        {ingrediente.toUpperCase()}
+                        {ingrediente}
                     </li>
                 ))}
             </ul>
