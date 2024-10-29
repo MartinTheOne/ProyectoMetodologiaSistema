@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-const Novedades = () => {
+const Nutricionista = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [availableTimes, setAvailableTimes] = useState([]);
     const [selectedTime, setSelectedTime] = useState(null);
@@ -77,4 +77,4 @@ const Novedades = () => {
 };
 
 
-export default Novedades;
+export default Nutricionista;
