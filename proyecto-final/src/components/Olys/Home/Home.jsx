@@ -36,36 +36,36 @@ const Home = () => {
         </h2>
       </div>
 
-      <div className="bg-black h-[1200px] w-[1900px] mt-[90px] flex justify-between">
+      <div className=" h-full w-auto mt-[90px] flex justify-center gap-10 font-julius">
          
         <div id="MarcoExterior1" className="mt-[100px]  ml-[150px]"> 
 
-          <div id='MarcoN1' className="bg-white h-[500px] w-[700px] mb-10 flex flex-col items-center gap-6">
+          <div id='MarcoN1' className=" h-[500px] w-[700px] mb-10 flex flex-col items-center gap-6">
                     
-                <div className="bg-slate-900 h-[300px] w-[500px] overflow-hidden mt-4 rounded-md">
+                <div className=" h-[300px] w-[500px] overflow-hidden mt-4 rounded-md">
                     <img className='w-full h-full object-cover' src={Ensalada} alt="" />
 
                 </div>
 
-                  <div className="bg-yellow-400 h-[140px] w-[500px] ">
-                    <h2 className='text-center'>Este es un titulo</h2>
-                    <h3>
+                  <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
+                    <h2 className='text-center mt-4 text-xl'>Este es un titulo</h2>
+                    <h3 className='mt-2 '>
                       Esto es una descripcion sobre el local Olys
                     </h3>
 
                 </div>
           </div>
                 
-          <div id='MarcoN2' className="bg-white h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
+          <div id='MarcoN2' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
             
-            <div className="bg-slate-900 h-[300px] w-[500px] mt-4 overflow-hidden rounded-md ">
+            <div className=" h-[300px] w-[500px] mt-4 overflow-hidden rounded-md ">
                 <img className='w-full h-full object-cover ' src={Ensalada} alt="" />
             </div>
 
 
-            <div className="bg-yellow-400 h-[140px] w-[500px] ">
-                    <h2 className='text-center'>Este es un titulo</h2>
-                    <h3>
+            <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
+                    <h2 className='text-center mt-4 text-xl'>Este es un titulo</h2>
+                    <h3 className='mt-2'>
                       Esto es una descripcion sobre el local Olys
                     </h3>
             </div>
@@ -74,31 +74,31 @@ const Home = () => {
           
           <div  id="MarcoExterior2"  className="mt-[100px] mr-[150px]">
 
-                <div id='MarcoN3' className="bg-white h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
+                <div id='MarcoN3' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
                     
                     <div className="bg-slate-900 h-[300px] w-[500px] overflow-hidden mt-4 rounded-md ">
                         <img className='w-full h-full object-cover' src={Ensalada} alt="" />
                     </div>
 
 
-                    <div className="bg-yellow-400 h-[140px] w-[500px] ">
-                        <h2 className='text-center'>Este es un titulo</h2>
-                        <h3>
+                    <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
+                        <h2 className='text-center mt-4 text-xl'>Este es un titulo</h2>
+                        <h3 className='mt-2'>
                            Esto es una descripcion sobre el local Olys
                         </h3>
                     </div>
                 </div>
 
-                <div id='MarcoN4' className="bg-white h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
+                <div id='MarcoN4' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
                    
                     <div className="bg-slate-900 h-[300px] w-[500px] overflow-hidden mt-4 rounded-md">
                         <img className='w-full h-full object-cover' src={Ensalada} alt="" />
                     </div>
 
 
-                    <div className="bg-yellow-400 h-[140px] w-[500px] ">
-                      <h2 className='text-center'>Este es un titulo</h2>
-                      <h3>
+                    <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
+                      <h2 className='text-center mt-4 text-xl'>Este es un titulo</h2>
+                      <h3 className='mt-2'>
                         Esto es una descripcion sobre el local Olys
                       </h3>
                     </div>

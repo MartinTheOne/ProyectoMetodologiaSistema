@@ -4,6 +4,11 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        'AD': '1150px',
+        'Porvosnegro': '600px'
+       
+      },
       backgroundSize: {
         '200%': '200%',
       },
