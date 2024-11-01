@@ -15,10 +15,16 @@ const Menu = () => {
     });
 
     const salads = [
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Ensalada César", price: 5200, ing: ["Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Ensalada Griega", price: 5200, ing: ["Tomate", "Pepino", "Cebolla roja", "Aceitunas", "Queso feta"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada Caprese", price: 5200, ing: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite de oliva"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada de Quinoa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 }
+        { img: "../../../../img/EnsaladaCesar.jpeg", name: "Ensalada César", price: 5200, ing: ["Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaGriega.jpeg", name: "Ensalada Griega", price: 5200, ing: ["Tomate", "Pepino", "Cebolla roja", "Aceitunas", "Queso feta"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaCaprese.jpeg", name: "Ensalada Caprese", price: 5200, ing: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite de oliva"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaQuinoa.jpeg", name: "Ensalada de Quinoa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaAgridulce.jpeg", name: "Ensalada Agridulce", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaWaldorf.jpeg", name: "Ensalada Waldorf", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaVegetariana.jpeg", name: "Ensalada Vegetariana", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaFilipa.jpeg", name: "Ensalada Filipa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 }
+
+
     ];
 
     const openModal = (product) => {

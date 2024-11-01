@@ -1,4 +1,5 @@
-import imagen from '../../../../img/menu.png.webp'
+import imagen from '../../../../img/Menu.jpeg'
+import armar from '../../../../img/armatubowl.jpeg'
 import { Link } from 'react-router-dom';
 import PeladoComponent from '../Home/PeladoComponent';
 
@@ -18,7 +19,7 @@ const Tienda = () => {
                 
             <Link to="/menu">
                 <div className="text-center">
-                    <h2 className="mt-4 font-julius text-[#0E3C09] text-5xl font-extrabold mb-10">Menu</h2>
+                    <h2 className="mt-4 font-julius text-[#0E3C09] text-5xl font-extrabold mb-10"></h2>
                     <div className="bg-[#72bf78] p-3 rounded-xl shadow-lg">
                         <img src={imagen} alt="menu" className="w-[450px] h-[450px] object-cover rounded-lg" />
                     </div>
@@ -28,9 +29,9 @@ const Tienda = () => {
         
             <Link to="/armar-bowl">
                 <div className="text-center">
-                    <h2 className="mt-4 font-julius text-[#0E3C09] text-5xl font-extrabold mb-10">Arma tu Bowl</h2>
+                    <h2 className="mt-4 font-julius text-[#0E3C09] text-5xl font-extrabold mb-10"></h2>
                     <div className="bg-[#72bf78] p-3 rounded-xl shadow-lg">
-                        <img src={imagen} alt="menu" className="w-[450px] h-[450px] object-cover rounded-lg" />
+                        <img src={armar} alt="menu" className="w-[450px] h-[450px] object-cover rounded-lg" />
                     </div>
                 </div>
              </Link>
