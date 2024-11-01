@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/OLYS_ADMIN/ProtectedRoute.jsx";
 import GestionPedidos from "./components/OLYS_ADMIN/GestionPedido.jsx";
 import GestionProductos from "./components/OLYS_ADMIN/GestionProductos.jsx";
 import ScrollTop from "./componentUtils/ScrollTop.js"
+import TurnosPage from './components/Olys/Nutricionista/TurnosPage.jsx';
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function LayoutWithSidebarOrNavbar() {
           <Route path="/armar-bowl" element={<ArmarBowl />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/*" element={<RoutesProtected />} />
+          <Route path="/nutricionista/turnos/:dia" element={<TurnosPage />} />
         </Routes>
       </div>
     </>

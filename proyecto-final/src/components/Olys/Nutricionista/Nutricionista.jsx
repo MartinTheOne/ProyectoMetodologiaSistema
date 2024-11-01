@@ -1,80 +1,93 @@
-import { useEffect, useState } from "react";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import { useNavigate } from 'react-router-dom';
+import PeladoComponent from '../Home/PeladoComponent';
+
 const Nutricionista = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [availableTimes, setAvailableTimes] = useState([]);
-    const [selectedTime, setSelectedTime] = useState(null);
-
-    useEffect(() => {
-        fetchAvailableTimes(selectedDate);
-    }, [selectedDate]);
-
-    const fetchAvailableTimes = (date) => {
-        const dias = date.getDay(); 
-
-        
-        let fecha;
-        if (dias === 1 || dias === 3) { 
-            fecha = ['6:00', '6:15', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00'];
-        } else if (dias === 5) { 
-            fecha = ['7:00', '8:15', '9:30', '10:45', '12:00'];
-        } else { 
-            fecha = ['8:00', '9:30', '11:00'];
-        }
-
-        setAvailableTimes(fecha);
+    const navigate = useNavigate();
+    
+    const handleTurnosClick = (dia) => {
+        const diaFormateado = dia.toLowerCase();
+        console.log("Navegando a:", `/nutricionista/turnos/${diaFormateado}`);
+        navigate(`/nutricionista/turnos/${diaFormateado}`);
     };
-
+   
     return (
-        <div className="container mx-auto p-6">
-            <div className="grid grid-cols-3 gap-6">
-                
-                <div className="col-span-2">
-                    <h2 className="text-xl font-bold mb-4">Seleccionar fecha y hora</h2>
-                    <Calendar
-                        onChange={setSelectedDate}
-                        value={selectedDate}
-                        className="w-full"
-                    />
-                </div>
+        <>
+            <PeladoComponent/>  
 
-                
-                <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h3 className="text-pink-500 text-lg font-bold mb-2">GRATIS</h3>
-                    <p className="text-gray-700">Asesoramiento gratuito | Nutrición</p>
-                    <div className="flex items-center my-4">
-                        <span className="text-sm text-gray-600">⏱ 15 min.</span>
-                        <span className="ml-auto text-sm text-gray-600">Gratis</span>
+            <div className="flex justify-center mt-[100px]">
+                 <h2 className="font-julius text-[#0E3C09] text-6xl font-extrabold">
+                    Nutricionista
+                 </h2>
+            </div>
+
+            <div className="flex justify-start ml-[100px] mt-[100px]">
+                 <h2 className="font-julius text-[#0E3C09] text-4xl font-extrabold">
+                    Lic. Florencia Cassanova
+                 </h2>
+            </div>
+
+            <div className="flex justify-center mt-[100px]">
+                 <h2 className="font-julius text-[#0E3C09] text-4xl font-extrabold">
+                    Turnos
+                 </h2>
+            </div>
+
+            <div className="flex flex-col items-center">
+                <div className="Lunes">
+                    <div className="flex justify-center mt-[100px]">
+                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+                            Lunes
+                        </h2>
                     </div>
-                    {selectedTime && (
-                        <p className="mt-4 text-sm text-gray-600">
-                            Fecha seleccionada: {selectedDate.toLocaleDateString()} <br />
-                            Hora seleccionada: {selectedTime}
-                        </p>
-                    )}
+
+                    <button 
+                        onClick={() => handleTurnosClick('Lunes')}
+                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center"
+                    >
+                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+                            Ver turnos disponibles
+                        </h2>
+                    </button>
+                </div>
+
+                <div className="Miercoles">
+                    <div className="flex justify-center mt-[100px]">
+                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+                            Miercoles
+                        </h2>
+                    </div>
+
+                    <button 
+                        onClick={() => handleTurnosClick('Miercoles')}
+                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center"
+                    >
+                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+                            Ver turnos disponibles
+                        </h2>
+                    </button>
+                </div>
+
+                <div className="Viernes">
+                    <div className="flex justify-center mt-[100px]">
+                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+                            Viernes
+                        </h2>
+                    </div>
+
+                    <button 
+                        onClick={() => handleTurnosClick('Viernes')}
+                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center"
+                    >
+                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+                            Ver turnos disponibles
+                        </h2>
+                    </button>
                 </div>
             </div>
 
-           
-            <div className="mt-6 grid grid-cols-6 gap-2">
-                {availableTimes.length > 0 ? (
-                    availableTimes.map((time, index) => (
-                        <button
-                            key={index}
-                            className={`p-2 border rounded ${selectedTime === time ? 'bg-orange-500 text-white' : 'bg-white text-gray-700'}`}
-                            onClick={() => setSelectedTime(time)}
-                        >
-                            {time}
-                        </button>
-                    ))
-                ) : (
-                    <p className="col-span-6 text-center text-gray-500">No hay horarios disponibles</p>
-                )}
-            </div>
-        </div>
+            <div className="mt-[1000px]"></div>
+        </>        
     );
 };
-
 
 export default Nutricionista;
