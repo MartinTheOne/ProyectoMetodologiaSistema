@@ -3,11 +3,9 @@ import PeladoComponent from '../Home/PeladoComponent';
 
 const Nutricionista = () => {
     const navigate = useNavigate();
-    
+
     const handleTurnosClick = (dia) => {
-        const diaFormateado = dia.toLowerCase();
-        console.log("Navegando a:", `/nutricionista/turnos/${diaFormateado}`);
-        navigate(`/nutricionista/turnos/${diaFormateado}`);
+        navigate(`/nutricionista/turnos/${dia.toLowerCase()}`);
     };
    
     return (
