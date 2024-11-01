@@ -88,6 +88,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <div className="mb-[228px]"></div>
     </div>
   );
 };

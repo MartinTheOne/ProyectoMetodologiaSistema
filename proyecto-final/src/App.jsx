@@ -9,9 +9,10 @@ import ArmarBowl from "./components/Olys/ArmarBowl/ArmarBowl.jsx";
 import Login from "./components/OLYS_ADMIN/Login.jsx";
 import Sidebar from './components/OLYS_ADMIN/SideBar.jsx';
 import ProtectedRoute from "./components/OLYS_ADMIN/ProtectedRoute.jsx";
-import GestionPedidos from "./components/OLYS_ADMIN/GestionPedido.jsx";
+import GestionPedidos from "./components/OLYS_ADMIN/Pedido/GestionPedido.jsx";
 import GestionProductos from "./components/OLYS_ADMIN/GestionProductos.jsx";
 import ScrollTop from "./componentUtils/ScrollTop.js"
+import TurnosPage from './components/Olys/Nutricionista/TurnosPage.jsx';
 
 function App() {
   return (
@@ -51,9 +52,7 @@ function RoutesProtected() {
 function LayoutWithSidebarOrNavbar() {
   const location = useLocation();
 
-  const showSidebar = location.pathname.startsWith('/admin/dashboard') ||
-                      location.pathname.startsWith('/admin/gestion-pedidos') ||
-                      location.pathname.startsWith('/admin/gestion-productos');
+  const showSidebar = location.pathname.startsWith('/admin/dashboard')
 
   const hideNavBar = location.pathname === '/admin/login';
 
@@ -72,6 +71,7 @@ function LayoutWithSidebarOrNavbar() {
           <Route path="/armar-bowl" element={<ArmarBowl />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/*" element={<RoutesProtected />} />
+          <Route path="/nutricionista/turnos/:dia" element={<TurnosPage />} />
         </Routes>
       </div>
     </>

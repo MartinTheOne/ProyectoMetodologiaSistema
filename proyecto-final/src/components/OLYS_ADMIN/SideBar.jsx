@@ -4,6 +4,7 @@ import { FaTachometerAlt, FaShoppingCart, FaBoxes, FaBars, FaTimes, FaSignOutAlt
 import Dashboard from "../OLYS_ADMIN/DashBoard";
 import ProtectedRoute from "./ProtectedRoute";
 import GestionProductos from "./GestionProductos";
+import GestionPedidos from "./Pedido/GestionPedido";
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -87,6 +88,7 @@ const Sidebar = () => {
             <div className="flex-1 p-10 bg-gray-100  overflow-y-auto">
                 {activeItem === "Dashboard" && <ProtectedRoute><Dashboard /></ProtectedRoute> }
                 {activeItem=="Gestion Productos" && <ProtectedRoute><GestionProductos/></ProtectedRoute>}
+                {activeItem=="Gestion Pedidos" && <ProtectedRoute><GestionPedidos/></ProtectedRoute>}
             </div>
         </div>
     );
