@@ -8,6 +8,8 @@ const Tienda = () => {
         <>
              <PeladoComponent/>
 
+             <div className="xd"></div>
+
             <div className="flex justify-center mt-[100px]">
               <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
                 Tienda
