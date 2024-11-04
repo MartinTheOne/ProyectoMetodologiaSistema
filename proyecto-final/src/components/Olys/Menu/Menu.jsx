@@ -15,14 +15,14 @@ const Menu = () => {
     });
 
     const salads = [
-        { img: "../../../../img/EnsaladaCesar.jpeg", name: "Ensalada César", price: 5200, ing: ["Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaldaCesars.png", name: "Ensalada César", price: 5200, ing: ["Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"], carrito: false, cantidad: 1 },
         { img: "../../../../img/EnsaladaGriega.jpeg", name: "Ensalada Griega", price: 5200, ing: ["Tomate", "Pepino", "Cebolla roja", "Aceitunas", "Queso feta"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaCaprese.jpeg", name: "Ensalada Caprese", price: 5200, ing: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite de oliva"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaQuinoa.jpeg", name: "Ensalada de Quinoa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaAgridulce.jpeg", name: "Ensalada Agridulce", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaWaldorf.jpeg", name: "Ensalada Waldorf", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaVegetariana.jpeg", name: "Ensalada Vegetariana", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaFilipa.jpeg", name: "Ensalada Filipa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 }
+        { img: "../../../../img/caprese.jpg", name: "Ensalada Caprese", price: 5200, ing: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite de oliva"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/quinoa.jpeg", name: "Ensalada de Quinoa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/agridulce.png", name: "Ensalada Agridulce", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaWaldorf.png", name: "Ensalada Waldorf", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/vegetariana.jpeg", name: "Ensalada Vegetariana", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/filipa.jpeg", name: "Ensalada Filipa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 }
 
 
     ];
