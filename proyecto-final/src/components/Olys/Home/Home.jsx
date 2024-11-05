@@ -49,8 +49,7 @@ const Home = () => {
               <h2 className='text-center mt-4 text-xl'>
                 ¿Dónde comprar Comida Saludable en San Miguel de Tucumán?
               </h2>
-              <p>📍Salta 78 - SMT</p>
-              <p>📍Santa Fé 440 - SMT</p>
+              
               <Map />
             </div>
           </div>
