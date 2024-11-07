@@ -10,7 +10,7 @@ import Login from "./components/OLYS_ADMIN/Login.jsx";
 import Sidebar from './components/OLYS_ADMIN/SideBar.jsx';
 import ProtectedRoute from "./components/OLYS_ADMIN/ProtectedRoute.jsx";
 import GestionPedidos from "./components/OLYS_ADMIN/Pedido/GestionPedido.jsx";
-import GestionProductos from "./components/OLYS_ADMIN/GestionProductos.jsx";
+import GestionProductos from "./components/OLYS_ADMIN/Producto/GestionProductos.jsx";
 import ScrollTop from "./componentUtils/ScrollTop.js"
 import TurnosPage from './components/Olys/Nutricionista/TurnosPage.jsx';
 

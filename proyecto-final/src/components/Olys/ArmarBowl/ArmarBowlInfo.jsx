@@ -6,6 +6,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
         return null;
     }
 
+
     const initialProductosElegidos = JSON.parse(localStorage.getItem('productosElegidos')) || {
         Base: [],
         Ingrediente: [],
@@ -18,7 +19,29 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
     const [selectedIds, setSelectedIds] = useState([]);
     const [productosElegidos, setProductosElegidos] = useState(initialProductosElegidos);
 
+
     useEffect(() => {
+        const notyf = new Notyf({
+            duration: 3000,
+            position: {
+                x: 'center',
+                y: 'top',
+            },
+            types: [
+                {
+                    type: 'success',
+                    background: "#28b463",
+                    className: "rounded-[10px] text-black font-julius text-[15px]"
+                },
+                {
+                    type: 'error',
+                    background: "#e74c3c",
+                    className: "rounded-[10px] text-black font-julius text-[15px]"
+                },              
+            ]
+        });
+        window.notyf = notyf;
+        
 
         setSelectedIds(productosElegidos[tipoProducto] || []);
     }, [isOpen, tipoProducto, productosElegidos]);
@@ -30,7 +53,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
             if (selectedIds.length < cantidadElegir) {
                 setSelectedIds([...selectedIds, id]);
             } else {
-                alert(`No puedes seleccionar más de ${cantidadElegir} ${tipoProducto}.`);
+                window.notyf.error(`No puedes seleccionar más de ${cantidadElegir} ${tipoProducto}.`);
             }
         } else {
             setSelectedIds(selectedIds.filter(selectedId => selectedId !== id));
@@ -48,7 +71,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
         };
     
         if (selectedIds.length !== limitePorTipo[tipoProducto]) {
-            alert(`Debes seleccionar exactamente ${limitePorTipo[tipoProducto]} ${tipoProducto}.`);
+            window.notyf.error(`Debes seleccionar exactamente ${limitePorTipo[tipoProducto]} ${tipoProducto}.`);
             return;
         }
     

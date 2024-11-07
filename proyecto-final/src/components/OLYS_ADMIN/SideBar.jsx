@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaTachometerAlt, FaShoppingCart, FaBoxes, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import Dashboard from "../OLYS_ADMIN/DashBoard";
 import ProtectedRoute from "./ProtectedRoute";
-import GestionProductos from "./GestionProductos";
+import GestionProductos from "./Producto/GestionProductos";
 import GestionPedidos from "./Pedido/GestionPedido";
 
 const Sidebar = () => {

@@ -114,7 +114,7 @@ const GestionPedidos = () => {
         return (
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-semibold mb-4">Pedidos</h2>
+                <h2 className="text-2xl font-semibold mb-4 font-julius">Pedidos</h2>
                 <div className="flex" >
                     <div>
                         <select onChange={(e) => handlerOnChangeEstPedido(e)} className="border rounded px-2 py-2 mr-2 mb-2 sm:mb-0" aria-label="Filter by category">
@@ -137,7 +137,7 @@ const GestionPedidos = () => {
                     <table className="w-full table-auto">
                         <thead>
                             <tr className="bg-gray-200">
-                                
+
                                 <th className="px-4 py-2">Nombre</th>
                                 <th className="px-4 py-2">Celular</th>
                                 <th className="px-4 py-2">Direccion</th>
@@ -160,8 +160,8 @@ const GestionPedidos = () => {
                                             : "";
 
                                 return (
-                                    <tr key={ped.id} className="border-b font-bold font-sans text-center">
-                                        
+                                    <tr key={ped.id} className="border-b font-bold font-sans text-center hover:bg-gray-200">
+
                                         <td className="xl:px-10 py-2 2xl:px-12">{ped.nombreCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 text-sm flex mt-2 text-center items-center"><FaWhatsapp className="mr-[1px] text-[25px] bg-green-500 text-white p-1 rounded-full" />{ped.celularCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente}</td>
@@ -185,6 +185,7 @@ const GestionPedidos = () => {
             </div>
         )
     }
+    
 
     const renderOrderManagement = () => {
 
@@ -196,7 +197,7 @@ const GestionPedidos = () => {
 
         return (
             <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-semibold mb-4">Pedidos</h2>
+                <h2 className="text-2xl font-semibold mb-4 font-julius">Pedidos</h2>
                 <div className="mb-4 flex flex-wrap items-center">
                     <input
                         type="date"
@@ -225,7 +226,7 @@ const GestionPedidos = () => {
                     <table className="w-full table-auto">
                         <thead>
                             <tr className="bg-gray-200">
-                                
+
                                 <th className="px-4 py-2">Nombre</th>
                                 <th className="px-4 py-2">Celular</th>
                                 <th className="px-4 py-2">Direccion</th>
@@ -248,8 +249,8 @@ const GestionPedidos = () => {
                                             : "";
 
                                 return (
-                                    <tr key={ped.id} className="border-b font-bold font-sans text-center">
-                                        
+                                    <tr key={ped.id} className="border-b font-bold text-center hover:bg-gray-200">
+
                                         <td className="xl:px-10 py-2 2xl:px-12">{ped.nombreCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 text-sm flex mt-2 text-center items-center"><FaWhatsapp className="mr-[1px] text-[25px] bg-green-500 text-white p-1 rounded-full" />{ped.celularCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente}</td>
@@ -260,9 +261,9 @@ const GestionPedidos = () => {
                                         <td className="xl:px-10 py-2 2xl:px-12">{ped.metodoPago.metodoPago}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12"><div className="w-20 text-sm">{ped.fecha}</div></td>
                                         <td className="xl:px-8 py-2 2xl:px-8">{ped.envio ? <FaCheckCircle className="text-[20px] text-green-500" /> : <IoCloseCircle className="text-[24px] text-red-500" />}</td>
-                                        <td className="xl:px-10 py-2 text-center 2xl:px-8"><div className="w-20 text-sm">${ped.precio}</div></td>
+                                        <td className="xl:px-10 py-2 text-center 2xl:px-8"><div className="w-20 text-sm">${ped.precio}</div></td>                                     
                                         <td className="xl:px-10 py-2 2xl:px-12">
-                                            <FaEye onClick={() => { setIsOpen(true); setpedidosProductosSel(ped.productosList); }} className="h-[25px] w-[25px] cursor-pointer" />
+                                            <FaEye onClick={() => { setIsOpen(true); setpedidosProductosSel([ped.listaEnsaladas,ped.productosList]); }} className="h-[25px] w-[25px] cursor-pointer" />
                                         </td>
                                     </tr>
                                 );

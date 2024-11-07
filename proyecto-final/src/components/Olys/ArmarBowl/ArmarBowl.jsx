@@ -16,6 +16,8 @@ const ArmarBowl = () => {
     const [selectedTipoProduct, setSelectedTipoProduct] = useState(null);
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [cantidadElegir, setCantidadElegir] = useState(null);
+    const [selectedItems, setSelectedItems] = useState({});
+    const [notificacion, setNotificacion] = useState(true);
 
     useEffect(() => {
         const obtenerProductos = async () => {
@@ -27,6 +29,38 @@ const ArmarBowl = () => {
             }
         };
         obtenerProductos();
+
+       
+        const notyf = new Notyf({
+            duration: 3000,
+            position: {
+                x: 'center',
+                y: 'top',
+            },
+            types: [
+                {
+                    type: 'success',
+                    background: "#28b463",
+                    className: "rounded-[10px] text-black font-julius text-[15px]"
+                },
+                {
+                    type: 'error',
+                    background: "#e74c3c",
+                    className: "rounded-[10px] text-black font-julius text-[15px]"
+                }
+            ]
+        });
+        window.notyf = notyf;
+
+       
+        const manejarEvento = (event) => {
+            setNotificacion(event.detail.nuevoEstado);
+        };
+        window.addEventListener('cambiarEstado', manejarEvento);
+
+        return () => {
+            window.removeEventListener('cambiarEstado', manejarEvento);
+        };
     }, []);
 
     useEffect(() => {
@@ -45,7 +79,6 @@ const ArmarBowl = () => {
         { id: 6, img: "../../../../img/EnsaladaTomate.jpg", name: "Aderezo", cantidad: 2, MostrarIcon: mostrarIcon.includes(6) ? true : false },
     ];
 
-
     const openModal = (product) => {
         setSelectedTipoProduct(product.name);
         setCantidadElegir(product.cantidad);
@@ -57,23 +90,67 @@ const ArmarBowl = () => {
         setSelectedTipoProduct(null);
     };
 
+    const agregarAlCarrito = () => {
+        
+        const todosSeleccionados = salads.every(item => mostrarIcon.includes(item.id));
+        
+        if (!todosSeleccionados) {
+            window.notyf.error("Debes completar todos los pasos antes de agregar al carrito");
+            return;
+        }
+
+        localStorage.removeItem("productosElegidos")    
+        const bowlPersonalizado = {
+            name: "Bowl Personalizado",
+            img: "../../../../img/EnsaladaPollo.webp",
+            price: 6500,
+            cantidad: 1,
+            ing: Object.values(selectedItems).flat(),
+            carrito: false
+        };
+
+        
+        const carritoActual = JSON.parse(localStorage.getItem("carrito")) || [];
+        
+        
+        const nuevoCarrito = [...carritoActual, bowlPersonalizado];
+        localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
+
+        
+        window.notyf.success("Bowl agregado al carrito correctamente");
+
+        
+        const event = new CustomEvent('updateCartCounter');
+        window.dispatchEvent(event);
+
+        
+        setMostrarIcon([]);
+        setSelectedItems({});
+    };
+
+    
+    const updateSelectedItems = (tipo, items) => {
+        setSelectedItems(prev => ({
+            ...prev,
+            [tipo]: items
+        }));
+    };
+
     return (
         <div>
-
-          <PeladoComponent/>
+            <PeladoComponent/>
 
             <div className="flex justify-center mt-[100px]">
                 <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
-                    ARMA TU BOLW
+                    ARMA TU BOWL
                 </h2>
             </div>
 
             <div className="flex justify-center mt-[60px]">
-                 <h3 className='font-julius text-[#0E3C09] text-5xl font-extrabold text-center'>
-                      COMO MAS TE GUSTE <br /> EN 6 PASOS
+                <h3 className='font-julius text-[#0E3C09] text-5xl font-extrabold text-center'>
+                    COMO MAS TE GUSTE <br /> EN 6 PASOS
                 </h3>
             </div>
-
 
             <div id='ArmarBolw' className="mb-20">
                 <div
@@ -98,14 +175,27 @@ const ArmarBowl = () => {
                         productos={productosFiltrados}
                         tipoProducto={selectedTipoProduct}
                         cantidadElegir={cantidadElegir}
-                        setMostrarIcon={setMostrarIcon}  // Pasar setMostrarIcon como prop
+                        setMostrarIcon={setMostrarIcon}
                         VerBotonPresionado={VerBotonPresionado}
+                        updateSelectedItems={updateSelectedItems}
                     />
                 </div>
             </div>
 
-            <Footer></Footer>
-            
+            <div className="flex">
+                <button 
+                    onClick={agregarAlCarrito}
+                    className='glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[300px] font-julius'
+                >
+                    Agregar al carrito
+                </button>
+
+                <div className='glow-on-hover flex items-center justify-center relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[20px] font-julius'>
+                    Precio: $6500
+                </div>
+            </div>
+
+            <Footer/>
         </div>
     );
 };
