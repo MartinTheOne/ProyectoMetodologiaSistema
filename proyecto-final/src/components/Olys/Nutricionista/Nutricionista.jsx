@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import PeladoComponent from '../Home/PeladoComponent';
+import Footer from '../Home/Footer';
 
 const Nutricionista = () => {
     const navigate = useNavigate();
@@ -83,7 +84,7 @@ const Nutricionista = () => {
                 </div>
             </div>
 
-            <div className="mt-[1000px]"></div>
+            <Footer></Footer>
         </>        
     );
 };

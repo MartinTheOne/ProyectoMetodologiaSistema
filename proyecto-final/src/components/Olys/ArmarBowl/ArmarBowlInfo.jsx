@@ -85,6 +85,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
             contentLabel="Detalles del producto"
             style={{
                 overlay: {
+                    zIndex: "11",
                     backgroundColor: 'rgba(0, 0, 0, 0.5)'
                 },
                 content: {
@@ -94,18 +95,19 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                     height: '650px',
                     margin: 'auto',
                     padding: '20px',
-                    backgroundColor: "#72bf78   ",
+                    backgroundColor: "#72bf78",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     border: 'none',
                     position: 'relative',
                     top: "200px",
-                    left: "-4px"
+                    left: "-4px",
+                    
                 },
             }}
         >
-            <button
+            <button className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'
                 onClick={() => {
                     clearSelection();
                     onRequestClose();
@@ -114,58 +116,50 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                     position: 'absolute',
                     top: '10px',
                     right: '10px',
-                    background: 'rgba(255, 255, 255, 0.3)',
-                    border: 'none',
-                    borderRadius: '50%',
-                    width: '30px',
-                    height: '30px',
-                    fontSize: '16px',
                     cursor: 'pointer',
-                    color: '#ffffff',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}
             >
-                X
+                ✕
             </button>
-            <h2 style={{
+            <h2 className='font-julius' style={{
                 fontSize: '24px',
-                color: '#ffffff',
                 marginBottom: '20px',
                 textAlign: 'center',
-                fontWeight: 'bold',
-                textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
             }}>
                 {tipoProducto}
             </h2>
-            <div style={{
-                backgroundColor: '#ffffff',
+
+              <div className='flex flex-col font-julius' style={{
+                backgroundColor: '#ffffff ',
                 borderRadius: '15px',
-                width: '80%',
-                height: '125px',
+                width: '90%',
+                height: '150px',
                 marginBottom: '20px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                
+                
             }}>
-                <div style={{ color: '#9BC885', fontSize: '50px', fontFamily: "julius" }}>OLYS</div>
+                <div style={{ color: '#72bf78', fontSize: '70px', fontFamily: "julios" }}>OLYS</div>
+                <div className="text-[#6fbb76]">Oliva limon & sal</div>
             </div>
-            <h3 style={{
+
+            <h3 className='font-julius' style={{
                 fontSize: '20px',
-                color: '#ffffff',
                 marginBottom: '15px',
-                fontWeight: 'bold',
-                textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
             }}>
-                ELEGÍ {cantidadElegir}
+                Elegi {cantidadElegir}
             </h3>
             <ul className='' style={{
                 padding: 0,
                 margin: 0,
                 textAlign: 'center',
-                color: '#ffffff',
+                
                 width: '100%',
             }}>
                 <div className='flex flex-col gap-10 text-[30px]'>
@@ -175,7 +169,6 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                                 <li key={prod.id} style={{
                                     marginBottom: '8px',
                                     fontSize: '20px',
-                                    textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                                     textAlign: "left",
                                     marginLeft: "85px",
                                 }}>
@@ -192,7 +185,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                         </div>
                         <div>
                             <button 
-                            className='bg-[#3aa762] rounded-lg text-[20px] p-2'
+                            className='rounded-md shadow text-[16px] p-2 font-julius' 
                             onClick={handlerClick}>Confirmar</button>
                         </div>
                     </div>
