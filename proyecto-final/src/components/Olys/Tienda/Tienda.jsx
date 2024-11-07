@@ -1,6 +1,7 @@
 import imagen from '../../../../img/menu.png.webp'
 import { Link } from 'react-router-dom';
 import PeladoComponent from '../Home/PeladoComponent';
+import Footer from '../Home/Footer';
 
 const Tienda = () => {
 
@@ -36,9 +37,7 @@ const Tienda = () => {
              </Link>
             </div>
 
-            <div className='mt-[1000px]'>
-
-            </div>
+            <Footer></Footer>
 
         </>
     )

@@ -57,10 +57,10 @@ const ProductCard = ({ product, agregarAlCarrito,openModal }) => {
             <div className='boton w-full flex justify-center items-center h-0 group-hover:h-[25%] overflow-hidden transition-all duration-300 rounded-b-[10px] space-x-4'>
                 <button 
                     onClick={() => {setNotificacion(agregarAlCarrito(product)); Notifiqueishon()}} // Llamamos a la función cuando se haga clic
-                    className='bg-[#3aa762] font-julius text-[#0E3C09] py-2 px-4 rounded-md hover:bg-green-600'>
+                    className='glow-on-hover relative w-56 h-12  bg-[#72bf78] rounded-lg transition-colors duration-300  focus:outline-none font-julius'>
                     Agregar al carrito
                 </button>
-                <button onClick={ () => openModal(product)} className='bg-[#3aa762] font-julius text-[#0E3C09] py-2 px-4 rounded-md hover:bg-green-600'>
+                <button onClick={ () => openModal(product)} className='glow-on-hover relative w-24 h-12  bg-[#72bf78] rounded-lg transition-colors duration-300  focus:outline-none font-julius'>
                     Ver más
                 </button>
             </div>

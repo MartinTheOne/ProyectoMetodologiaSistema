@@ -2,6 +2,9 @@ import React from 'react';
 import Ensalada from  "../../../../img/EnsaladaPollo.webp";
 import PeladoComponent from './PeladoComponent';
 
+import Footer from "./Footer";
+
+
 const Home = () => {
   const text = "Olys Bowls... ¡COMPRA YA!";
 
@@ -103,12 +106,10 @@ const Home = () => {
                       </h3>
                     </div>
                 </div>
-
-          </div>
+          </div> 
       </div>
 
-      <div className='h-[1000px]'>
-      </div>
+      <Footer/>          
 
       
     </>

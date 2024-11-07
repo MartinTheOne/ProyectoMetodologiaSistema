@@ -4,6 +4,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import Carrito from '../Carrito/Carrito.jsx';
+import Olys from "../../../../img/Olys.jpg";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -33,7 +34,7 @@ const Navbar = () => {
         <Link to="/" >
           <div className="bg-[#72bf78] border bg-opacity-60 ml-4 w-[90px] h-[90px] cursor-pointer rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-y-2 border-opacity-55  border-r-[#0E3C09] border-l-[#0E3C09] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
             <h1 className="text-[30px] mt-6 font-julius text-center font-bold text-[#0E3C09] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-              OLYS
+              Olys
             </h1>
           </div>
         </Link>

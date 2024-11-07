@@ -4,6 +4,7 @@ import ArmarBowlCard from '../ArmarBowl/ArmarBowlCard.jsx';
 import ArmarBowlInfo from '../ArmarBowl/ArmarBowlInfo.jsx';
 import axios from 'axios';
 import PeladoComponent from '../Home/PeladoComponent.jsx';
+import Footer from '../Home/Footer.jsx';
 
 Modal.setAppElement('#root');
 
@@ -102,6 +103,8 @@ const ArmarBowl = () => {
                     />
                 </div>
             </div>
+
+            <Footer></Footer>
             
         </div>
     );

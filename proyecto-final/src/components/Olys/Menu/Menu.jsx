@@ -3,6 +3,7 @@ import MenuInfo from './MenuInfo';
 import Modal from 'react-modal';
 import ProductCard from '../Productos/ProductCard';
 import PeladoComponent from '../Home/PeladoComponent';
+import Footer from '../Home/Footer';
 
 Modal.setAppElement('#root');
 
@@ -15,10 +16,11 @@ const Menu = () => {
     });
 
     const salads = [
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Ensalada César", price: 5200, ing: ["Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Ensalada Griega", price: 5200, ing: ["Tomate", "Pepino", "Cebolla roja", "Aceitunas", "Queso feta"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada Caprese", price: 5200, ing: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite de oliva"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Ensalada de Quinoa", price: 5200, ing: ["Quinoa", "Vegetales mixtos", "Palta", "Vinagreta de limón"], carrito: false, cantidad: 1 }
+        { img: "../../../../img/EnsaladaPollo.webp", name: "César", price: 5500, ing: ["Mix de verdes", "Pollo", "Queso parmesano", "Croutones", "Mix de semillas"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaPollo.webp", name: "Agridulce", price: 5500, ing: ["Arroz integral", "Cebolla Caramelizada", "Pasas de uvas", "Zanahoria", "Jamon cocido","Roquefort"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaTomate.jpg", name: "Waldorf", price: 5500, ing: ["Mix de verdes", "Apio", "Manzana", "Pollo Salteado", "Roquefort", "Frutos Secos"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaTomate.jpg", name: "Vegetariana", price: 5500, ing: ["Lechuga", "Huevo", "Palta", "Lentejas", "Remolacha", "Queso tybo", "Frutos secos"], carrito: false, cantidad: 1 },
+        { img: "../../../../img/EnsaladaTomate.jpg", name: "Filipa", price: 5500, ing: ["Fideos", "Tomate", "Chaucha", "Zanahoria", "Pollo al curry", "Queso tybo"], carrito: false, cantidad: 1 }
     ];
 
     const openModal = (product) => {
@@ -106,6 +108,8 @@ const Menu = () => {
                     producto={selectedProduct}
                 />
             </div>
+
+            <Footer></Footer>
         </div>
     );
 }
