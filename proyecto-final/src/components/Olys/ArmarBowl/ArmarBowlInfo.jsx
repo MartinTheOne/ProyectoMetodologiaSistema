@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
-const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir,setMostrarIcon,VerBotonPresionado }) => {
+const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir,setMostrarIcon,VerBotonPresionado,Borrar,updateSelectedItems}) => {
     if (!productos) {
         return null;
+    }
+
+    if(Borrar){
+       clearSelection()
     }
 
 
@@ -81,14 +85,16 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
         };
     
         setProductosElegidos(nuevosProductosElegidos);
-        localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
     
-        // Aquí agregas el id al estado
+        // Enviar los productos elegidos al componente padre
+        updateSelectedItems(tipoProducto, productos.filter(prod => selectedIds.includes(prod.id)));
+    
+        // Actualizar la interfaz y cerrar el modal
         setMostrarIcon((prev) => [...prev, VerBotonPresionado]);
-    
         clearSelection();
         setIsOpen(false);
     };
+    
     
     
 

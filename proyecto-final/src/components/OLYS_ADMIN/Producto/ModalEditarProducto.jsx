@@ -6,7 +6,7 @@ const ModalEditarProd = ({ IsOpen, onRequestClose, prod,traerProducto }) => {
 
 
     const [nombre, setNombre] = useState("")
-    const [tipoProducto, setTipoProducto] = useState("Base")
+    const [tipoProducto, setTipoProducto] = useState(prod.tipoProducto)
     const [calorias, setCalorias] = useState("")
     const token = localStorage.getItem("token")
     const placeholderCal = prod.calorias
@@ -57,13 +57,11 @@ const ModalEditarProd = ({ IsOpen, onRequestClose, prod,traerProducto }) => {
                 },
                 content: {
                     background: "#f3f4f6",
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                     borderRadius: '20px',
                     width: '540px',
                     height: '540px',
                     margin: 'auto',
                     padding: '20px',
-                    backgroundColor: "#fff",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -87,7 +85,7 @@ const ModalEditarProd = ({ IsOpen, onRequestClose, prod,traerProducto }) => {
                     </div>
                     <div className="my-8">
                         <p className="font-julius">Tipo de Producto</p>
-                        <select onChange={(e) => { setTipoProducto(e.target.value) }}
+                        <select value={tipoProducto} onChange={(e) => { setTipoProducto(e.target.value) }}
                             className="border font-julius rounded-md  h-10 w-[450px] p-2" name="" id="">
                             <option value="Base">Base</option>
                             <option value="Ingrediente">Ingrediente</option>

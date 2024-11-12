@@ -25,7 +25,6 @@ const Dashboard = () => {
         if (respuesta.status === 200) {
           const pedidos = respuesta.data;
 
-          // Calculate total revenue
           setTotalGanancias(
             pedidos.reduce((acumulador, pedido) => {
               const precio = pedido.precio ? pedido.precio : 0;
@@ -35,56 +34,67 @@ const Dashboard = () => {
 
           setTotalPedidos(pedidos.length);
 
-          // Get dates for the last week
+          // Obtener fecha actual y ajustar a la zona horaria local
           const today = new Date();
           const sevenDaysAgo = new Date(today);
           sevenDaysAgo.setDate(today.getDate() - 6);
 
-          // Initialize array for all days in the range
+          // Inicializar array para todos los días en el rango
           const daysArray = [];
           for (let d = new Date(sevenDaysAgo); d <= today; d.setDate(d.getDate() + 1)) {
-            const formattedDate = d.toISOString().split('T')[0];
+            const currentDate = new Date(d);
+            currentDate.setHours(0, 0, 0, 0);
             daysArray.push({
-              date: new Date(d),
-              formattedDate: formattedDate,
+              date: currentDate,
+              formattedDate: currentDate.toISOString().split('T')[0],
               sales: 0
             });
           }
 
-          // Aggregate sales by day
+          // Agregación de ventas por día con manejo preciso de fechas
           pedidos.forEach((pedido) => {
-            const pedidoDate = new Date(pedido.fecha);
+            // Convertir la fecha del pedido a objeto Date y ajustar a medianoche
+            const [year, month, day] = pedido.fecha.split('-').map(num => parseInt(num, 10));
+            const pedidoDate = new Date(year, month - 1, day);
+            pedidoDate.setHours(0, 0, 0, 0);
+            
             const formattedPedidoDate = pedidoDate.toISOString().split('T')[0];
             
-            const dayData = daysArray.find(d => d.formattedDate === formattedPedidoDate);
+            const dayData = daysArray.find(d => {
+              const currentDate = new Date(d.date);
+              return currentDate.toISOString().split('T')[0] === formattedPedidoDate;
+            });
+
             if (dayData) {
               dayData.sales += pedido.precio || 0;
             }
           });
 
-          // Format data for the chart and sort by date (oldest to newest)
+          // Formatear datos para el gráfico y ordenar por fecha
           const formattedWeeklyData = daysArray.map(day => ({
-            name: day.date.toLocaleDateString('en-US', {
+            name: day.date.toLocaleDateString('es-ES', {
               weekday: 'short',
-              month: 'numeric',
-              day: 'numeric'
+              day: 'numeric',
+              month: 'numeric'
             }),
             sales: day.sales,
-            date: day.date // Keep date for sorting
+            date: day.date
           }))
           .sort((a, b) => a.date - b.date);
 
           setWeeklyData(formattedWeeklyData);
 
-          // Monthly data processing (similar to your original code)
+          // Procesamiento de datos mensuales
           const monthlySales = {};
           pedidos.forEach((pedido) => {
-            const fecha = new Date(pedido.fecha);
-            const month = fecha.toLocaleString('default', { month: 'short' });
-            if (!monthlySales[month]) {
-              monthlySales[month] = 0;
+            const [year, month] = pedido.fecha.split('-');
+            const fecha = new Date(parseInt(year), parseInt(month) - 1, 1);
+            const monthKey = fecha.toLocaleString('es-ES', { month: 'short' });
+            
+            if (!monthlySales[monthKey]) {
+              monthlySales[monthKey] = 0;
             }
-            monthlySales[month] += pedido.precio || 0;
+            monthlySales[monthKey] += pedido.precio || 0;
           });
 
           setMonthlyData(
@@ -121,7 +131,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md col-span-1 md:col-span-2">
-          <h2 className="text-xl font-semibold mb-4">Ganancias ultimos 7 días</h2>
+          <h2 className="text-xl font-semibold mb-4">Ganancias últimos 7 días</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={weeklyData}>
               <CartesianGrid strokeDasharray="3 3" />

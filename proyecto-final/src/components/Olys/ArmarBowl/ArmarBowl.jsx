@@ -18,6 +18,7 @@ const ArmarBowl = () => {
     const [cantidadElegir, setCantidadElegir] = useState(null);
     const [selectedItems, setSelectedItems] = useState({});
     const [notificacion, setNotificacion] = useState(true);
+    const [borrar, setBorrar] = useState(false);
 
     useEffect(() => {
         const obtenerProductos = async () => {
@@ -30,7 +31,7 @@ const ArmarBowl = () => {
         };
         obtenerProductos();
 
-       
+
         const notyf = new Notyf({
             duration: 3000,
             position: {
@@ -52,7 +53,7 @@ const ArmarBowl = () => {
         });
         window.notyf = notyf;
 
-       
+
         const manejarEvento = (event) => {
             setNotificacion(event.detail.nuevoEstado);
         };
@@ -89,56 +90,52 @@ const ArmarBowl = () => {
         setModalIsOpen(false);
         setSelectedTipoProduct(null);
     };
-
     const agregarAlCarrito = () => {
-        
         const todosSeleccionados = salads.every(item => mostrarIcon.includes(item.id));
-        
         if (!todosSeleccionados) {
             window.notyf.error("Debes completar todos los pasos antes de agregar al carrito");
             return;
         }
-
-        localStorage.removeItem("productosElegidos")    
+    
+    
+        const ingredientesFinal = Object.values(selectedItems).flat().map(item => ({ id: item.id }));
+    
+        // Generar un ID único para cada bowl
+        const bowlPersonalizadoId = `bowl_${Date.now()}`; // Usamos la marca de tiempo como ID único
+    
         const bowlPersonalizado = {
+            id: bowlPersonalizadoId, // Nuevo campo de ID único
             name: "Bowl Personalizado",
             img: "../../../../img/EnsaladaPollo.webp",
             price: 6500,
             cantidad: 1,
-            ing: Object.values(selectedItems).flat(),
+            ingId: ingredientesFinal,
             carrito: false
         };
-
-        
+    
         const carritoActual = JSON.parse(localStorage.getItem("carrito")) || [];
-        
-        
         const nuevoCarrito = [...carritoActual, bowlPersonalizado];
         localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
-
-        
+    
         window.notyf.success("Bowl agregado al carrito correctamente");
-
-        
+    
         const event = new CustomEvent('updateCartCounter');
         window.dispatchEvent(event);
-
-        
+    
         setMostrarIcon([]);
         setSelectedItems({});
     };
-
     
+
     const updateSelectedItems = (tipo, items) => {
         setSelectedItems(prev => ({
             ...prev,
-            [tipo]: items
+            [tipo]: items.map(item => ({ id: item.id, name: item.name }))
         }));
     };
-
     return (
         <div>
-            <PeladoComponent/>
+            <PeladoComponent />
 
             <div className="flex justify-center mt-[100px]">
                 <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
@@ -167,23 +164,22 @@ const ArmarBowl = () => {
                         />
                     ))}
                 </div>
-                <div>
-                    <ArmarBowlInfo
-                        isOpen={modalIsOpen}
-                        setIsOpen={setModalIsOpen}
-                        onRequestClose={closeModal}
-                        productos={productosFiltrados}
-                        tipoProducto={selectedTipoProduct}
-                        cantidadElegir={cantidadElegir}
-                        setMostrarIcon={setMostrarIcon}
-                        VerBotonPresionado={VerBotonPresionado}
-                        updateSelectedItems={updateSelectedItems}
-                    />
-                </div>
+                <ArmarBowlInfo
+                    isOpen={modalIsOpen}
+                    setIsOpen={setModalIsOpen}
+                    onRequestClose={closeModal}
+                    productos={productosFiltrados}
+                    tipoProducto={selectedTipoProduct}
+                    cantidadElegir={cantidadElegir}
+                    setMostrarIcon={setMostrarIcon}
+                    VerBotonPresionado={VerBotonPresionado}
+                    updateSelectedItems={updateSelectedItems} // Asegúrate de pasar esta función
+                />
+
             </div>
 
             <div className="flex">
-                <button 
+                <button
                     onClick={agregarAlCarrito}
                     className='glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[300px] font-julius'
                 >
@@ -195,7 +191,7 @@ const ArmarBowl = () => {
                 </div>
             </div>
 
-            <Footer/>
+            <Footer />
         </div>
     );
 };

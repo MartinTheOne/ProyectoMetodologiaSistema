@@ -16,11 +16,91 @@ const Menu = () => {
     });
 
     const salads = [
-        { img: "../../../../img/EnsaladaPollo.webp", name: "César", price: 5500, ing: ["Mix de verdes", "Pollo", "Queso parmesano", "Croutones", "Mix de semillas"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaPollo.webp", name: "Agridulce", price: 5500, ing: ["Arroz integral", "Cebolla Caramelizada", "Pasas de uvas", "Zanahoria", "Jamon cocido","Roquefort"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Waldorf", price: 5500, ing: ["Mix de verdes", "Apio", "Manzana", "Pollo Salteado", "Roquefort", "Frutos Secos"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Vegetariana", price: 5500, ing: ["Lechuga", "Huevo", "Palta", "Lentejas", "Remolacha", "Queso tybo", "Frutos secos"], carrito: false, cantidad: 1 },
-        { img: "../../../../img/EnsaladaTomate.jpg", name: "Filipa", price: 5500, ing: ["Fideos", "Tomate", "Chaucha", "Zanahoria", "Pollo al curry", "Queso tybo"], carrito: false, cantidad: 1 }
+        {
+            id: 1,
+            img: "../../../../img/EnsaladaPollo.webp",
+            name: "César",
+            price: 5500,
+            ing: ["Mix de verdes", "Pollo", "Queso parmesano", "Croutones", "Mix de semillas"],
+            ingId: [
+                { id: 4 },
+                { id: 26 },
+                { id: 31 },
+                { id: 61 },
+                { id: 38 }
+            ],
+            carrito: false,
+            cantidad: 1
+        },
+        {
+            id: 2,
+            img: "../../../../img/agridulce.png",
+            name: "Agridulce",
+            price: 5500,
+            ing: ["Arroz integral", "Cebolla Caramelizada", "Pasas de uvas", "Zanahoria", "Jamon cocido", "Roquefort"],
+            ingId: [
+                { id: 8 },
+                { id: 10 },
+                { id: 17 },
+                { id: 25 },
+                { id: 29 },
+                { id: 32 }
+            ],
+            carrito: false,
+            cantidad: 1
+        },
+        {
+            id: 3,
+            img: "../../../../img/EnsaladaWaldorf.png",
+            name: "Waldorf",
+            price: 5500,
+            ing: ["Mix de verdes", "Apio", "Manzana", "Pollo Salteado", "Roquefort", "Frutos Secos"],
+            ingId: [
+                { id: 4 },
+                { id: 66 },
+                { id: 63 },
+                { id: 65 },
+                { id: 32 },
+                { id: 37 }
+            ],
+            carrito: false,
+            cantidad: 1
+        },
+        {
+            id: 4,
+            img: "../../../../img/Ensaladavegetariana.jpg",
+            name: "Vegetariana",
+            price: 5500,
+            ing: ["Lechuga", "Huevo", "Palta", "Lentejas", "Remolacha", "Queso tybo", "Frutos secos"],
+            ingId: [
+                { id: 1 },
+                { id: 14 },
+                { id: 39 },
+                { id: 18 },
+                { id: 19 },
+                { id: 33 },
+                { id: 37 }
+            ],
+            carrito: false,
+            cantidad: 1
+        },
+        {
+            id: 5,
+            img: "../../../../img/filipa.jpeg",
+            name: "Filipa",
+            price: 5500,
+            ing: ["Tirabuzon", "Tomate", "Chaucha", "Zanahoria", "Pollo al curry", "Queso tybo"],
+            ingId: [
+                { id: 6 },
+                { id: 24 },
+                { id: 12 },
+                { id: 25 },
+                { id: 27 },
+                { id: 33 }
+            ],
+            carrito: false,
+            cantidad: 1
+        }
     ];
 
     const openModal = (product) => {

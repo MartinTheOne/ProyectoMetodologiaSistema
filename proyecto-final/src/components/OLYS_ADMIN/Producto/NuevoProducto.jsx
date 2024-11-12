@@ -51,10 +51,13 @@ const NuevoProducto = ({traerProducto}) => {
                 if (guardar.status == 200) {
                     window.notyf.success(`Producto "${nombre}" guardado correctamente`);
                     traerProducto()
+                    setCalorias("")
+                    setNombre("")
+                    setTipoProducto("")
                     
                 }
             } catch (error) {
-                window.notyf.error("Error al crear Producto");
+                window.notyf.error("Producto Existente");
             }
         };
         respuesta();
@@ -77,7 +80,7 @@ const NuevoProducto = ({traerProducto}) => {
                     </div>
                     <div className="my-8">
                         <p className="font-julius">Tipo de Producto</p>
-                        <select onChange={(e) => { setTipoProducto(e.target.value) }}
+                        <select  onChange={(e) => { setTipoProducto(e.target.value) }}
                             className="border font-julius rounded-md  h-10 w-[450px] p-2" name="" id="">
                             <option value="Base">Base</option>
                             <option value="Ingrediente">Ingrediente</option>

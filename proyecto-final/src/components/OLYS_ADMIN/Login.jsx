@@ -9,11 +9,30 @@ const Login = () => {
   const [usuario, setUsuario] = useState("");
   const navigate = useNavigate();
 
+  const notyf = new Notyf({
+    duration: 3000,
+    position: {
+        x: 'center',
+        y: 'top',
+    },
+    types: [
+        {
+            type: 'success',
+            background: "#28b463     ",
+            className: "rounded-[10px] text-black text-[15px]"
+        }
+    ]
+
+});
+
+window.notyf = notyf;
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token && isTokenvalid(token)) {
       navigate('/admin/dashboard');
     }
+
+    
   }, [navigate]); 
 
   const handlerLogin = async (e) => {
@@ -28,13 +47,13 @@ const Login = () => {
       if (response.status === 200) {
         const token = response.headers['authorization'];
         if (token) {
-          console.log("Inicio de sesión exitoso");
           localStorage.setItem('token', token);
           navigate('/admin/dashboard');
+          window.notyf.success("Logueado Exitosamente!!")
         }
       }
     } catch (error) {
-      console.error(error);
+      window.notyf.error("Email o Contraseña incorrecto");
     }
   };
 

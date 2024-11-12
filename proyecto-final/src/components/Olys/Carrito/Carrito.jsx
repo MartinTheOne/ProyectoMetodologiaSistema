@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
     const [productos, setProductos] = useState([]);
     const [currentStep, setCurrentStep] = useState(1); // 1: Productos, 2: Registro, 3: MercadoPago
+    const [nombre, setNombre] = useState("")
+    const [celular, setCelular] = useState("")
+    const [domicilio, setDomicilio] = useState("")
+    const [CheckedDom, setCheckedDom] = useState(false)
+    const [botonMercadoPago, setBotonMercadoPago] = useState("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=")
+    const token = localStorage.getItem("token")
+
 
     const manejarClick = () => {
         const eventoPersonalizado = new CustomEvent('cambiarEstado', {
-          detail: { nuevoEstado: true },
+            detail: { nuevoEstado: true },
         });
         window.dispatchEvent(eventoPersonalizado);
     };
@@ -42,22 +50,88 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
     };
 
     const handlerClickDelete = (producto) => {
-        let actualizarProductos = productos.filter(p => producto.name !== p.name);
+        let actualizarProductos = productos.filter(p => producto.id !== p.id); // Filtrar usando el ID único
         setProductos(actualizarProductos);
         localStorage.setItem("carrito", JSON.stringify(actualizarProductos));
         manejarClick();
     };
 
-    const handleNext = () => {
-        setCurrentStep(currentStep + 1);
+    const guardarPedido = async () => {
+
+        let productosPedidos = productos.flatMap(prod => {
+
+            return Array(prod.cantidad).fill(prod.ingId).flat();
+        });
+
+        let nombresEnsaladas = [productos.map(prod => prod.name)].flat()
+
+
+        let fechaHoy = new Intl.DateTimeFormat('fr-CA', { timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date()).toString();
+
+        try {
+            const respuesta = await axios.post(
+                "http://localhost:8080/api/pedido/save",
+                {
+                    nombreCliente: nombre,
+                    celularCliente: celular,
+                    direccionCliente: domicilio,
+                    productosList: productosPedidos,
+                    metodoPago: { id: 1 },
+                    fecha: fechaHoy,
+                    envio: CheckedDom,
+                    precio: 100,
+                    listaEnsaladas: nombresEnsaladas
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                }
+            );
+
+            if (respuesta.status === 200) {
+                setBotonMercadoPago(botonMercadoPago + respuesta.data);
+                console.log(botonMercadoPago + respuesta.data)
+                setNombre("")
+                setDomicilio("")
+                setCelular("")
+                setCheckedDom(false)
+            }
+        } catch (error) {
+            console.error('Error al guardar el pedido:', error.response?.data || error.message);
+        }
+
+    }
+
+    const handleNext = (tipoPaso) => {
+        if (tipoPaso === "primer Siguiente") {
+            setCurrentStep(currentStep + 1);
+        } else if (tipoPaso === "Finalizar Pedido") {
+            if (CheckedDom) {
+                if (nombre !== "" && celular !== "" && domicilio !== "") {
+                    if (!isNaN(celular)) {
+                        setCurrentStep(currentStep + 1);
+                        guardarPedido();
+                    }
+                }
+            } else {
+                if (nombre !== "" && celular !== "") {
+                    if (!isNaN(celular)) {
+                        setCurrentStep(currentStep + 1);
+                        guardarPedido()
+                    }
+                }
+            }
+        }
     };
+
 
     const handleBack = () => {
         setCurrentStep(currentStep - 1);
     };
 
     return (
-        <div 
+        <div
             className={`fixed top-0 right-0 w-[450px] h-full bg-[#72bf78] shadow-lg transform ${cartOpen ? "translate-x-0" : "translate-x-full"
                 } transition-transform duration-300 ease-in-out z-20`}
         >
@@ -71,7 +145,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                 <h2 className="text-2xl font-julius mb-4 text-center">
                     {currentStep === 1 ? "Carrito" : currentStep === 2 ? "Registro" : "Pago"}
                 </h2>
-                
+
                 {/* Paso 1: Lista de Productos */}
                 {currentStep === 1 && productos && productos.length > 0 ? (
                     <div>
@@ -103,10 +177,10 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                                 </div>
                             </div>
                         ))}
-                        
+
                         <div className="flex justify-center mt-6">
-                            <button 
-                                onClick={handleNext}
+                            <button
+                                onClick={() => handleNext("primer Siguiente")}
                                 className="glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
                             >
                                 Siguiente
@@ -124,29 +198,33 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                             <h3 className="mb-4 text-xl">Por favor ingrese sus datos</h3>
 
                             <h3 className="text-xl mb-2">Nombre</h3>
-                            <input className="rounded-lg outline-none bg-[#6cb472] shadow-inner h-[35px] w-[250px] text-center" type="text" />
+                            <input onChange={(e) => setNombre(e.target.value)} className="rounded-lg outline-none bg-[#6cb472] shadow-inner h-[35px] w-[250px] text-center" type="text" value={nombre} />
 
                             <h3 className="mt-4 text-xl mb-2">Numero de celular</h3>
-                            <input className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" />
+                            <input onChange={(e) => setCelular(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={celular} />
 
                             <div className="flex justify-center mt-2 items-center">
-                                <input className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" /> 
+                                <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true) } else { setCheckedDom(false) } }} className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
                                 <h3>Envio a domicilio</h3>
                             </div>
+                            {CheckedDom &&
+                                <>
+                                    <h3 className="mt-4 text-xl mb-2">Direccion</h3>
+                                    <input onChange={(e) => setDomicilio(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
+                                </>
+                            }
 
-                            <h3 className="mt-4 text-xl mb-2">Direccion</h3>
-                            <input className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" />
                         </div>
 
                         <div className="flex justify-between mt-6">
-                            <button 
+                            <button
                                 onClick={handleBack}
                                 className="glow-on-hover relative w-48 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
                             >
                                 Volver
                             </button>
-                            <button 
-                                onClick={handleNext}
+                            <button
+                                onClick={() => handleNext("Finalizar Pedido")}
                                 className="glow-on-hover relative w-48 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
                             >
                                 Finalizar Pedido
@@ -160,13 +238,30 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                     <div>
                         <div id="MercadoPago" className="flex flex-col items-center mt-10">
                             <span className="text-[12px] mb-1">De click para ir a Mercado Pago</span>
-                            <button className="glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none">
-                                Mercado Pago
-                            </button>
+                            {botonMercadoPago == "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=" ? <p className="font-bold ">Cargando...</p>
+                                : <>
+                                    <button
+                                        onClick={() => {
+                                            
+                                            localStorage.removeItem("carrito");
+                                            setProductos([]); 
+                                            setBotonMercadoPago("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id="); 
+                                            setCartOpen(false)                                           
+                                            window.open(botonMercadoPago, '_blank');
+                                            setCurrentStep(1)
+                                        }}
+                                        className="bg-[#009EE3] text-white font-bold glow-on-hover relative w-56 h-12 hover:bg-[#007bbd] rounded-lg transition-colors duration-300 focus:outline-none"
+                                    >
+                                        Mercado Pago
+                                    </button>
+                                </>
+                            }
+
+
                         </div>
-                        
+
                         <div className="flex justify-center mt-6">
-                            <button 
+                            <button
                                 onClick={handleBack}
                                 className="glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
                             >
