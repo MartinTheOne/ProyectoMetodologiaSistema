@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import { PiWarningBold } from "react-icons/pi";
 
 const ModalBorrarProd= ({ IsOpen, onRequestClose,Borrar ,prod}) => {
 
@@ -16,8 +17,8 @@ const ModalBorrarProd= ({ IsOpen, onRequestClose,Borrar ,prod}) => {
                 content: {
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                     borderRadius: '20px',
-                    width: '250px',
-                    height: '150px',
+                    width: '350px',
+                    height: '200px',
                     margin: 'auto',
                     padding: '20px',
                     backgroundColor: "#fff",
@@ -31,12 +32,18 @@ const ModalBorrarProd= ({ IsOpen, onRequestClose,Borrar ,prod}) => {
                 },
             }}>
             <div className='text-center'>
-                <div className='mb-5'>
+                <div className='mb-5 font-julius'>
+                <div className="flex justify-center mb-4">
+                        <PiWarningBold className='text-2xl mt-1 mr-1 text-red-700' />
+                        <p className='text-2xl'>¡Advertencia!</p> <br />
+                        <PiWarningBold className='text-2xl  mt-1 ml-1 text-red-700' />
+
+                    </div>
                     <p>¿Esta seguro que desea borrar este producto?</p>
                 </div>
-                <div className="flex mt-2 ml-8 ">
+                <div className="flex mt-2 ml-20 ">
                     <button onClick={handlerClick} className='bg-[#9BC885] text-white px-6 py-2 mr-4 rounded hover:bg-[#8AB775] transition-colors'>SI</button>
-                    <button onClick={onRequestClose} className='bg-[#e33939] text-white px-5 py-2 rounded hover:bg-[#bd3939] transition-colors'>NO</button>
+                    <button onClick={onRequestClose} className='bg-[#9BC885] text-white px-5 py-2 rounded hover:bg-[#8AB775] transition-colors'>NO</button>
                 </div>
             </div>
         </Modal>
