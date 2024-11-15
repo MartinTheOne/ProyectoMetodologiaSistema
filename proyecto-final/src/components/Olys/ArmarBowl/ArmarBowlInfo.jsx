@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import './ArmarBowl.css';
 
-const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir,setMostrarIcon,VerBotonPresionado,Borrar,updateSelectedItems}) => {
+const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProducto, cantidadElegir, setMostrarIcon, VerBotonPresionado, Borrar, updateSelectedItems }) => {
     if (!productos) {
         return null;
     }
 
     if(Borrar){
-       clearSelection()
+       clearSelection();
     }
-
 
     const initialProductosElegidos = JSON.parse(localStorage.getItem('productosElegidos')) || {
         Base: [],
@@ -22,6 +22,8 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
 
     const [selectedIds, setSelectedIds] = useState([]);
     const [productosElegidos, setProductosElegidos] = useState(initialProductosElegidos);
+
+    // Cargar selecciones guardadas cuando se abre el modal
 
 
     useEffect(() => {
@@ -45,19 +47,29 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
             ]
         });
         window.notyf = notyf;
-        
+    }, []);
 
-        setSelectedIds(productosElegidos[tipoProducto] || []);
-    }, [isOpen, tipoProducto, productosElegidos]);
-
-
+    // Guardar selecciones temporales cuando cambian
+    useEffect(() => {
+        localStorage.setItem(`temp_${tipoProducto}`, JSON.stringify(selectedIds));
+    }, [selectedIds, tipoProducto]);
 
     const handleCheckBox = (e, id) => {
-        if (e.target.checked) {
-            if (selectedIds.length < cantidadElegir) {
-                setSelectedIds([...selectedIds, id]);
+        const isChecked = e.target.checked;
+        
+        if (isChecked) {
+            if (cantidadElegir === 1) {
+                // Para tipos que solo permiten una selección
+                setSelectedIds([id]);
             } else {
-                window.notyf.error(`No puedes seleccionar más de ${cantidadElegir} ${tipoProducto}.`);
+                // Para tipos que permiten múltiples selecciones
+                if (selectedIds.length < cantidadElegir) {
+                    setSelectedIds([...selectedIds, id]);
+                } else {
+                    // Eliminar el último elemento seleccionado y agregar el nuevo
+                    const newSelection = [...selectedIds.slice(0, -1), id];
+                    setSelectedIds(newSelection);
+                }
             }
         } else {
             setSelectedIds(selectedIds.filter(selectedId => selectedId !== id));
@@ -85,20 +97,16 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
         };
     
         setProductosElegidos(nuevosProductosElegidos);
-    
-        // Enviar los productos elegidos al componente padre
+        localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
         updateSelectedItems(tipoProducto, productos.filter(prod => selectedIds.includes(prod.id)));
-    
-        // Actualizar la interfaz y cerrar el modal
         setMostrarIcon((prev) => [...prev, VerBotonPresionado]);
+        
+        // Limpiar selecciones temporales y cerrar modal
+        localStorage.removeItem(`temp_${tipoProducto}`);
         clearSelection();
         setIsOpen(false);
     };
-    
-    
-    
 
-   
     const clearSelection = () => {
         setSelectedIds([]);
     };
@@ -106,9 +114,7 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
     return (
         <Modal
             isOpen={isOpen}
-            
             onRequestClose={() => {
-                clearSelection();
                 onRequestClose();
             }}
             contentLabel="Detalles del producto"
@@ -132,13 +138,14 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                     position: 'relative',
                     top: "200px",
                     left: "-4px",
-                    
-                },
+                    overflow: "auto"
+                }
             }}
+            className="custom-modal-content"
         >
-            <button className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'
+            <button 
+                className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'
                 onClick={() => {
-                    clearSelection();
                     onRequestClose();
                 }}
                 style={{
@@ -161,8 +168,8 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                 {tipoProducto}
             </h2>
 
-              <div className='flex flex-col font-julius' style={{
-                backgroundColor: '#ffffff ',
+            <div className='flex flex-col font-julius' style={{
+                backgroundColor: '#ffffff',
                 borderRadius: '15px',
                 width: '90%',
                 height: '150px',
@@ -171,8 +178,6 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                 justifyContent: 'center',
                 alignItems: 'center',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                
-                
             }}>
                 <div style={{ color: '#72bf78', fontSize: '70px', fontFamily: "julios" }}>OLYS</div>
                 <div className="text-[#6fbb76]">Oliva limon & sal</div>
@@ -184,16 +189,16 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
             }}>
                 Elegi {cantidadElegir}
             </h3>
-            <ul className='' style={{
+            
+            <ul style={{
                 padding: 0,
                 margin: 0,
                 textAlign: 'center',
-                
                 width: '100%',
             }}>
-                <div className='flex flex-col gap-10 text-[30px]'>
+                <div className='flex flex-col gap-10 text-[30px] font-julius'>
                     <div className='flex flex-col justify-between'>
-                        <div className=' '>
+                        <div>
                             {productos.map((prod) => (
                                 <li key={prod.id} style={{
                                     marginBottom: '8px',
@@ -201,8 +206,8 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                                     textAlign: "left",
                                     marginLeft: "85px",
                                 }}>
-                                    <input
-                                        className='mr-2'
+                                    <input 
+                                        className='mr-2 appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]'
                                         type="checkbox"
                                         id={prod.id}
                                         checked={selectedIds.includes(prod.id)}
@@ -214,8 +219,11 @@ const ArmarBowlInfo = ({ isOpen,setIsOpen, onRequestClose, productos, tipoProduc
                         </div>
                         <div>
                             <button 
-                            className='rounded-md shadow text-[16px] p-2 font-julius' 
-                            onClick={handlerClick}>Confirmar</button>
+                                className='rounded-md shadow text-[16px] p-2 font-julius' 
+                                onClick={handlerClick}
+                            >
+                                Confirmar
+                            </button>
                         </div>
                     </div>
                 </div>

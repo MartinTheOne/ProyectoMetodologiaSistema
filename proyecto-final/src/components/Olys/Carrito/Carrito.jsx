@@ -169,7 +169,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                                     </div>
                                 </div>
 
-                                <p className="text-lg mb-2 w-[115px]">{producto.name}</p>
+                                <p className="text-base mb-2 w-[115px]">{producto.name}</p>
 
                                 <div className="acomodadordeprecionombreprecio mr-3 mb-3">
                                     <h3 className="mb-1 text-center text-lg">Precio</h3>

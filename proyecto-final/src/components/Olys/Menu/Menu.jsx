@@ -26,7 +26,7 @@ const Menu = () => {
                 { id: 4 },
                 { id: 26 },
                 { id: 31 },
-                { id: 61 },
+                { id: 57 },
                 { id: 38 }
             ],
             carrito: false,
@@ -57,9 +57,9 @@ const Menu = () => {
             ing: ["Mix de verdes", "Apio", "Manzana", "Pollo Salteado", "Roquefort", "Frutos Secos"],
             ingId: [
                 { id: 4 },
-                { id: 66 },
-                { id: 63 },
-                { id: 65 },
+                { id: 58 },
+                { id: 59 },
+                { id: 60 },
                 { id: 32 },
                 { id: 37 }
             ],

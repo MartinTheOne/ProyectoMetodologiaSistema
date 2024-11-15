@@ -53,6 +53,7 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
             >
                 ✕
             </button>
+            
             <h2 className='font-julius' style={{
                 fontSize: '24px',
                 
