@@ -151,6 +151,7 @@ const GestionPedidos = () => {
                         </thead>
                         <tbody>
                             {PedidosPorEstadoPedido && PedidosPorEstadoPedido.map((ped) => {
+                                
                                 const estadoColor = ped.estadoPedido.estadoPedido === "pendiente"
                                     ? "bg-yellow-300"
                                     : ped.estadoPedido.estadoPedido === "pagado"
@@ -163,7 +164,7 @@ const GestionPedidos = () => {
 
                                         <td className="xl:px-10 py-2 2xl:px-12">{ped.nombreCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 text-sm flex mt-2 text-center items-center"><FaWhatsapp className="mr-[1px] text-[25px] bg-green-500 text-white p-1 rounded-full" />{ped.celularCliente}</td>
-                                        <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente}</td>
+                                        <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente==""?ped.direccionCliente:"Sin Dirección"}</td>
                                         <td className={`xl:px-10 py-2 2xl:px-8 text-center`}>
                                             <p className={`${estadoColor} h-[30px] w-[100px]`}>{ped.estadoPedido.estadoPedido.toUpperCase()}</p>
                                         </td>
@@ -239,11 +240,11 @@ const GestionPedidos = () => {
                         </thead>
                         <tbody>
                             {pedidos && pedidos.map((ped) => {
-                                const estadoColor = ped.estadoPedido.estadoPedido === "Pendiente"
+                                const estadoColor = ped.estadoPedido.estadoPedido === "pendiente"
                                     ? "bg-yellow-300"
-                                    : ped.estadoPedido.estadoPedido === "Pagado"
+                                    : ped.estadoPedido.estadoPedido === "pagado"
                                         ? "bg-green-500"
-                                        : ped.estadoPedido.estadoPedido === "Cancelado"
+                                        : ped.estadoPedido.estadoPedido === "cancelado"
                                             ? "bg-red-500"
                                             : "";
 
@@ -252,9 +253,9 @@ const GestionPedidos = () => {
 
                                         <td className="xl:px-10 py-2 2xl:px-12">{ped.nombreCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 text-sm flex mt-2 text-center items-center"><FaWhatsapp className="mr-[1px] text-[25px] bg-green-500 text-white p-1 rounded-full" />{ped.celularCliente}</td>
-                                        <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente}</td>
+                                        <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente==""?ped.direccionCliente:"Sin Dirección"}</td>
                                         <td className={`xl:px-10 py-2 2xl:px-12 text-center`}>
-                                            <p className={`${estadoColor} h-[30px] w-[100px]`}>{ped.estadoPedido.estadoPedido}</p>
+                                            <p className={`${estadoColor} h-[30px] w-[100px]`}>{ped.estadoPedido.estadoPedido.toUpperCase()}</p>
 
                                         </td>
                                         <td className="xl:px-10 py-2 2xl:px-12">{ped.metodoPago.metodoPago}</td>
