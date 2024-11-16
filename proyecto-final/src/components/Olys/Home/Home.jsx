@@ -6,6 +6,7 @@ import Horarios from "../../../../img/horarios.jpeg";
 import PeladoComponent from './PeladoComponent';
 import Map from './Map';
 import Footer from "./Footer";
+import PhotoCarousel from './Fotocarrusel.jsx';
 
 
 const Home = () => {
@@ -42,77 +43,42 @@ const Home = () => {
         </h2>
       </div>
 
-      <div className=" h-full w-auto mt-[90px] flex justify-center gap-10 font-julius">
+      <div className="flex justify-center mt-[100px] mb-10">
+        <p className='font-julius text-[#0E3C09] text-4xl font-extrabold'>
+          Un poco de Gourmet del mejor local de ensaldas
+        </p>
+      </div>
 
-        <div id="MarcoExterior1" className="mt-[100px]  ml-[150px]">
+        <PhotoCarousel/>
 
-          <div id='MarcoN1' className=" h-[500px] w-[700px] mb-10 flex flex-col items-center gap-6">
+      <div className="flex justify-center mt-[100px]">
+        <p className='font-julius text-[#0E3C09] text-4xl font-extrabold'>
+          ¿En donde nos encontramos?
+        </p>
+      </div>
 
-            <div id='MarcoN2' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
+        <div id="MarcoExterior1" className="mt-[40px] flex flex-col items-center mb-10">
 
-              <div className=" h-[300px] w-[500px] mt-4 overflow-hidden rounded-md ">
+          
+
+            <div id='MarcoN2' className=" mb-12 flex flex-col items-center gap-6">
+
+              <div id='img' className=" h-[440px]  w-[1200px] mt-4 overflow-hidden rounded-md ">
                 <Map />
               </div>
-              <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
 
-                <h2 className='text-center mt-4 text-xl'>
-                  ¿Dónde comprar Comida Saludable en San Miguel de Tucumán?
+              <div id='Texto descriptivo' className=" h-[140px] w-[520px] shadow rounded-lg bg-[#6cb472]">
+
+                <h2 className='text-center mt-4 text-xl font-julius'>
+                  Contamos con tres locales, dos en San miguel y uno en Yerba Buena <br />¿Que esperas para acercarte a conocerlos?
                 </h2>
               </div>
+
             </div>
 
-
-
-          </div>
-
-          <div id='MarcoN2' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
-
-            <div className=" h-[300px] w-[500px] mt-4 overflow-hidden rounded-md ">
-              <img className='w-full h-full object-cover ' src={Horarios} alt="" />
-            </div>
-
-
-            <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
-              <h2 className='text-center mt-4 text-xl'>Horarios de Apertura y Cierre</h2>
-              <h3 className='mt-2'>
-                🕒Lunes a Viernes: 10:00 AM - 14:30 PM
-              </h3>
-            </div>
-          </div>
         </div>
 
-        <div id="MarcoExterior2" className="mt-[100px] mr-[150px]">
-
-          <div id='MarcoN3' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
-
-            <div className="bg-slate-900 h-[300px] w-[500px] overflow-hidden mt-4 rounded-md ">
-              <img className='w-full h-full object-cover' src={Olys} alt="" />
-            </div>
-
-
-            <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
-              <h3 className='mt-2 '>
-                En Olys Bowls, te ofrecemos una experiencia gastronómica única y saludable. Nuestra ubicación estratégica en San Miguel de Tucumán te permite disfrutar de nuestros deliciosos bowls de ensaladas, wraps y smoothies en un entorno acogedor y cálido.
-              </h3>
-            </div>
-          </div>
-
-          <div id='MarcoN4' className="h-[500px] w-[700px] mb-10  flex flex-col items-center gap-6">
-
-            <div className="bg-slate-900 h-[300px] w-[500px] overflow-hidden mt-4 rounded-md">
-              <img className='w-full h-full object-cover' src={compromiso} alt="" />
-            </div>
-
-
-            <div className=" h-[140px] w-[500px] shadow rounded-lg bg-[#6cb472]">
-              <h2 className='text-center mt-4 text-xl'>Compromiso con la Calidad</h2>
-              <h3 className='mt-2'>
-                En Olys, priorizamos ingredientes frescos y opciones saludables para asegurar que cada bocado sea nutritivo y delicioso.
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
+        
 
       <Footer />
 

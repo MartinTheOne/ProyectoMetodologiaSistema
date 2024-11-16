@@ -1,6 +1,7 @@
 import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import url from "../../../utils/url"
 
 const ModalEditarProd = ({ IsOpen, onRequestClose, prod,traerProducto }) => {
 
@@ -18,7 +19,7 @@ const ModalEditarProd = ({ IsOpen, onRequestClose, prod,traerProducto }) => {
         const respuesta = async () => {
             try {
                 const guardar = await axios.put(
-                    `http://localhost:8080/api/producto/update/${prod.id}`,
+                    `${url.urlKey}/api/producto/update/${prod.id}`,
                     {
                         nombre: nombre?nombre:prod.nombre,
                         calorias: calorias?calorias:prod.calorias,

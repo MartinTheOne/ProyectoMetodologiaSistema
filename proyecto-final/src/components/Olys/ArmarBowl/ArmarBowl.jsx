@@ -5,6 +5,7 @@ import ArmarBowlInfo from '../ArmarBowl/ArmarBowlInfo.jsx';
 import axios from 'axios';
 import PeladoComponent from '../Home/PeladoComponent.jsx';
 import Footer from '../Home/Footer.jsx';
+import url from "../../../utils/url.js"
 
 Modal.setAppElement('#root');
 
@@ -23,7 +24,7 @@ const ArmarBowl = () => {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const respuesta = await axios.get('http://localhost:8080/api/producto/findAll');
+                const respuesta = await axios.get(`${url.urlKey}/api/producto/findAll`);
                 setProductos(respuesta.data);
             } catch (error) {
                 console.error('Error al obtener datos:', error);

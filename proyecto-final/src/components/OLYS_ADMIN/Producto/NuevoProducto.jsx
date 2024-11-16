@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
+import url from "../../../utils/url"
 
 const NuevoProducto = ({traerProducto}) => {
     const [nombre, setNombre] = useState("")
@@ -34,7 +35,7 @@ const NuevoProducto = ({traerProducto}) => {
         const respuesta = async () => {
             try {
                 const guardar = await axios.post(
-                    `http://localhost:8080/api/producto/save`,
+                    `${url.urlKey}/api/producto/save`,
                     {
                         nombre: nombre,
                         calorias: calorias,

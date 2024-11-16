@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaShoppingCart, FaMoneyBillWave } from "react-icons/fa";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from "recharts";
 import axios from "axios";
+import url from "../../utils/url"
 
 const Dashboard = () => {
   const [totalPedidos, setTotalPedidos] = useState(0);
@@ -14,7 +15,7 @@ const Dashboard = () => {
     const handlerClickFiltrarPorEstadoPedido = async () => {
       try {
         const respuesta = await axios.get(
-          "http://localhost:8080/api/pedido/findAllByEstadoPedido/2",
+          `${url.urlKey}/api/pedido/findAllByEstadoPedido/2`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

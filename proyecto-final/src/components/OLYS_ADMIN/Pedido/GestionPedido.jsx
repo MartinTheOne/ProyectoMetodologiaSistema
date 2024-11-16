@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import url from "../../../utils/url.js"
 import ProductosPedidoModal from "./ProductosPedidoModal";
 import { TbRefresh } from "react-icons/tb";
 import { FaEye, FaCheckCircle, FaWhatsapp } from "react-icons/fa";
@@ -21,7 +21,7 @@ const GestionPedidos = () => {
 
     const ObtenerPedidos = async () => {
         try {
-            const respuesta = await axios.get('http://localhost:8080/api/pedido/findAll', {
+            const respuesta = await axios.get(`${url.urlKey}/api/pedido/findAll`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -63,7 +63,7 @@ const GestionPedidos = () => {
         if (endDate && startDate && startDate < endDate) {
             try {
                 const ObtenerPedidosFecha = async () => {
-                    const respuesta = await axios.get(`http://localhost:8080/api/pedido/findAll/${startDate}/${endDate}`, {
+                    const respuesta = await axios.get(`${url.urlKey}/api/pedido/findAll/${startDate}/${endDate}`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -87,7 +87,7 @@ const GestionPedidos = () => {
         const handlerCLickFiltrarPorEstadoPedido = async () => {
             if (estadoPedido) {
                 try {
-                    const respuesta = await axios.get(`http://localhost:8080/api/pedido/findAllByEstadoPedido/${estadoPedido}`, {
+                    const respuesta = await axios.get(`${url.urlKey}/api/pedido/findAllByEstadoPedido/${estadoPedido}`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         }
@@ -146,19 +146,18 @@ const GestionPedidos = () => {
                                 <th className="px-4 py-2 cursor-pointer" onClick={handlerClickOrdenarFecha}>Fecha</th>
                                 <th className="px-4 py-2">Envio</th>
                                 <th className="px-4 py-2">Precio</th>
-                                <th className="px-4 py-2">Productos</th>
+                                <th className="px-4 py-2">Productos</th>                            
                             </tr>
                         </thead>
                         <tbody>
                             {PedidosPorEstadoPedido && PedidosPorEstadoPedido.map((ped) => {
-                                const estadoColor = ped.estadoPedido.estadoPedido === "Pendiente"
+                                const estadoColor = ped.estadoPedido.estadoPedido === "pendiente"
                                     ? "bg-yellow-300"
-                                    : ped.estadoPedido.estadoPedido === "Pagado"
+                                    : ped.estadoPedido.estadoPedido === "pagado"
                                         ? "bg-green-500"
-                                        : ped.estadoPedido.estadoPedido === "Cancelado"
+                                        : ped.estadoPedido.estadoPedido === "cancelado"
                                             ? "bg-red-500"
                                             : "";
-
                                 return (
                                     <tr key={ped.id} className="border-b font-bold font-sans text-center hover:bg-gray-200">
 
@@ -166,7 +165,7 @@ const GestionPedidos = () => {
                                         <td className="xl:px-10 py-2 2xl:px-12 text-sm flex mt-2 text-center items-center"><FaWhatsapp className="mr-[1px] text-[25px] bg-green-500 text-white p-1 rounded-full" />{ped.celularCliente}</td>
                                         <td className="xl:px-10 py-2 2xl:px-12 ">{ped.direccionCliente}</td>
                                         <td className={`xl:px-10 py-2 2xl:px-8 text-center`}>
-                                            <p className={`${estadoColor} h-[30px] w-[100px]`}>{ped.estadoPedido.estadoPedido}</p>
+                                            <p className={`${estadoColor} h-[30px] w-[100px]`}>{ped.estadoPedido.estadoPedido.toUpperCase()}</p>
                                         </td>
                                         <td className="xl:px-10 py-2 2xl:px-8">Efectivo</td>
                                         <td className="xl:px-10 py-2 2xl:px-8 "><div className="w-20 text-sm ml-6">{ped.fecha}</div></td>

@@ -7,6 +7,7 @@ import ModalProducto from "./ModalProducto";
 import NuevoProducto from "./NuevoProducto";
 import ModalBorrarProd from "./ModalBorrarProd";
 import ModalEditarProd from "./ModalEditarProducto";
+import url from "../../../utils/url"
 
 const GestionProductos = () => {
     const [activeTab, setActiveTab] = useState("products");
@@ -24,7 +25,7 @@ const GestionProductos = () => {
 
 
     const traerProductos = async () => {
-        let respuesta = await axios.get("http://localhost:8080/api/producto/findAll");
+        let respuesta = await axios.get(`${url.urlKey}/api/producto/findAll`);
 
 
         if (respuesta.status === 200) {
@@ -96,7 +97,7 @@ const GestionProductos = () => {
         const respuesta = async () => {
             try {
                 const guardar = await axios.put(
-                    `http://localhost:8080/api/producto/update/${product.id}`,
+                    `${url.urlKey}/api/producto/update/${product.id}`,
                     {
                         nombre: product.nombre,
                         calorias: product.calorias,
@@ -138,7 +139,7 @@ const GestionProductos = () => {
         const respuesta = async () => {
             try {
                 const guardar = await axios.put(
-                    `http://localhost:8080/api/producto/update/${product.id}`,
+                    `${url.urlKey}/api/producto/update/${product.id}`,
                     {
                         nombre: product.nombre,
                         calorias: product.calorias,
@@ -166,7 +167,7 @@ const GestionProductos = () => {
 
     const Borrar=async(product)=>{
         try {
-            const respuesta=await axios.delete(`http://localhost:8080/api/producto/delete/${product.id}`,{
+            const respuesta=await axios.delete(`${url}/api/producto/delete/${product.id}`,{
                 headers:{
                     Authorization:`Bearer ${token}`,
                 }

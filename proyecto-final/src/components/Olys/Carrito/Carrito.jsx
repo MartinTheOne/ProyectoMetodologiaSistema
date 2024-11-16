@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import url from "../../../utils/url.js"
 
 const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
     const [productos, setProductos] = useState([]);
@@ -70,7 +71,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
 
         try {
             const respuesta = await axios.post(
-                "http://localhost:8080/api/pedido/save",
+                `${url.urlKey}/api/pedido/save`,
                 {
                     nombreCliente: nombre,
                     celularCliente: celular,
@@ -79,7 +80,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                     metodoPago: { id: 1 },
                     fecha: fechaHoy,
                     envio: CheckedDom,
-                    precio: 100,
+                    precio: 10,
                     listaEnsaladas: nombresEnsaladas
                 },
                 {

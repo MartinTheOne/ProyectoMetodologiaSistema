@@ -1,11 +1,12 @@
 import { SlSocialInstagram } from "react-icons/sl";
+import { MdOutlineLocationOn } from "react-icons/md";
 const Footer = () => {
     return (
         <div >
             <div className='h-[500px]'>
             </div>
 
-            <div className="w-full h-[115px] bg-[#72bf78] border-t-[7px] border-t-[#0E3C09] border-opacity-25 flex items-center ">
+            <div className="w-full h-[115px] bg-[#72bf78] border-t-[7px] font-julius border-t-[#0E3C09] border-opacity-25 flex items-center justify-between ">
                 
                 <div className="flex items-center text-[12px] ml-2">
                     <p className='font-julius '> Encuentranos en Instagram:</p>
@@ -20,11 +21,23 @@ const Footer = () => {
                     </p>
                 </div>
 
-                <ul>
-                    <li>
-                        
-                    </li>
-                </ul>
+                <div className="flex text-[12px] mr-2">
+                    <p className="mr-1">Puedes encontranos en:</p>
+                    <ul>
+                        <li className="flex">
+                        <MdOutlineLocationOn className="mt-[1px]" /> Santa Fé 440 - SMT    
+                        </li>
+
+                        <li className="flex">
+                        <MdOutlineLocationOn className="mt-[1px]" /> Salta 78 - SMT
+                        </li>
+
+                        <li className="flex">
+                        <MdOutlineLocationOn className="mt-[1px]" /> Lobo de la Vega 850 - YB
+                        </li>
+                    </ul>
+                </div>
+
 
             </div>
             

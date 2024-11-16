@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { isTokenvalid } from "../../utils/isTokenValid";
 import pelado from "../../../img/Pelado.png";
+import url from "../../utils/url";
 
 const Login = () => {
   const [pass, setPass] = useState("");
@@ -39,7 +40,7 @@ window.notyf = notyf;
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/login", {
+      const response = await axios.post(`${url.urlKey}/login`, {
         email: usuario,
         password: pass
       });
