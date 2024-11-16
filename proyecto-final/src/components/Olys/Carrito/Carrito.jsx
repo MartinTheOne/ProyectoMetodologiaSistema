@@ -84,11 +84,6 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                     envio: CheckedDom,
                     precio: 10,
                     listaEnsaladas: nombresEnsaladas
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    }
                 }
             );
 
