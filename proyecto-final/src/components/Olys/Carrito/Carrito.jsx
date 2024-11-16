@@ -225,13 +225,13 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                                 </div>
                             </div>
                             <div className="flex justify-center mt-2 items-center">
-                                <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true) } else { setCheckedDom(false) } }} className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
+                                <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true)} else { setCheckedDom(false); setDomicilio("") } }} className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
                                 <h3>Envio a domicilio</h3>
                             </div>
                             {CheckedDom &&
                                 <>
                                     <h3 className="mt-4 text-xl mb-2">Direccion</h3>
-                                    <input onChange={(e) => setDomicilio(e)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
+                                    <input onChange={(e) => setDomicilio(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
                                 </>
                             }
 
