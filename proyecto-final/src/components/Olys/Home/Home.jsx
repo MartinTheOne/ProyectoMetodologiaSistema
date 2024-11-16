@@ -17,7 +17,7 @@ const Home = () => {
 
       <PeladoComponent />
       <div className='flex justify-center'>
-        <div id='xDdDDD' className='rounded-2xl cursor-pointer hover:scale-110 transition-transform duration-300 items-center flex justify-center mt-[40px] h-[110px] w-[900px] bg-[#72bf78] bg-opacity-5 border-8 border-[#0E3C09] border-opacity-10'>
+        <div id='xDdDDD' className='rounded-2xl 700-md:hidden  cursor-pointer hover:scale-110 transition-transform duration-300 items-center flex justify-center mt-[40px] h-[110px] w-[900px] bg-[#72bf78] bg-opacity-5 border-8 border-[#0E3C09] border-opacity-10'>
           <h2 className='text-[4rem]'>
             {text.split("").map((char, index) => (
               <span
@@ -63,11 +63,11 @@ const Home = () => {
 
             <div id='MarcoN2' className=" mb-12 flex flex-col items-center gap-6">
 
-              <div id='img' className=" h-[440px]  w-[1200px] mt-4 overflow-hidden rounded-md ">
+              <div id='img' className=" h-[440px]  w-[896px] 700-md:max-w-2xl mt-4 overflow-hidden rounded-lg ">
                 <Map />
               </div>
 
-              <div id='Texto descriptivo' className=" h-[140px] w-[520px] shadow rounded-lg bg-[#6cb472]">
+              <div id='Texto descriptivo' className=" h-[100px] w-[896px] 700-md:max-w-2xl shadow rounded-lg bg-[#6cb472]">
 
                 <h2 className='text-center mt-4 text-xl font-julius'>
                   Contamos con tres locales, dos en San miguel y uno en Yerba Buena <br />¿Que esperas para acercarte a conocerlos?
@@ -77,8 +77,6 @@ const Home = () => {
             </div>
 
         </div>
-
-        
 
       <Footer />
 

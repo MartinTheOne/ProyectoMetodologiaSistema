@@ -71,7 +71,7 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      <Carrito setCartOpen={setCartOpen} cartOpen={cartOpen}  />
+      <Carrito setCartOpen={setCartOpen} cartOpen={cartOpen} setContadorProd={setContadorProd} />
       {/* Fondo oscuro para cuando el carrito esté abierto */}
       {cartOpen && (
         <div

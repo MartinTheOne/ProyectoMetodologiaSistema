@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import url from "../../../utils/url.js"
+import { FaKey } from "react-icons/fa";
 
-const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
+const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon ,setContadorProd}) => {
     const [productos, setProductos] = useState([]);
     const [currentStep, setCurrentStep] = useState(1); // 1: Productos, 2: Registro, 3: MercadoPago
     const [nombre, setNombre] = useState("")
@@ -97,6 +98,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                 setDomicilio("")
                 setCelular("")
                 setCheckedDom(false)
+
             }
         } catch (error) {
             console.error('Error al guardar el pedido:', error.response?.data || error.message);
@@ -130,6 +132,16 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
     const handleBack = () => {
         setCurrentStep(currentStep - 1);
     };
+
+    const validarCelular = (e) => {
+        const valor = e.target.value;
+        const soloDigitos = valor.replace(/\D/g, '');
+    
+        if (soloDigitos.length <= 10) {
+            setCelular(soloDigitos);
+        }
+    };
+    
 
     return (
         <div
@@ -202,7 +214,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                             <input onChange={(e) => setNombre(e.target.value)} className="rounded-lg outline-none bg-[#6cb472] shadow-inner h-[35px] w-[250px] text-center" type="text" value={nombre} />
 
                             <h3 className="mt-4 text-xl mb-2">Numero de celular</h3>
-                            <input onChange={(e) => setCelular(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={celular} />
+                            <input onChange={(e) => validarCelular(e)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center " type="text" value={celular} />
 
                             <div className="flex justify-center mt-2 items-center">
                                 <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true) } else { setCheckedDom(false) } }} className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
@@ -211,7 +223,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                             {CheckedDom &&
                                 <>
                                     <h3 className="mt-4 text-xl mb-2">Direccion</h3>
-                                    <input onChange={(e) => setDomicilio(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
+                                    <input onChange={(e) => setDomicilio(e)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
                                 </>
                             }
 
@@ -243,13 +255,14 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon }) => {
                                 : <>
                                     <button
                                         onClick={() => {
-                                            
+
                                             localStorage.removeItem("carrito");
-                                            setProductos([]); 
-                                            setBotonMercadoPago("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id="); 
-                                            setCartOpen(false)                                           
+                                            setProductos([]);
+                                            setBotonMercadoPago("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=");
+                                            setCartOpen(false)
                                             window.open(botonMercadoPago, '_blank');
                                             setCurrentStep(1)
+                                            setContadorProd(0)
                                         }}
                                         className="bg-[#009EE3] text-white font-bold glow-on-hover relative w-56 h-12 hover:bg-[#007bbd] rounded-lg transition-colors duration-300 focus:outline-none"
                                     >

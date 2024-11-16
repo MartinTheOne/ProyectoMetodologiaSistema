@@ -5,9 +5,13 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'AD': '1150px',
-        'Porvosnegro': '600px'
-       
+
+        'max-xd': { max: '1400px' },
+        'max-a': { max: '1150px' }, // Para pantallas menores a 1024px
+        'max-e': { max: '1100px' }, // Para pantallas menores a 1024px
+        '700': '700px', // Define un breakpoint a partir de 700px
+        '700-md': { max: '940px', min: '400px' }, // Rango de 700px a 767px
+
       },
       backgroundSize: {
         '200%': '200%',

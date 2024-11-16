@@ -6,26 +6,30 @@ const Footer = () => {
             <div className='h-[500px]'>
             </div>
 
-            <div className="w-full h-[115px] bg-[#72bf78] border-t-[7px] font-julius border-t-[#0E3C09] border-opacity-25 flex items-center justify-between ">
+            <div className="w-full h-[115px]  bg-[#72bf78] border-t-[7px] font-julius border-t-[#0E3C09] border-opacity-25 flex items-center justify-between ">
                 
-                <div className="flex items-center text-[12px] ml-2">
-                    <p className='font-julius '> Encuentranos en Instagram:</p>
-                    <a className='ml-1' target="_blank" href="https://www.instagram.com/olysonline/ "><SlSocialInstagram /></a>
+                <div className="">
+
+                    <div className="flex items-center text-[12px] 700-md:text-[8px] max-e:text-[10px] ml-2">
+                        <p className='font-julius '> Encuentranos en nuetra red social:</p>
+                        <a className='ml-1 flex gap-[2px] ' target="_blank" href="https://www.instagram.com/olysonline/ "> Instagram <p className="mt-[2px]"><SlSocialInstagram /></p></a>
+                    </div>
+
+                    <div className="flex text-[12px] max-e:text-[10px] 700-md:text-[8px]  ml-2 items-center">
+                        <p className="font-julius">Hecho por</p>
+                        <p className="mx-1 mb-1">:</p>
+                        <p className='font-julius '>
+                            Gonzalez Martin - Figueroa Santiago - Garcia Martin
+                        </p>
+                    </div>
+
                 </div>
 
-                <div className="flex text-[12px] items-center">
-                    <p className="font-julius">Hecho por</p>
-                    <p className="mx-1 mb-1">:</p>
-                    <p className='font-julius '>
-                        Gonzalez Martin - Figueroa Santiago - Garcia Martin
-                    </p>
-                </div>
-
-                <div className="flex text-[12px] mr-2">
+                <div className="flex text-[12px] max-e:text-[10px] 700-md:text-[8px] mr-2">
                     <p className="mr-1">Puedes encontranos en:</p>
                     <ul>
                         <li className="flex">
-                        <MdOutlineLocationOn className="mt-[1px]" /> Santa Fé 440 - SMT    
+                        <MdOutlineLocationOn className="mt-[1px]" /> Santa FÃ© 440 - SMT    
                         </li>
 
                         <li className="flex">

@@ -41,7 +41,7 @@ const Nutricionista = () => {
 
                     <button 
                         onClick={() => handleTurnosClick('Lunes')}
-                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center"
+                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:bg-[#5a945f] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center"
                     >
                         <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
                             Ver turnos disponibles
@@ -58,7 +58,7 @@ const Nutricionista = () => {
 
                     <button 
                         onClick={() => handleTurnosClick('Miercoles')}
-                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center"
+                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:bg-[#5a945f] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center"
                     >
                         <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
                             Ver turnos disponibles
@@ -75,7 +75,7 @@ const Nutricionista = () => {
 
                     <button 
                         onClick={() => handleTurnosClick('Viernes')}
-                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center"
+                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:bg-[#5a945f] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center"
                     >
                         <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
                             Ver turnos disponibles

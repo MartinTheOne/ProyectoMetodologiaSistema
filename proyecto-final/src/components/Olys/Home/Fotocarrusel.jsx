@@ -77,7 +77,7 @@ const PhotoCarousel = () => {
   };
 
   return (
-    <div className="relative max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg" onTouchStart={handleTouchStart}>
+    <div className="relative max-w-4xl 700-md:max-w-2xl mx-auto overflow-hidden rounded-xl shadow-lg" onTouchStart={handleTouchStart}>
       <div className="relative h-[60vh] w-full">
         {images.map((image, index) => (
           <div

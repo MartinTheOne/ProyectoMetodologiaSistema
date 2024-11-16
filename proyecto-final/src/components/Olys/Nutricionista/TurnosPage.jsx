@@ -192,7 +192,7 @@ const TurnosPage = () => {
           .map((turno) => (
             <button
               key={turno.id}
-              className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] rounded-xl shadow-2xl items-center hover:bg-[#5da363] transition-colors"
+              className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center hover:bg-[#5da363] transition-colors"
               onClick={() => handleDateClick(turno)}
             >
               <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
