@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { isTokenvalid } from "../../utils/isTokenValid";
-import pelado from "../../../img/Pelado.png";
+import pelado from "/img/Pelado.png";
 import url from "../../utils/url";
 
 const Login = () => {

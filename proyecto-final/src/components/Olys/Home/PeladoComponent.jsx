@@ -1,4 +1,4 @@
-import pelado from "../../../../img/Pelado.png";
+import pelado from "/img/Pelado.png";
 
 const PeladoComponent = () => {
     return (

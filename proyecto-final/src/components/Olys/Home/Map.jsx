@@ -1,5 +1,21 @@
-import React, { useState } from "react";
-import { GoogleMap, MarkerF } from "@react-google-maps/api";
+import React, { useState, useEffect } from "react";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import credenciales from '../../../utils/credenciales';
+
+const libraries = ["places"];
+
+// Mover el componente LoadScript fuera del componente Map
+const MapContainer = () => {
+  return (
+    <LoadScript 
+      googleMapsApiKey={credenciales.mapKey}
+      libraries={libraries}
+      loadingElement={<div className="font-julius">Cargando...</div>}
+    >
+      <Map />
+    </LoadScript>
+  );
+};
 
 const Map = () => {
   const [mapCenter, setMapCenter] = useState({ 
@@ -8,7 +24,7 @@ const Map = () => {
   });
   const [zoom, setZoom] = useState(15);
   const mapContainerStyle = { width: "100%", height: "400px" };
-  const iconURL = <img src="../../../../img/OIP.png" alt="" />;
+  const iconURL = <img src="/img/OIP.png" alt="" />;
 
   const posiciones = [
     { 
@@ -21,7 +37,7 @@ const Map = () => {
       id: 2, 
       posicion: { lat: -26.820399995688597, lng: -65.20123886404359 }, 
       icon: iconURL, 
-      name: " Santa Fé 440 - SMT" 
+      name: " Santa FÃ© 440 - SMT" 
     },
     { 
       id: 3, 
@@ -72,4 +88,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default MapContainer;

@@ -73,12 +73,12 @@ const ArmarBowl = () => {
     }, [selectedTipoProduct, productos]);
 
     const salads = [
-        { id: 1, img: "../../../../img/EnsaladaPollo.webp", name: "Base", cantidad: 1, MostrarIcon: mostrarIcon.includes(1) ? true : false },
-        { id: 2, img: "../../../../img/EnsaladaPollo.webp", name: "Ingrediente", cantidad: 4, MostrarIcon: mostrarIcon.includes(2) ? true : false },
-        { id: 3, img: "../../../../img/EnsaladaPollo.webp", name: "Proteina", cantidad: 1, MostrarIcon: mostrarIcon.includes(3) ? true : false },
-        { id: 4, img: "../../../../img/EnsaladaTomate.jpg", name: "Queso", cantidad: 1, MostrarIcon: mostrarIcon.includes(4) ? true : false },
-        { id: 5, img: "../../../../img/EnsaladaTomate.jpg", name: "Premium", cantidad: 1, MostrarIcon: mostrarIcon.includes(5) ? true : false },
-        { id: 6, img: "../../../../img/EnsaladaTomate.jpg", name: "Aderezo", cantidad: 2, MostrarIcon: mostrarIcon.includes(6) ? true : false },
+        { id: 1, img: "/img/Bases.jfif", name: "Base", cantidad: 1, MostrarIcon: mostrarIcon.includes(1) ? true : false },
+        { id: 2, img: "/img/Ingredientes.jpg", name: "Ingrediente", cantidad: 4, MostrarIcon: mostrarIcon.includes(2) ? true : false },
+        { id: 3, img: "/img/proteinas.jpg", name: "Proteina", cantidad: 1, MostrarIcon: mostrarIcon.includes(3) ? true : false },
+        { id: 4, img: "/img/Quesos.jpg", name: "Queso", cantidad: 1, MostrarIcon: mostrarIcon.includes(4) ? true : false },
+        { id: 5, img: "/img/Premium.jpg", name: "Premium", cantidad: 1, MostrarIcon: mostrarIcon.includes(5) ? true : false },
+        { id: 6, img: "/img/Aderezo.webp", name: "Aderezo", cantidad: 2, MostrarIcon: mostrarIcon.includes(6) ? true : false },
     ];
 
     const openModal = (product) => {
@@ -107,7 +107,7 @@ const ArmarBowl = () => {
         const bowlPersonalizado = {
             id: bowlPersonalizadoId, // Nuevo campo de ID único
             name: "Bowl Personalizado",
-            img: "../../../../img/EnsaladaPollo.webp",
+            img: "/img/EnsaladaArmarBowl.webp",
             price: 6500,
             cantidad: 1,
             ingId: ingredientesFinal,

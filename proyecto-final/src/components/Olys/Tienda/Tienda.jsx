@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import PeladoComponent from '../Home/PeladoComponent';
 import Footer from '../Home/Footer';
-import menudelDiaFoto from "../../../../img/Menu.jpeg"
-import armatubowl from "../../../../img/armatubowl.jpeg"
+import menudelDiaFoto from "/img/Menu.jpeg"
+import armatubowl from "/img/armatubowl.jpeg"
 
 const Tienda = () => {
 

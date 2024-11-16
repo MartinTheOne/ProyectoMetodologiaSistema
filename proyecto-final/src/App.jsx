@@ -13,24 +13,17 @@ import GestionPedidos from "./components/OLYS_ADMIN/Pedido/GestionPedido.jsx";
 import GestionProductos from "./components/OLYS_ADMIN/Producto/GestionProductos.jsx";
 import ScrollTop from "./componentUtils/ScrollTop.js"
 import TurnosPage from './components/Olys/Nutricionista/TurnosPage.jsx';
-import { LoadScript } from "@react-google-maps/api";
-import credenciales from './utils/credenciales.js';  // Ajusta la ruta según tu estructura
 
 const libraries = ["places"];
 
 function App() {
   return (
     <div id="Controlador_abuelo_Router">
-      <LoadScript 
-        googleMapsApiKey={credenciales.mapKey}
-        libraries={libraries}
-        loadingElement={<div className="font-julius">Cargando...</div>}
-      >
+      
         <Router>
           <ScrollTop/>
           <LayoutWithSidebarOrNavbar />
         </Router>
-      </LoadScript>
     </div>
   );
 }
