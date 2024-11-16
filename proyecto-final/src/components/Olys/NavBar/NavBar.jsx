@@ -4,7 +4,6 @@ import { IoCartOutline } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import Carrito from '../Carrito/Carrito.jsx';
-import Olys from "../../../../img/Olys.jpg";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);

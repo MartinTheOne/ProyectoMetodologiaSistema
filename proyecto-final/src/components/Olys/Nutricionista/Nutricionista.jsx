@@ -11,16 +11,17 @@ const Nutricionista = () => {
    
     return (
         <>
+
             <PeladoComponent/>  
 
             <div className="flex justify-center mt-[100px]">
-                 <h2 className="font-julius text-[#0E3C09] text-6xl font-extrabold">
-                    Nutricionista
-                 </h2>
+              <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
+                Nutricionista
+              </h2>
             </div>
 
-            <div className="flex justify-start ml-[100px] mt-[100px]">
-                 <h2 className="font-julius text-[#0E3C09] text-4xl font-extrabold">
+            <div className="flex justify-start ml-[100px] mt-[100px] ">
+                 <h2 className="font-julius text-[#0E3C09] text-4xl font-extrabold border-b-4 border-[#0E3C09]">
                     Lic. Florencia Cassanova
                  </h2>
             </div>
@@ -31,56 +32,84 @@ const Nutricionista = () => {
                  </h2>
             </div>
 
-            <div className="flex flex-col items-center">
-                <div className="Lunes">
-                    <div className="flex justify-center mt-[100px]">
-                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
-                            Lunes
-                        </h2>
-                    </div>
+            <div className="flex flex-col items-center gap-10">
 
-                    <button 
-                        onClick={() => handleTurnosClick('Lunes')}
-                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:bg-[#5a945f] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center"
-                    >
-                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
-                            Ver turnos disponibles
-                        </h2>
-                    </button>
+                <div className="Lunes">
+
+                <div class="p-4 flex items-center justify-center">
+
+                    <div class="h-[150px] w-[600px] mt-4 font-julius bg-[#6cb472] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 space-y-4" role="region" aria-label="Selector de turnos">
+                       
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                           
+                            <div class="space-y-1">
+                                <h2 class="text-2xl font-semibold text-gray-800">Lunes</h2>
+                               
+                            </div>
+                            
+                            <div class="relative group">
+                                <div class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                                <button onClick={() => handleTurnosClick('Lunes')} class="relative w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#6cb472] to-green-500 text-white font-medium rounded-lg shadow-md hover:from-green-600 hover:to-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200" aria-label="Ver turnos disponibles">
+                                    Ver Turnos Disponibles
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full h-1 bg-gradient-to-r from-[#6cb472] to-green-500 rounded-full "></div>
+                    </div>
+                    
+                </div>
+
                 </div>
 
                 <div className="Miercoles">
-                    <div className="flex justify-center mt-[100px]">
-                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
-                            Miercoles
-                        </h2>
-                    </div>
+                <div class="h-[150px] w-[600px]  font-julius bg-[#6cb472] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 space-y-4" role="region" aria-label="Selector de turnos">
+                       
+                       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                          
+                           <div class="space-y-1">
+                               <h2 class="text-2xl font-semibold text-gray-800">Miercoles</h2>
+                              
+                           </div>
+                           
+                           <div class="relative group">
+                               <div class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                               <button onClick={() => handleTurnosClick('Miercoles')} class="relative w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#6cb472] to-green-500 text-white font-medium rounded-lg shadow-md hover:from-green-600 hover:to-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200" aria-label="Ver turnos disponibles">
+                                   Ver Turnos Disponibles
+                               </button>
+                          
+                           </div>
+                       </div>
+                       
+                       <div class="w-full h-1 bg-gradient-to-r from-[#6cb472] to-green-500 rounded-full"></div>
+                   </div>
 
-                    <button 
-                        onClick={() => handleTurnosClick('Miercoles')}
-                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:bg-[#5a945f] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center"
-                    >
-                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
-                            Ver turnos disponibles
-                        </h2>
-                    </button>
+                    
                 </div>
 
                 <div className="Viernes">
-                    <div className="flex justify-center mt-[100px]">
-                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
-                            Viernes
-                        </h2>
-                    </div>
+                <div class="h-[150px] w-[600px] mt-4 font-julius bg-[#6cb472] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 space-y-4" role="region" aria-label="Selector de turnos">
+                       
+                       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                          
+                           <div class="space-y-1">
+                               <h2 class="text-2xl font-semibold text-gray-800">Viernes</h2>
+                              
+                           </div>
+                           
+                           <div class="relative group">
+                               <div class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                               <button onClick={() => handleTurnosClick('Viernes')} class="relative w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#6cb472] to-green-500 text-white font-medium rounded-lg shadow-md hover:from-green-600 hover:to-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200" aria-label="Ver turnos disponibles">
+                                   Ver Turnos Disponibles
+                               </button>
+                          
+                           </div>
+                       </div>
+                       
+                       <div class="w-full h-1 bg-gradient-to-r from-[#6cb472] to-green-500 rounded-full "></div>
+                   </div>
 
-                    <button 
-                        onClick={() => handleTurnosClick('Viernes')}
-                        className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:bg-[#5a945f] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center"
-                    >
-                        <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
-                            Ver turnos disponibles
-                        </h2>
-                    </button>
+                   
                 </div>
             </div>
 

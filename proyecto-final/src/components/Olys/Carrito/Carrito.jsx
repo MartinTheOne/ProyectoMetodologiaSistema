@@ -3,13 +3,14 @@ import axios from "axios";
 import url from "../../../utils/url.js"
 import { FaKey } from "react-icons/fa";
 
-const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon ,setContadorProd}) => {
+const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) => {
     const [productos, setProductos] = useState([]);
     const [currentStep, setCurrentStep] = useState(1); // 1: Productos, 2: Registro, 3: MercadoPago
     const [nombre, setNombre] = useState("")
     const [celular, setCelular] = useState("")
     const [domicilio, setDomicilio] = useState("")
     const [CheckedDom, setCheckedDom] = useState(false)
+    const [errorTel, setErrorTel] = useState(false)
     const [botonMercadoPago, setBotonMercadoPago] = useState("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=")
     const token = localStorage.getItem("token")
 
@@ -136,12 +137,14 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon ,setContadorProd}) =
     const validarCelular = (e) => {
         const valor = e.target.value;
         const soloDigitos = valor.replace(/\D/g, '');
-    
-        if (soloDigitos.length <= 10) {
+
+        if (soloDigitos.length <= 10) {           
             setCelular(soloDigitos);
+            setErrorTel(false)
         }
+
     };
-    
+
 
     return (
         <div
@@ -211,11 +214,16 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon ,setContadorProd}) =
                             <h3 className="mb-4 text-xl">Por favor ingrese sus datos</h3>
 
                             <h3 className="text-xl mb-2">Nombre</h3>
-                            <input onChange={(e) => setNombre(e.target.value)} className="rounded-lg outline-none bg-[#6cb472] shadow-inner h-[35px] w-[250px] text-center" type="text" value={nombre} />
+                            <input  onChange={(e) => setNombre(e.target.value)} className="rounded-lg outline-none bg-[#6cb472] shadow-inner h-[35px] w-[250px] text-center" type="text" value={nombre} />
 
-                            <h3 className="mt-4 text-xl mb-2">Numero de celular</h3>
-                            <input onChange={(e) => validarCelular(e)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center " type="text" value={celular} />
+                            <div>
 
+                                <h3 className="mt-4 text-xl mb-2">Numero de celular</h3>
+                                <div className="flex flex-col justify-center items-center">
+                                    <input onChange={(e) => validarCelular(e)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center " type="text" value={celular} />
+                                    {errorTel && <span className="font-sans text-[13px]">Debe tener 10 digitos</span>}
+                                </div>
+                            </div>
                             <div className="flex justify-center mt-2 items-center">
                                 <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true) } else { setCheckedDom(false) } }} className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
                                 <h3>Envio a domicilio</h3>
@@ -237,7 +245,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon ,setContadorProd}) =
                                 Volver
                             </button>
                             <button
-                                onClick={() => handleNext("Finalizar Pedido")}
+                                onClick={() => {if(celular.length==10){handleNext("Finalizar Pedido")}else{setErrorTel(true)}}}
                                 className="glow-on-hover relative w-48 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
                             >
                                 Finalizar Pedido

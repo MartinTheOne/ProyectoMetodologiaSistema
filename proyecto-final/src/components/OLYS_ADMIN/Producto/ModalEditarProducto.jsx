@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 import url from "../../../utils/url"
 

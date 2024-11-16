@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MenuInfo from './MenuInfo';
 import Modal from 'react-modal';
 import ProductCard from '../Productos/ProductCard';
@@ -18,7 +18,7 @@ const Menu = () => {
     const salads = [
         {
             id: 1,
-            img: "../../../../img/EnsaladaPollo.webp",
+            img: "../../../../img/Cesar.webp",
             name: "César",
             price: 5500,
             ing: ["Mix de verdes", "Pollo", "Queso parmesano", "Croutones", "Mix de semillas"],
@@ -34,7 +34,7 @@ const Menu = () => {
         },
         {
             id: 2,
-            img: "../../../../img/agridulce.png",
+            img: "../../../../img/Agridulce.webp",
             name: "Agridulce",
             price: 5500,
             ing: ["Arroz integral", "Cebolla Caramelizada", "Pasas de uvas", "Zanahoria", "Jamon cocido", "Roquefort"],
@@ -51,7 +51,7 @@ const Menu = () => {
         },
         {
             id: 3,
-            img: "../../../../img/EnsaladaWaldorf.png",
+            img: "../../../../img/Waldorf.jpg",
             name: "Waldorf",
             price: 5500,
             ing: ["Mix de verdes", "Apio", "Manzana", "Pollo Salteado", "Roquefort", "Frutos Secos"],
@@ -68,7 +68,7 @@ const Menu = () => {
         },
         {
             id: 4,
-            img: "../../../../img/Ensaladavegetariana.jpg",
+            img: "../../../../img/Vegetariana.webp",
             name: "Vegetariana",
             price: 5500,
             ing: ["Lechuga", "Huevo", "Palta", "Lentejas", "Remolacha", "Queso tybo", "Frutos secos"],
@@ -86,7 +86,7 @@ const Menu = () => {
         },
         {
             id: 5,
-            img: "../../../../img/filipa.jpeg",
+            img: "../../../../img/filipa2.webp",
             name: "Filipa",
             price: 5500,
             ing: ["Tirabuzon", "Tomate", "Chaucha", "Zanahoria", "Pollo al curry", "Queso tybo"],
@@ -170,7 +170,7 @@ const Menu = () => {
             <div id='Menu' className="">
                 <div
                     id='Primera_fila'
-                    className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[100px]'
+                    className='gap-8 flex flex-wrap justify-center mr-[300px] ml-[300px] mt-[100px]'
                 >
                     {salads.map((salad, index) => (
                         <ProductCard
