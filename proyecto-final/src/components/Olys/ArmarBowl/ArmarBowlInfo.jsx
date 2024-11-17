@@ -7,8 +7,8 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
         return null;
     }
 
-    if(Borrar){
-       clearSelection();
+    if (Borrar) {
+        clearSelection();
     }
 
     const initialProductosElegidos = JSON.parse(localStorage.getItem('productosElegidos')) || {
@@ -43,7 +43,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                     type: 'error',
                     background: "#e74c3c",
                     className: "rounded-[10px] text-black font-julius text-[15px]"
-                },              
+                },
             ]
         });
         window.notyf = notyf;
@@ -56,7 +56,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
 
     const handleCheckBox = (e, id) => {
         const isChecked = e.target.checked;
-        
+
         if (isChecked) {
             if (cantidadElegir === 1) {
                 // Para tipos que solo permiten una selección
@@ -85,22 +85,22 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
             Premium: 1,
             Queso: 1
         };
-    
+
         if (selectedIds.length !== limitePorTipo[tipoProducto]) {
             window.notyf.error(`Debes seleccionar exactamente ${limitePorTipo[tipoProducto]} ${tipoProducto}.`);
             return;
         }
-    
+
         const nuevosProductosElegidos = {
             ...productosElegidos,
             [tipoProducto]: [...selectedIds]
         };
-    
+
         setProductosElegidos(nuevosProductosElegidos);
         localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
         updateSelectedItems(tipoProducto, productos.filter(prod => selectedIds.includes(prod.id)));
         setMostrarIcon((prev) => [...prev, VerBotonPresionado]);
-        
+
         // Limpiar selecciones temporales y cerrar modal
         localStorage.removeItem(`temp_${tipoProducto}`);
         clearSelection();
@@ -143,7 +143,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
             }}
             className="custom-modal-content"
         >
-            <button 
+            <button
                 className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'
                 onClick={() => {
                     onRequestClose();
@@ -189,7 +189,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
             }}>
                 Elegi {cantidadElegir}
             </h3>
-            
+
             <ul style={{
                 padding: 0,
                 margin: 0,
@@ -199,27 +199,34 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                 <div className='flex flex-col gap-10 text-[30px] font-julius'>
                     <div className='flex flex-col justify-between'>
                         <div>
-                            {productos.map((prod) => (
-                                <li key={prod.id} style={{
-                                    marginBottom: '8px',
-                                    fontSize: '20px',
-                                    textAlign: "left",
-                                    marginLeft: "85px",
-                                }}>
-                                    <input 
-                                        className='mr-2 appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]'
-                                        type="checkbox"
-                                        id={prod.id}
-                                        checked={selectedIds.includes(prod.id)}
-                                        onChange={(e) => handleCheckBox(e, prod.id)}
-                                    />
-                                    {prod.nombre}
-                                </li>
-                            ))}
+                            {productos.map((prod) => {
+                                let opacidad = prod.cantidad == 0 ? "opacity-35" : ""
+                                return (
+                                    <li key={prod.id} style={{
+                                        marginBottom: '8px',
+                                        fontSize: '20px',
+                                        textAlign: "left",
+                                        marginLeft: "85px",
+                                        display: "flex"
+                                    }}>
+                                        <input
+                                            className={`${opacidad} mt-[5px] mr-1 appearance-none h-4 w-4 bg-[#77c77d] shadow rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]`}
+                                            type="checkbox"
+                                            id={prod.id}
+                                            checked={selectedIds.includes(prod.id)}
+                                            disabled={prod.cantidad == 0 ? true : false}
+                                            onChange={(e) => handleCheckBox(e, prod.id)}
+                                        />
+                                        <p className={`${opacidad}`}>
+                                            {prod.nombre}
+                                        </p>
+                                    </li>
+                                )
+                            })}
                         </div>
                         <div>
-                            <button 
-                                className='rounded-md shadow text-[16px] p-2 font-julius' 
+                            <button
+                                className='rounded-md shadow text-[16px] p-2 font-julius'
                                 onClick={handlerClick}
                             >
                                 Confirmar

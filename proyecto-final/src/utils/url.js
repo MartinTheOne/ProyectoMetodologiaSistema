@@ -1,3 +1,3 @@
 export default {
-    urlKey: "https://protective-love-production.up.railway.app"
+    urlKey: "http://localhost:8080"
 }
