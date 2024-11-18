@@ -2,7 +2,7 @@ import pelado from "/img/Pelado.png";
 
 const PeladoComponent = () => {
     return (
-        <div id='Panel' className=" 700-md:bg-black movil-m:bg-yellow-600 movil-s:bg-red-500 border-8  border-[#0E3C09] border-opacity-5 shadow-lg rounded-[30px]  bg-[#72bf78] bg-opacity-5 flex flex-col mt-[150px] mx-12 movil-s:mx-7 movil-sm:">
+        <div id='Panel' className=" border-8  border-[#0E3C09] border-opacity-5 shadow-lg rounded-[30px]  bg-[#72bf78] bg-opacity-5 flex flex-col mt-[150px] mx-12 movil-s:mx-7 movil-sm:">
             <div id="Titulo-Olys" className="relative cursor-pointer left-6 font-julius text-opacity-90 text-[#0E3C09] max-a:text-6xl 700-md:left-5 movil-m:text-[45px] movil-m:left-2  movil-s:text-[40px]  movil-s:left-4 movil-sm:text-[50px] movil-sm:left-2 movil-sm:mb-2 text-7xl  text-center mt-6">
                 <h1 className='hover:scale-110 transition-transform duration-300'>Olys</h1>
             </div>

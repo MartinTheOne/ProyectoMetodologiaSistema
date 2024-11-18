@@ -143,7 +143,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
 
     return (
         <div
-            className={`fixed top-0 right-0 w-[450px] h-full bg-[#72bf78] shadow-lg transform ${cartOpen ? "translate-x-0" : "translate-x-full"
+            className={`fixed top-0 right-0 w-[450px] movil-smm:w-[350px] h-full bg-[#72bf78] shadow-lg transform ${cartOpen ? "translate-x-0" : "translate-x-full"
                 } transition-transform duration-300 ease-in-out z-20`}
         >
             <div className="p-4 font-julius">
@@ -232,10 +232,10 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
 
                         </div>
 
-                        <div className="flex justify-between mt-6">
+                        <div className="flex justify-between mt-6 movil-smm:gap-2">
                             <button
                                 onClick={handleBack}
-                                className="glow-on-hover relative w-48 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
+                                className="glow-on-hover relative w-48 h-12  bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
                             >
                                 Volver
                             </button>

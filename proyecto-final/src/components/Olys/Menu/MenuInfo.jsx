@@ -8,21 +8,25 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
 
     return (
         <Modal
-        className={`w-full ${window.innerWidth <= 561 ? 'max-w-[90%]' : 'max-w-[600px]'} h-[500px] movil-sm:h-[450px]`} 
+            className="w-full max-w-[600px] mx-auto outline-none"
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             contentLabel="Detalles del producto"
             style={{
                 overlay: {
                     zIndex: "11",
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                 },
                 content: {
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                     borderRadius: '20px',
-                    width: '500px',
-                    height: '550px',
-                    margin: 'auto',
+                    width: '90%',
+                    maxWidth: '500px',
+                    maxHeight: '80vh', // Altura máxima relativa a la ventana
+                    margin: '20px auto',
                     padding: '20px',
                     backgroundColor: "#72bf78",
                     display: 'flex',
@@ -30,84 +34,34 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
                     alignItems: 'center',
                     border: 'none',
                     position: 'relative',
-                    top:"200px",
-                    left:"-4px",
-                    
-                },
+                    overflow: 'auto', // Habilita el scroll
+                    inset: 'auto', // Elimina el posicionamiento absoluto predeterminado
+                }
             }}
         >
-            <button  className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'
+            <button 
+                className='text-opacity-70 absolute top-3 right-3 w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center  cursor-pointer'
                 onClick={onRequestClose}
-                style={{
-                    position: 'absolute',
-                    top: '10px',
-                    right: '10px',
-                    
-                    border: 'none',
-                
-                    cursor: 'pointer',
-                    
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
             >
                 ✕
             </button>
             
-            <h2 className='font-julius' style={{
-                fontSize: '24px',
-                
-                marginBottom: '20px',
-                textAlign: 'center',
-               
-               
-            }}>
+            <h2 className='font-julius text-2xl mb-5 text-center mt-2'>
                 {producto.name}
             </h2>
             
-            <div className='flex flex-col font-julius' style={{
-                backgroundColor: '#ffffff ',
-                borderRadius: '15px',
-                width: '90%',
-                height: '150px',
-                marginBottom: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                
-                
-            }}>
-                <div style={{ color: '#72bf78', fontSize: '70px', fontFamily: "julios" }}>OLYS</div>
-                <div className="text-[#6fbb76]">Oliva limon & sal</div>
+            <div className='flex flex-col font-julius bg-white rounded-2xl w-[90%] p-4 mb-5 shadow-md'>
+                <div className="text-[#72bf78] text-6xl text-center">OLYS</div>
+                <div className="text-[#6fbb76] text-center">Oliva limon & sal</div>
             </div>
 
-            <h3 className='font-julius' style={{
-                fontSize: '20px',
-                marginBottom: '15px',
-                
-                textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-            }}>
+            <h3 className='font-julius text-xl mb-4 text-shadow'>
                 INGREDIENTES
             </h3>
 
-            <ul className='font-julius' style={{
-                listStyleType: "inherit",
-                padding: 0,
-                margin: 0,
-                textAlign: 'center',
-                width: '100%',
-            }}>
+            <ul className='font-julius list-disc w-full pl-24 pr-8 mb-4'>
                 {producto.ing && producto.ing.map((ingrediente, index) => (
-                    <li key={index} style={{ 
-                        marginBottom: '8px',
-                        fontSize: '16px',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-                        textAlign: "left",
-                        marginLeft: "85px",
-                        
-                    }}>
+                    <li key={index} className="mb-2 text-base text-shadow">
                         {ingrediente}
                     </li>
                 ))}
