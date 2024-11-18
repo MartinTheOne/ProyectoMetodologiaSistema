@@ -42,7 +42,7 @@ const Home = () => {
       </div>
 
       <div className="flex justify-center mt-[100px] movil-s:mt-[60px] movil-sm:mt-[60px] mb-10">
-        <p className='font-julius text-[#0E3C09]  text-3xl 700-md:text-[26px] movil-m:text-[22px] movil-s:text-[18px] movil-sm:text-[16px]  font-extrabold'>
+        <p className='font-julius text-[#0E3C09]  text-3xl 700-md:text-[26px] movil-m:text-[22px] movil-s:text-[18px] movil-sm:text-[16px] movil-smm:text-[12px] font-extrabold'>
           Un poco de Gourmet del mejor local de ensaldas
         </p>
       </div>
@@ -53,19 +53,19 @@ const Home = () => {
 
       <div id="MarcoExterior1" className="mt-[100px] flex flex-col items-center mb-10 ">
 
-      <div id='Texto descriptivo' className="h-[90px] w-[896px] mb-20 700-md:h-[110px] 700-md:max-w-2xl movil-m:h-[110px] movil-m:w-[500px] movil-s:h-[110px] movil-s:w-[500px] movil-sm:h-[110px] movil-sm:w-[400px] shadow rounded-lg bg-[#6cb472]">
+      <div id='Texto descriptivo' className="h-[90px] w-[896px] mb-20 700-md:h-[110px] 700-md:max-w-2xl movil-m:h-[110px] movil-m:w-[500px] movil-s:h-[110px] movil-s:w-[500px] movil-sm:h-[110px] movil-sm:w-[400px] movil-smm:max-w-[300px] movil-smm:h-[170px] shadow-lg rounded-lg bg-[#6cb472]">
            <h2 className='text-center mt-4 text-xl font-julius movil-m:text-[20px] movil-s:text-[18px] movil-sm:text-[16px]'>
                 Contamos con tres locales, dos en San miguel y uno en Yerba Buena <br />¿Que esperas para acercarte a conocerlos?
           </h2>
       </div>
 
-      <p className='font-julius mb-10 text-[#0E3C09] text-4xl movil-m: movil-s:text-[30px] movil-sm:text-[26px] font-extrabold'>
+      <p className='font-julius mb-10 text-[#0E3C09] text-4xl movil-m: movil-s:text-[30px] movil-sm:text-[26px] movil-smm:text-[20px] font-extrabold'>
           ¿En donde nos encontramos?
         </p>         
 
         <div id='MarcoN2' className=" mb-12 flex flex-col items-center gap-6">
 
-          <div id='img' className=" h-[440px]  w-[896px] 700-md:max-w-2xl movil-m:w-[600px] movil-s:w-[526px] movil-sm:w-[446px] mt-4 overflow-hidden rounded-lg ">
+          <div id='img' className=" h-[440px]  w-[896px] 700-md:max-w-2xl movil-m:w-[600px] movil-s:w-[526px] movil-sm:w-[446px] movil-smm:w-[300px] mt-4 overflow-hidden rounded-lg ">
             <Map />
           </div>
 

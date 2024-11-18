@@ -181,7 +181,7 @@ const TurnosPage = () => {
       <PeladoComponent />
 
       <div className="flex justify-center mt-[100px]">
-        <h1 className="font-julius text-[#0E3C09]  text-4xl movil-sm:text-[25px] font-extrabold mb-8">
+        <h1 className="font-julius text-[#0E3C09]  text-4xl movil-sm:text-[25px] movil-smm:text-[18px] font-extrabold mb-8">
           Turnos Disponibles - {diaFormateado}
         </h1>
       </div>

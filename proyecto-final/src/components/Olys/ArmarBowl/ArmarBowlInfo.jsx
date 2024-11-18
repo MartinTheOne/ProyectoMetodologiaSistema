@@ -23,9 +23,6 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
     const [selectedIds, setSelectedIds] = useState([]);
     const [productosElegidos, setProductosElegidos] = useState(initialProductosElegidos);
 
-    // Cargar selecciones guardadas cuando se abre el modal
-
-
     useEffect(() => {
         const notyf = new Notyf({
             duration: 3000,
@@ -49,7 +46,6 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
         window.notyf = notyf;
     }, []);
 
-    // Guardar selecciones temporales cuando cambian
     useEffect(() => {
         localStorage.setItem(`temp_${tipoProducto}`, JSON.stringify(selectedIds));
     }, [selectedIds, tipoProducto]);
@@ -59,14 +55,11 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
 
         if (isChecked) {
             if (cantidadElegir === 1) {
-                // Para tipos que solo permiten una selección
                 setSelectedIds([id]);
             } else {
-                // Para tipos que permiten múltiples selecciones
                 if (selectedIds.length < cantidadElegir) {
                     setSelectedIds([...selectedIds, id]);
                 } else {
-                    // Eliminar el último elemento seleccionado y agregar el nuevo
                     const newSelection = [...selectedIds.slice(0, -1), id];
                     setSelectedIds(newSelection);
                 }
@@ -100,8 +93,6 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
         localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
         updateSelectedItems(tipoProducto, productos.filter(prod => selectedIds.includes(prod.id)));
         setMostrarIcon((prev) => [...prev, VerBotonPresionado]);
-
-        // Limpiar selecciones temporales y cerrar modal
         localStorage.removeItem(`temp_${tipoProducto}`);
         clearSelection();
         setIsOpen(false);
@@ -113,23 +104,25 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
 
     return (
         <Modal
-        className={`w-full ${window.innerWidth <= 561 ? 'max-w-[90%]' : 'max-w-[600px]'} h-[500px] movil-sm:h-[450px] custom-modal-content`}
+            className="w-full max-w-[600px] mx-auto outline-none"
             isOpen={isOpen}
-            onRequestClose={() => {
-                onRequestClose();
-            }}
+            onRequestClose={onRequestClose}
             contentLabel="Detalles del producto"
             style={{
                 overlay: {
                     zIndex: "11",
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                 },
                 content: {
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                     borderRadius: '20px',
-                    width: '650px',
-                    height: '650px',
-                    margin: 'auto',
+                    width: '90%',
+                    maxWidth: '650px',
+                    maxHeight: '85vh',
+                    margin: '20px auto',
                     padding: '20px',
                     backgroundColor: "#72bf78",
                     display: 'flex',
@@ -137,105 +130,62 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                     alignItems: 'center',
                     border: 'none',
                     position: 'relative',
-                    top: "200px",
-                    left: "-4px",
-                    overflow: "auto"
+                    overflow: 'auto',
+                    inset: 'auto'
                 }
             }}
-       
         >
             <button
-                className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'
-                onClick={() => {
-                    onRequestClose();
-                }}
-                style={{
-                    position: 'absolute',
-                    top: '10px',
-                    right: '10px',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
+                className="absolute top-3 right-3 w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center cursor-pointer"
+                onClick={onRequestClose}
             >
                 ✕
             </button>
-            <h2 className='font-julius' style={{
-                fontSize: '24px',
-                marginBottom: '20px',
-                textAlign: 'center',
-            }}>
+
+            <h2 className="font-julius text-2xl mb-5 text-center mt-2">
                 {tipoProducto}
             </h2>
 
-            <div className='flex flex-col font-julius' style={{
-                backgroundColor: '#ffffff',
-                borderRadius: '15px',
-                width: '90%',
-                height: '150px',
-                marginBottom: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-            }}>
-                <div style={{ color: '#72bf78', fontSize: '70px', fontFamily: "julios" }}>OLYS</div>
-                <div className="text-[#6fbb76]">Oliva limon & sal</div>
+            <div className="flex flex-col font-julius bg-white rounded-2xl w-[90%] p-4 mb-5 shadow-md">
+                <div className="text-[#72bf78] text-6xl text-center">OLYS</div>
+                <div className="text-[#6fbb76] text-center">Oliva limon & sal</div>
             </div>
 
-            <h3 className='font-julius' style={{
-                fontSize: '20px',
-                marginBottom: '15px',
-            }}>
+            <h3 className="font-julius text-xl mb-4">
                 Elegi {cantidadElegir}
             </h3>
 
-            <ul style={{
-                padding: 0,
-                margin: 0,
-                textAlign: 'center',
-                width: '100%',
-            }}>
-                <div className='flex flex-col gap-10 text-[30px] font-julius'>
-                    <div className='flex flex-col justify-between'>
-                        <div>
-                            {productos.map((prod) => {
-                                let opacidad = prod.cantidad == 0 ? "opacity-35" : ""
-                                return (
-                                    <li key={prod.id} style={{
-                                        marginBottom: '8px',
-                                        fontSize: '20px',
-                                        textAlign: "left",
-                                        marginLeft: "85px",
-                                        display: "flex"
-                                    }}>
-                                        <input
-                                            className={`${opacidad} mt-[5px] mr-1 appearance-none h-4 w-4 bg-[#77c77d] shadow rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]`}
-                                            type="checkbox"
-                                            id={prod.id}
-                                            checked={selectedIds.includes(prod.id)}
-                                            disabled={prod.cantidad == 0 ? true : false}
-                                            onChange={(e) => handleCheckBox(e, prod.id)}
-                                        />
-                                        <p className={`${opacidad}`}>
-                                            {prod.nombre}
-                                        </p>
-                                    </li>
-                                )
-                            })}
-                        </div>
-                        <div>
-                            <button
-                                className='rounded-md shadow text-[16px] p-2 font-julius'
-                                onClick={handlerClick}
-                            >
-                                Confirmar
-                            </button>
-                        </div>
+            <div className="w-full px-4 mb-4">
+                <div className="flex flex-col gap-4 font-julius">
+                    <div className="flex flex-col">
+                        {productos.map((prod) => {
+                            const opacidad = prod.cantidad === 0 ? "opacity-35" : "";
+                            return (
+                                <div key={prod.id} className="flex items-center mb-3 ml-4">
+                                    <input
+                                        className={`${opacidad} mr-2 appearance-none h-4 w-4 bg-[#77c77d] shadow rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]`}
+                                        type="checkbox"
+                                        id={prod.id}
+                                        checked={selectedIds.includes(prod.id)}
+                                        disabled={prod.cantidad === 0}
+                                        onChange={(e) => handleCheckBox(e, prod.id)}
+                                    />
+                                    <label htmlFor={prod.id} className={`${opacidad} text-lg cursor-pointer`}>
+                                        {prod.nombre}
+                                    </label>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
-            </ul>
+            </div>
+
+            <button
+                className="rounded-md shadow text-[16px] p-2 font-julius  hover:bg-[#77c77d] transition-colors mb-2"
+                onClick={handlerClick}
+            >
+                Confirmar
+            </button>
         </Modal>
     );
 };

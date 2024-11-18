@@ -14,6 +14,8 @@ module.exports = {
         'movil-m': { max: '826px', min: '670px' }, //COLOR NARANJA
         'movil-s': { max: '669px', min: '562px' }, // Define un breakpoint a partir de 700px //COLOR ROJO
         'movil-sm': { max: '561px' },
+        'movil-smm': { max: '560px', min: '375px'},
+
 
         
 
