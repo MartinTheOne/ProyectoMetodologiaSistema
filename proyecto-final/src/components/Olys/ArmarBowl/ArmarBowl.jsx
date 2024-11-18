@@ -139,21 +139,21 @@ const ArmarBowl = () => {
             <PeladoComponent />
 
             <div className="flex justify-center mt-[100px]">
-                <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
+                <h2 className='font-julius text-[#0E3C09] text-6xl movil-sm:text-4xl movil-s:text-5xl movil-m:text-5xl font-extrabold'>
                     ARMA TU BOWL
                 </h2>
             </div>
 
             <div className="flex justify-center mt-[60px]">
-                <h3 className='font-julius text-[#0E3C09] text-5xl font-extrabold text-center'>
+                <h3 className='font-julius text-[#0E3C09] text-5xl movil-m:text-3xl  movil-s:text-3xl movil-sm:text-2xl font-extrabold text-center'>
                     COMO MAS TE GUSTE <br /> EN 6 PASOS
                 </h3>
             </div>
 
-            <div id='ArmarBolw' className="mb-20">
+            <div id='ArmarBolw' className="mb-2  max-e:flex max-e:justify-center movil-m:flex movil-s:flex movil-sm:flex justify-center">
                 <div
                     id='Primera_fila'
-                    className='gap-8 flex flex-wrap justify-between mr-[300px] ml-[300px] mt-[50px]'
+                    className='gap-8 flex flex-wrap max-e:justify-center max-pe:justify-center max-pe:ml-[400px] max-pe:mr-[400px] movil-s:flex movil-sm:justify-center  mt-[50px]'
                 >
                     {salads.map((salad) => (
                         <ArmarBowlCard
@@ -179,15 +179,15 @@ const ArmarBowl = () => {
 
             </div>
 
-            <div className="flex">
+            <div className="flex mt-[30px] justify-center  max-a:justify-center  max-e:justify-center 700-md:justify-center movil-m:justify-center movil-s:justify-center movil-sm:justify-center 700-md:mt-[30px] movil-m:mt-[30px] movil-s:mt-[30px] movil-sm:mt-[30px] max-e:mt-[30px]">
                 <button
                     onClick={agregarAlCarrito}
-                    className='glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[300px] font-julius'
+                    className='glow-on-hover relative w-56 h-12 movil-s:w-[200px] movil-sm:w-[200px] bg-[#72bf78] rounded-lg transition-colors   duration-300 focus:outline-none  movil-sm:ml-[0px] movil-m:ml-[0px] 700-md:ml-[0px] max-e:ml-[0px] movil-s:ml-[0px] font-julius'
                 >
                     Agregar al carrito
                 </button>
 
-                <div className='glow-on-hover flex items-center justify-center relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[20px] font-julius'>
+                <div className='glow-on-hover flex items-center justify-center relative w-56 h-12 movil-sm:w-[200px] bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[20px] font-julius'>
                     Precio: $6500
                 </div>
             </div>

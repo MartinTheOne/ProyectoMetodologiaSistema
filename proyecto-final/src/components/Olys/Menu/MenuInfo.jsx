@@ -8,6 +8,7 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
 
     return (
         <Modal
+        className={`w-full ${window.innerWidth <= 561 ? 'max-w-[90%]' : 'max-w-[600px]'} h-[500px] movil-sm:h-[450px]`} 
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             contentLabel="Detalles del producto"

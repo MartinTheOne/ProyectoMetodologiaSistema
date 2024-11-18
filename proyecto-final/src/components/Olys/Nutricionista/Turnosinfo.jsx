@@ -132,7 +132,9 @@ const TurnosInfo = ({ isOpen, onRequestClose, selectedDate, onConfirm }) => {
   const inputStyle = "w-full p-2 rounded-lg outline-none bg-[#6cb472] shadow-inner text-center font-julius";
 
   return (
+    
     <Modal
+    className={`w-full ${window.innerWidth <= 561 ? 'max-w-[90%]' : 'max-w-[600px]'} h-[500px] movil-sm:h-[450px]`} 
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Detalles del Turno"
@@ -141,10 +143,12 @@ const TurnosInfo = ({ isOpen, onRequestClose, selectedDate, onConfirm }) => {
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
         },
         content: {
+          
           top: "200px",
           borderRadius: '20px',
           width: '600px',
           height: "500px",
+          
           margin: 'auto',
           padding: '20px',
           backgroundColor: "#72bf78",
@@ -202,7 +206,7 @@ const TurnosInfo = ({ isOpen, onRequestClose, selectedDate, onConfirm }) => {
 
       <div className="flex w-full justify-around mb-5">
         <div className="flex flex-col items-center w-[45%]">
-          <label className="font-julius mb-1">NUMERO CELULAR</label>
+          <label className="font-julius mb-1">CELULAR</label>
           <input 
             className={inputStyle}
             type="text"
@@ -215,7 +219,7 @@ const TurnosInfo = ({ isOpen, onRequestClose, selectedDate, onConfirm }) => {
           {errors.celular && <span className=" text-xs mt-1">{errors.celular}</span>}
         </div>
         <div className="flex flex-col items-center w-[45%]">
-          <label className="font-julius mb-1">FECHA DE NACIMIENTO</label>
+          <label className="font-julius mb-1">FECHA DE NAC</label>
           <input 
             className={inputStyle}
             type="text"
@@ -249,6 +253,7 @@ const TurnosInfo = ({ isOpen, onRequestClose, selectedDate, onConfirm }) => {
         ACEPTAR
       </button>
     </Modal>
+   
   );
 };
 

@@ -181,7 +181,7 @@ const TurnosPage = () => {
       <PeladoComponent />
 
       <div className="flex justify-center mt-[100px]">
-        <h1 className="font-julius text-[#0E3C09] text-4xl font-extrabold mb-8">
+        <h1 className="font-julius text-[#0E3C09]  text-4xl movil-sm:text-[25px] font-extrabold mb-8">
           Turnos Disponibles - {diaFormateado}
         </h1>
       </div>
@@ -192,10 +192,10 @@ const TurnosPage = () => {
           .map((turno) => (
             <button
               key={turno.id}
-              className="flex justify-center h-[150px] w-[600px] mt-[100px] bg-[#6cb472] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center hover:bg-[#5da363] transition-colors"
+              className="flex justify-center h-[150px] w-[600px] movil-sm:w-[320px] movil-sm:h-[120px] movil-s:w-[470px] movil-m:w-[500px] mt-[100px] bg-[#6cb472] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center hover:bg-[#5da363] transition-colors"
               onClick={() => handleDateClick(turno)}
             >
-              <h2 className="font-julius text-[#0E3C09] text-3xl font-extrabold">
+              <h2 className="font-julius text-[#0E3C09] text-3xl movil-sm:text-2xl font-extrabold">
                 {formatearFecha(turno.fecha)}
               </h2>
             </button>
@@ -203,6 +203,7 @@ const TurnosPage = () => {
       </div>
 
       <Modal
+         className={`w-full ${window.innerWidth <= 561 ? 'max-w-[90%]' : 'max-w-[600px]'} h-[500px] movil-sm:h-[450px]`} 
         isOpen={horariosModal}
         onRequestClose={closeHorariosModal}
         contentLabel="Selección de Horario"

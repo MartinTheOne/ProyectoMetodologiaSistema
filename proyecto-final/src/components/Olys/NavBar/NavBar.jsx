@@ -31,25 +31,25 @@ const Navbar = () => {
     <>
       <nav id='pppp' className="z-10 bg-[#72bf78] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 border-b-[7px] border-b-[#0E3C09] border-opacity-25">
         <Link to="/" >
-          <div className="bg-[#72bf78] border bg-opacity-60 ml-4 w-[90px] h-[90px] cursor-pointer rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-y-2 border-opacity-55  border-r-[#0E3C09] border-l-[#0E3C09] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
-            <h1 className="text-[30px] mt-6 font-julius text-center font-bold text-[#0E3C09] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="bg-[#72bf78] border bg-opacity-60 ml-4 w-[90px] h-[90px]  movil-s:w-[70px] movil-s:h-[70px] movil-sm:w-[60px] movil-sm:h-[60px] cursor-pointer rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-y-2 border-opacity-55  border-r-[#0E3C09] border-l-[#0E3C09] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
+            <h1 className="text-[30px] mt-6 movil-s:text-[20px] movil-s:mt-5  movil-sm:text-[20px] movil-sm:mt-4   font-julius text-center font-bold text-[#0E3C09] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
               Olys
             </h1>
           </div>
         </Link>
 
-        <ul className="flex space-x-8 mr-8">
+        <ul className="flex space-x-8 mr-8 movil-s:ml-3 movil-sm:space-x-4 movil-sm:ml-2 ">
           <li>
             <Link to="/tienda" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
-              <LuStore className="text-2xl" />
-              <h4 className="text-lg">Tienda</h4>
+              <LuStore className="text-2xl movil-sm:text-lg" />
+              <h4 className="text-lg movil-sm:text-base">Tienda</h4>
             </Link>
           </li>
 
           <li>
             <Link to="/nutricionista" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
-              <BsInfoCircle className="text-2xl" />
-              <h4 className="text-lg">Nutricionista</h4>
+              <BsInfoCircle className="text-2xl movil-sm:text-lg " />
+              <h4 className="text-lg movil-sm:text-base">Nutricionista</h4>
             </Link>
           </li>
 
@@ -58,13 +58,13 @@ const Navbar = () => {
               onClick={() => setCartOpen(true)}
               className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius"
             >
-              <IoCartOutline className="text-2xl" />
+              <IoCartOutline className="text-2xl movil-sm:text-lg" />
               {Contadorprod > 0 && (
                 <span className="absolute mb-8 border pt-1 border-[#0E3C09] text-black text-xs rounded-full h-[15px] w-[15px] flex items-center justify-center">
                   {Contadorprod}
                 </span>
               )}
-              <h4 className="text-lg">Carrito</h4>
+              <h4 className="text-lg movil-sm:text-base">Carrito</h4>
             </button>
           </li>
         </ul>

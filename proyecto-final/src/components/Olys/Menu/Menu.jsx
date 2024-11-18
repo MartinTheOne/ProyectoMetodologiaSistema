@@ -162,15 +162,15 @@ const Menu = () => {
             <PeladoComponent />
 
             <div className="flex justify-center mt-[100px]">
-                <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
+                <h2 className='font-julius text-[#0E3C09] text-6xl movil-s:text-4xl  movil-sm:text-3xl font-extrabold'>
                     ENSALADAS DEL DIA
                 </h2>
             </div>
 
-            <div id='Menu' className="">
+            <div id='Menu' className=" movil-s:flex movil-sm:flex movil-s:justify-center movil-sm:justify-center">
                 <div
                     id='Primera_fila'
-                    className='gap-8 flex flex-wrap justify-center mr-[300px] ml-[300px] mt-[100px]'
+                    className='gap-8 flex flex-wrap justify-center mr-[300px] ml-[300px] mt-[100px] movil-s:w-[200px] movil-sm:w-[100px]'
                 >
                     {salads.map((salad, index) => (
                         <ProductCard

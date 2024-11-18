@@ -11,7 +11,7 @@ const Tienda = () => {
              <PeladoComponent/>
 
             <div className="flex justify-center mt-[100px]">
-              <h2 className='font-julius text-[#0E3C09] text-6xl font-extrabold'>
+              <h2 className='font-julius text-[#0E3C09] text-6xl movil-sm:text-5xl font-extrabold'>
                 Tienda
               </h2>
             </div>
@@ -20,7 +20,7 @@ const Tienda = () => {
 
             <Link to="/menu">
                 <div className="text-center ">
-                    <h2 className="mt-4 font-julius text-[#0E3C09] text-5xl font-extrabold mb-10">Menu</h2>
+                    <h2 className="mt-4 font-julius movil-sm:text-4xl  text-[#0E3C09] text-5xl font-extrabold mb-10">Menu</h2>
                     <div className="bg-[#72bf78]  p-3 rounded-xl shadow-lg   hover:scale-105 transition-transform duration-300 ease-in-out ">
                         <img src={menudelDiaFoto} alt="menu" className="w-full 700-md:h-[400px] h-[450px] object-cover rounded-lg " />
                     </div>
@@ -30,7 +30,7 @@ const Tienda = () => {
 
             <Link to="/armar-bowl">
                 <div className="text-center">
-                    <h2 className="mt-4 font-julius text-[#0E3C09] text-5xl font-extrabold mb-10">Arma tu Bowl</h2>
+                    <h2 className="mt-4 font-julius movil-sm:text-4xl  text-[#0E3C09] text-5xl font-extrabold mb-10">Bowl</h2>
                     <div className="bg-[#72bf78] p-3 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
                         <img src={armatubowl} alt="menu" className="w-full 700-md:h-[400px] h-[450px] object-cover rounded-lg" />
                     </div>
