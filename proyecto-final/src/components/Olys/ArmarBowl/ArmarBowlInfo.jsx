@@ -113,6 +113,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
 
     return (
         <Modal
+        className={`w-full ${window.innerWidth <= 561 ? 'max-w-[90%]' : 'max-w-[600px]'} h-[500px] movil-sm:h-[450px] custom-modal-content`}
             isOpen={isOpen}
             onRequestClose={() => {
                 onRequestClose();
@@ -141,7 +142,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                     overflow: "auto"
                 }
             }}
-            className="custom-modal-content"
+       
         >
             <button
                 className='text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center'

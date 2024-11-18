@@ -5,12 +5,17 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        'max-pe': { max: '2500px' },
 
         'max-xd': { max: '1400px' },
         'max-a': { max: '1150px' }, // Para pantallas menores a 1024px
         'max-e': { max: '1100px' }, // Para pantallas menores a 1024px
-        '700': '700px', // Define un breakpoint a partir de 700px
-        '700-md': { max: '940px', min: '400px' }, // Rango de 700px a 767px
+        '700-md': { max: '940px', min: '827px' }, // Rango de 700px a 767px //COLOR NEGRO
+        'movil-m': { max: '826px', min: '670px' }, //COLOR NARANJA
+        'movil-s': { max: '669px', min: '562px' }, // Define un breakpoint a partir de 700px //COLOR ROJO
+        'movil-sm': { max: '561px' },
+
+        
 
       },
       backgroundSize: {
