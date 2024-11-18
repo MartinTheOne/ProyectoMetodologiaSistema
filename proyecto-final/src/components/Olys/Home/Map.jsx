@@ -37,7 +37,7 @@ const Map = () => {
       id: 2, 
       posicion: { lat: -26.820399995688597, lng: -65.20123886404359 }, 
       icon: iconURL, 
-      name: " Santa FÃ© 440 - SMT" 
+      name: " Santa Fé 440 - SMT" 
     },
     { 
       id: 3, 
