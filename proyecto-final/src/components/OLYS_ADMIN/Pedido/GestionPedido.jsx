@@ -173,7 +173,7 @@ const GestionPedidos = () => {
                                         <td className="xl:px-8 py-2 2xl:px-8">{ped.envio ? <FaCheckCircle className="text-[20px] text-green-500" /> : <IoCloseCircle className="text-[24px] text-red-500" />}</td>
                                         <td className="xl:px-10 py-2 text-center 2xl:px-8"><div className="w-20 text-sm">${ped.precio}</div></td>
                                         <td className="xl:px-10 py-2 2xl:px-12">
-                                            <FaEye onClick={() => { setIsOpen(true); setpedidosProductosSel(ped.productosList); }} className="h-[25px] w-[25px] cursor-pointer" />
+                                            <FaEye onClick={() => { setIsOpen(true); setpedidosProductosSel([ped.listaEnsaladas,ped.productosList]); }} className="h-[25px] w-[25px] cursor-pointer" />
                                         </td>
                                     </tr>
                                 );

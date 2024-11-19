@@ -6,6 +6,7 @@ const ProductModal = ({ products, onRequestClose, IsOpen }) => {
         return null
     }
 
+
     const contarIngredientes = (ingredientes) => {
         const contador = {};
         ingredientes.forEach((ing) => {
@@ -14,10 +15,12 @@ const ProductModal = ({ products, onRequestClose, IsOpen }) => {
         return contador;
     };
 
-    const ingredientesUnicos = products && products[1] ? Array.from(new Set(products[1].map(ing => ing.nombre))).map(nombre => ({
+    const ingredientesUnicos = Array.isArray(products[1]) ? 
+    Array.from(new Set(products[1].map(ing => ing.nombre))).map(nombre => ({
         nombre,
         cantidad: products[1].filter(ing => ing.nombre === nombre).length
     })) : [];
+
 
     return (
         <Modal 
