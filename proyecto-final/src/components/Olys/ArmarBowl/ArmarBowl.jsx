@@ -5,7 +5,7 @@ import ArmarBowlInfo from '../ArmarBowl/ArmarBowlInfo.jsx';
 import axios from 'axios';
 import PeladoComponent from '../Home/PeladoComponent.jsx';
 import Footer from '../Home/Footer.jsx';
-import url from "../../../utils/url.js"
+import url from "../../../utils/url.js";
 
 Modal.setAppElement('#root');
 
@@ -19,49 +19,36 @@ const ArmarBowl = () => {
     const [cantidadElegir, setCantidadElegir] = useState(null);
     const [selectedItems, setSelectedItems] = useState({});
     const [notificacion, setNotificacion] = useState(true);
-    const [borrar, setBorrar] = useState(false);
 
     useEffect(() => {
-        const obtenerProductos = async () => {
+        const fetchData = async () => {
             try {
-                const respuesta = await axios.get(`${url.urlKey}/api/producto/findAll`);
-                setProductos(respuesta.data);
+                // Verificar si los datos ya están en localStorage
+                const cachedData = localStorage.getItem('productosArmarBowl');
+                if (cachedData) {
+                    setProductos(JSON.parse(cachedData));
+                } else {
+                    // Si no están en localStorage, llamar a la API
+                    const respuesta = await axios.get(`${url.urlKey}/api/producto/findAll`);
+                    localStorage.setItem('productosArmarBowl', JSON.stringify(respuesta.data));
+                    setProductos(respuesta.data);
+                }
             } catch (error) {
                 console.error('Error al obtener datos:', error);
             }
         };
-        obtenerProductos();
 
+        fetchData();
 
-        const notyf = new Notyf({
-            duration: 3000,
-            position: {
-                x: 'center',
-                y: 'top',
-            },
-            types: [
-                {
-                    type: 'success',
-                    background: "#28b463",
-                    className: "rounded-[10px] text-black font-julius text-[15px]"
-                },
-                {
-                    type: 'error',
-                    background: "#e74c3c",
-                    className: "rounded-[10px] text-black font-julius text-[15px]"
-                }
-            ]
-        });
-        window.notyf = notyf;
-
-
-        const manejarEvento = (event) => {
-            setNotificacion(event.detail.nuevoEstado);
+        // Limpiar localStorage al salir de la página
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('productosArmarBowl');
         };
-        window.addEventListener('cambiarEstado', manejarEvento);
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
 
         return () => {
-            window.removeEventListener('cambiarEstado', manejarEvento);
+            window.removeEventListener('beforeunload', handleBeforeUnload);
         };
     }, []);
 
@@ -91,42 +78,38 @@ const ArmarBowl = () => {
         setModalIsOpen(false);
         setSelectedTipoProduct(null);
     };
+
     const agregarAlCarrito = () => {
         const todosSeleccionados = salads.every(item => mostrarIcon.includes(item.id));
         if (!todosSeleccionados) {
             window.notyf.error("Debes completar todos los pasos antes de agregar al carrito");
             return;
         }
-    
-    
+
         const ingredientesFinal = Object.values(selectedItems).flat().map(item => ({ id: item.id }));
-    
-        // Generar un ID único para cada bowl
-        const bowlPersonalizadoId = `bowl_${Date.now()}`; // Usamos la marca de tiempo como ID único
-    
+
         const bowlPersonalizado = {
-            id: bowlPersonalizadoId, // Nuevo campo de ID único
+            id: `bowl_${Date.now()}`,
             name: "Bowl Personalizado",
             img: "/img/EnsaladaArmarBowl.webp",
             price: 6500,
             cantidad: 1,
             ingId: ingredientesFinal,
-            carrito: false
+            carrito: false,
         };
-    
+
         const carritoActual = JSON.parse(localStorage.getItem("carrito")) || [];
         const nuevoCarrito = [...carritoActual, bowlPersonalizado];
         localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
-    
+
         window.notyf.success("Bowl agregado al carrito correctamente");
-    
+
         const event = new CustomEvent('updateCartCounter');
         window.dispatchEvent(event);
-    
+
         setMostrarIcon([]);
         setSelectedItems({});
     };
-    
 
     const updateSelectedItems = (tipo, items) => {
         setSelectedItems(prev => ({
@@ -134,6 +117,7 @@ const ArmarBowl = () => {
             [tipo]: items.map(item => ({ id: item.id, name: item.name }))
         }));
     };
+
     return (
         <div>
             <PeladoComponent />
@@ -150,7 +134,7 @@ const ArmarBowl = () => {
                 </h3>
             </div>
 
-            <div id='ArmarBolw' className="mb-2  max-e:flex max-e:justify-center movil-m:flex movil-s:flex movil-sm:flex justify-center">
+            <div id='ArmarBolw' className="mb-2 max-e:flex max-e:justify-center movil-m:flex movil-s:flex movil-sm:flex justify-center">
                 <div
                     id='Primera_fila'
                     className='gap-8 flex flex-wrap max-e:justify-center max-pe:justify-center max-pe:ml-[400px] max-pe:mr-[400px] movil-s:flex movil-sm:justify-center  mt-[50px]'
@@ -174,19 +158,17 @@ const ArmarBowl = () => {
                     cantidadElegir={cantidadElegir}
                     setMostrarIcon={setMostrarIcon}
                     VerBotonPresionado={VerBotonPresionado}
-                    updateSelectedItems={updateSelectedItems} // Asegúrate de pasar esta función
+                    updateSelectedItems={updateSelectedItems}
                 />
-
             </div>
 
-            <div className="flex mt-[30px] justify-center  max-a:justify-center  max-e:justify-center 700-md:justify-center movil-m:justify-center movil-s:justify-center movil-sm:justify-center 700-md:mt-[30px] movil-m:mt-[30px] movil-s:mt-[30px] movil-sm:mt-[30px] max-e:mt-[30px]">
+            <div className="flex mt-[30px] justify-center">
                 <button
                     onClick={agregarAlCarrito}
-                    className='glow-on-hover relative w-56 h-12 movil-s:w-[200px] movil-sm:w-[200px] bg-[#72bf78] rounded-lg transition-colors   duration-300 focus:outline-none  movil-sm:ml-[0px] movil-m:ml-[0px] 700-md:ml-[0px] max-e:ml-[0px] movil-s:ml-[0px] font-julius'
+                    className='glow-on-hover relative w-56 h-12 movil-s:w-[200px] bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none font-julius'
                 >
                     Agregar al carrito
                 </button>
-
                 <div className='glow-on-hover flex items-center justify-center relative w-56 h-12 movil-sm:w-[200px] bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[20px] font-julius'>
                     Precio: $6500
                 </div>

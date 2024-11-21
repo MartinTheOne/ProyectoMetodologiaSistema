@@ -46,10 +46,6 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
         window.notyf = notyf;
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem(`temp_${tipoProducto}`, JSON.stringify(selectedIds));
-    }, [selectedIds, tipoProducto]);
-
     const handleCheckBox = (e, id) => {
         const isChecked = e.target.checked;
 
@@ -93,7 +89,6 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
         localStorage.setItem('productosElegidos', JSON.stringify(nuevosProductosElegidos));
         updateSelectedItems(tipoProducto, productos.filter(prod => selectedIds.includes(prod.id)));
         setMostrarIcon((prev) => [...prev, VerBotonPresionado]);
-        localStorage.removeItem(`temp_${tipoProducto}`);
         clearSelection();
         setIsOpen(false);
     };
