@@ -6,9 +6,9 @@ const Footer = () => {
             <div className=' focus:outline-none  h-[500px] 700-md:h-[100px] movil-m:h-[100px] movil-s:h-[100px] movil-sm:h-[100px] '>
             </div>
 
-            <div className="w-full h-[115px]  bg-[#72bf78] border-t-[7px] font-julius border-t-[#0E3C09] border-opacity-25 flex items-center justify-between ">
+            <div className="w-full h-[115px]  bg-[#cacfca] font-julius  border-opacity-25 flex items-center justify-between">
                 
-                <div className="">
+                <div className="text-[#0A4B2E]">
 
                     <div className="flex items-center text-[12px] 700-md:text-[8px] movil-sm:text-[8px] max-e:text-[10px] movil-smm:text-[6px] mb-2 ml-2">
                         <p className='font-julius '> Encuentranos en nuetra red social:</p>
@@ -25,7 +25,7 @@ const Footer = () => {
 
                 </div>
 
-                <div className="flex text-[12px] max-e:text-[10px] 700-md:text-[8px] movil-sm:text-[8px] movil-smm:text-[6px] mr-2">
+                <div className="flex text-[12px]  max-e:text-[10px] 700-md:text-[8px] movil-sm:text-[8px] movil-smm:text-[6px] mr-2 text-[#0A4B2E]">
                     <p className="mr-1 movil-sm:text-[10px] movil-smm:text-[6px]">Puedes encontranos en:</p>
                     <ul>
                         <li className="flex">

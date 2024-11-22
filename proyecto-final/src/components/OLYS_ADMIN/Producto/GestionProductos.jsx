@@ -201,7 +201,7 @@ const GestionProductos = () => {
                         <li className="mr-1">
                             <button
                                 className={`bg-white inline-block py-2 px-4 font-semibold ${activeTab === "products"
-                                    ? "border-l border-t border-r rounded-t text-[#9BC885]"
+                                    ? "border-l border-t border-r rounded-t text-[#1e5e39]"
                                     : "text-gray-500 hover:text-[#9BC885]"
                                     }`}
                                 onClick={() => setActiveTab("products")}
@@ -210,7 +210,7 @@ const GestionProductos = () => {
                             </button>
                             <button
                                 className={`ml-1 bg-white inline-block py-2 px-4 font-semibold ${activeTab === "Crear product"
-                                    ? "border-l border-t border-r rounded-t text-[#9BC885]"
+                                    ? "border-l border-t border-r rounded-t text-[#1e5e39]"
                                     : "text-gray-500 hover:text-[#9BC885]"
                                     }`}
                                 onClick={() => setActiveTab("Crear product")}
@@ -245,10 +245,10 @@ const GestionProductos = () => {
                             </select>
                             <button
                                 onClick={handlerClickFiltrar}
-                                className="bg-[#9BC885] text-white px-5 py-2 rounded hover:bg-[#8AB775] transition-colors">
+                                className="bg-[#1e5e39] text-[#e0e0e0] px-4 py-2 rounded hover:bg-[#32754f] transition-colors">
                                 Filtrar
                             </button>
-                            <div onClick={() => traerProductos()} className="ml-[6px] bg-[#9BC885] text-white px-3 py-[5px] rounded hover:bg-[#8AB775] transition-colors">
+                            <div onClick={() => traerProductos()} className="ml-[6px] bg-[#1e5e39] text-[#e0e0e0] px-5 py-[5px] rounded hover:bg-[#32754f] transition-colors">
                                 <TbRefresh className="text-[30px] cursor-pointer" />
                             </div>
                         </div>

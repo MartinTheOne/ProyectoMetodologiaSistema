@@ -48,7 +48,7 @@ const PhotoCarousel = () => {
   }, [changeSlide]);
 
   return (
-    <div className="relative max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
+    <div className="relative max-w-4xl 700-md:max-w-2xl movil-m:max-w-[600px] movil-s:max-w-[526px] movil-sm:max-w-[446px] movil-smm:max-w-[300px] movil-smm:max-h-[420px]   mx-auto overflow-hidden rounded-xl shadow-lg">
       <div
         className="relative flex transition-transform duration-1000 ease-in-out"
         style={{

@@ -28,7 +28,7 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
                     maxHeight: '80vh', // Altura máxima relativa a la ventana
                     margin: '20px auto',
                     padding: '20px',
-                    backgroundColor: "#72bf78",
+                    backgroundColor: "#1e5e39",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -40,13 +40,13 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
             }}
         >
             <button 
-                className='text-opacity-70 absolute top-3 right-3 w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center  cursor-pointer'
+                className='text-opacity-70 absolute top-3 right-3 w-7 h-7 text-[13px] rounded-md shadow shadow-gray-900 hover:scale-105 flex justify-center items-center  cursor-pointer'
                 onClick={onRequestClose}
             >
                 ✕
             </button>
             
-            <h2 className='font-julius text-2xl mb-5 text-center mt-2'>
+            <h2 className='font-julius text-2xl mb-5 text-center mt-2 text-[#e0e0e0]'>
                 {producto.name}
             </h2>
             
@@ -55,11 +55,11 @@ const MenuInfo = ({ isOpen, onRequestClose, producto }) => {
                 <div className="text-[#6fbb76] text-center">Oliva limon & sal</div>
             </div>
 
-            <h3 className='font-julius text-xl mb-4 text-shadow'>
+            <h3 className='font-julius text-xl mb-4 text-shadow text-[#e0e0e0] '>
                 INGREDIENTES
             </h3>
 
-            <ul className='font-julius list-disc w-full pl-24 pr-8 mb-4'>
+            <ul className='font-julius list-disc w-full pl-24 pr-8 mb-4 text-[#e0e0e0]'>
                 {producto.ing && producto.ing.map((ingrediente, index) => (
                     <li key={index} className="mb-2 text-base text-shadow">
                         {ingrediente}

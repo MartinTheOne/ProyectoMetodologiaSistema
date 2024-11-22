@@ -21,8 +21,7 @@ const ProductCard = ({ product, agregarAlCarrito,openModal }) => {
       
           // Escuchar el evento en el objeto global 'window'
           window.addEventListener('cambiarEstado', manejarEvento);
-      
-          // Limpiar el listener al desmontar el componente
+    
         
 
         const notyf = new Notyf({
@@ -46,7 +45,7 @@ const ProductCard = ({ product, agregarAlCarrito,openModal }) => {
           };
     }, []);
     return (
-        <div className={`shadow-2xl border border-black border-opacity-10 rounded-t-[35px] rounded-b-[10px] w-[520px] h-[650px] movil-m:h-[550px] movil-s:h-[350px]  movil-sm:h-[250px] flex flex-col justify-between items-center group hover:h-[700px] hover:movil-m:h-[540px] hover:movil-s:h-[400px]  hover:movil-sm:h-[400px] transition-all duration-300`}>
+        <div className={`shadow-2xl b border-opacity-10 rounded-t-[35px] rounded-b-[10px] w-[520px] bg-[#1e5e39] h-[650px] movil-m:h-[550px] movil-s:h-[350px]  movil-sm:h-[250px] flex flex-col justify-between items-center group hover:h-[700px] hover:movil-m:h-[540px] hover:movil-s:h-[400px]  hover:movil-sm:h-[400px] transition-all duration-300 text-[#e0e0e0] `}>
             <div className="img w-full h-[75%] movil-sm:h-[65%] overflow-hidden rounded-t-[35px]">
                 <img className='w-full h-full object-cover' src={product.img} alt={product.name} />
             </div>
@@ -57,10 +56,10 @@ const ProductCard = ({ product, agregarAlCarrito,openModal }) => {
             <div className='boton w-full movil-sm:w-[250px] movil-s:w-[320px] movil-m:w-[360px] flex justify-center items-center h-0 group-hover:h-[25%] overflow-hidden transition-all duration-300 rounded-b-[10px] space-x-4'>
                 <button 
                     onClick={() => {setNotificacion(agregarAlCarrito(product)); Notifiqueishon()}} // Llamamos a la función cuando se haga clic
-                    className='glow-on-hover relative w-56 h-12 movil-m:w-[240px] movil-s:w-[140px] movil-sm:w-[140px] bg-[#72bf78] rounded-lg transition-colors duration-300  focus:outline-none font-julius'>
+                    className='relative w-56 h-12 movil-m:w-[240px] hover:scale-105 movil-s:w-[140px] movil-sm:w-[140px] border-[2px] border-[#e0e0e0] rounded-lg transition-transform duration-300  focus:outline-none font-julius'>
                     Agregar al carrito
                 </button>
-                <button onClick={ () => openModal(product)} className='glow-on-hover relative w-24 h-12  movil-s:w-[140px] movil-sm:w-[86px] bg-[#72bf78] rounded-lg transition-colors duration-300  focus:outline-none font-julius'>
+                <button onClick={ () => openModal(product)} className=' relative w-24 h-12 hover:scale-105  movil-s:w-[140px] movil-sm:w-[86px] border-[2px] border-[#e0e0e0] rounded-lg transition-transform duration-300  focus:outline-none font-julius'>
                     Ver más
                 </button>
             </div>

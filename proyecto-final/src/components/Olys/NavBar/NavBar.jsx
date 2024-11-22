@@ -29,10 +29,10 @@ const Navbar = () => {
   }, [cartOpen]);
   return (
     <>
-      <nav id='pppp' className="z-10  bg-[#72bf78] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 border-b-[7px] border-b-[#0E3C09] border-opacity-25">
+      <nav id='pppp' className="z-10  bg-[#cacfca] pb-2 fixed w-full top-0 left-0 flex items-center justify-between p-2 text-[#0A4B2E]">
         <Link to="/" >
-          <div className="bg-[#72bf78] border bg-opacity-60 ml-4 movil-sm:ml-1 w-[90px] h-[90px]  movil-s:w-[70px] movil-s:h-[70px] movil-sm:w-[60px] movil-sm:h-[60px] cursor-pointer rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-y-2 border-opacity-55  border-r-[#0E3C09] border-l-[#0E3C09] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
-            <h1 className="text-[30px] mt-6 movil-s:text-[20px] movil-s:mt-5  movil-sm:text-[20px] movil-sm:mt-4   font-julius text-center font-bold text-[#0E3C09] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="bg-[#cacfca] border bg-opacity-60 ml-4 movil-sm:ml-1 w-[90px] h-[90px]  movil-s:w-[70px] movil-s:h-[70px] movil-sm:w-[60px] movil-sm:h-[60px] cursor-pointer rounded-full border-b-[#0E3C09] border-t-[#0E3C09] border-y-2 border-opacity-55  border-r-[#0E3C09] border-l-[#0E3C09] hover:scale-110 hover:border-opacity-50 transition-transform duration-300 group">
+            <h1 className="hover:text-[#345e37] text-[30px] mt-6 movil-s:text-[20px] movil-s:mt-5  movil-sm:text-[20px] movil-sm:mt-4   font-julius text-center font-bold opacity-80 group-hover:opacity-100 transition-opacity duration-300">
               Olys
             </h1>
           </div>
@@ -40,27 +40,27 @@ const Navbar = () => {
 
         <ul className="   flex space-x-8 mr-8 movil-s:ml-3 movil-sm:space-x-4 movil-sm:ml-2 ">
           <li className='focus:outline-none'>
-            <Link to="/tienda" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
+            <Link to="/tienda" className="flex items-center space-x-1  opacity-100 hover:scale-110 transition-transform duration-300 font-julius hover:text-[#0a4b2e]">
               <LuStore className="text-2xl movil-sm:text-lg movil-smm:text-[13px]" />
-              <h4 className=" focus:outline-none text-lg movil-sm:text-base movil-smm:text-[13px]">Tienda</h4>
+              <h4 className=" focus:outline-none text-lg movil-sm:text-base movil-smm:text-[13px] ">Tienda</h4>
             </Link>
           </li>
 
           <li className='focus:outline-none'>
-            <Link to="/nutricionista" className="flex items-center space-x-1 text-[#0E3C09] opacity-100 hover:scale-110 transition-transform duration-300 font-julius">
+            <Link to="/nutricionista" className="flex items-center space-x-1  opacity-100 hover:scale-110 transition-transform duration-300 font-julius hover:text-[#0A4B2E]">
               <BsInfoCircle className="text-2xl movil-sm:text-lg movil-smm:text-[13px] " />
               <h4 className=" focus:outline-none text-lg movil-sm:text-base movil-smm:text-[13px]">Nutricionista</h4>
             </Link>
           </li>
 
-          <li className='focus:outline-none'>
+          <li className='focus:outline-none hover:text-[#345e37]'>
             <button
               onClick={() => setCartOpen(true)}
-              className="flex items-center space-x-1 text-[#0E3C09] opacity-100  transition-transform duration-300 font-julius"
+              className="flex items-center space-x-1  opacity-100  transition-transform duration-300 font-julius"
             >
-              <IoCartOutline className="text-2xl movil-sm:text-lg movil-smm:text-[13px]" />
+              <IoCartOutline className="text-2xl movil-sm:text-lg movil-smm:text-[13px] text-[#345e37]" />
               {Contadorprod > 0 && (
-                <span className=" absolute mb-8 border movil-smm:pb-[2px] pt-1 border-[#0E3C09] text-black text-xs rounded-full h-[15px] w-[15px] movil-smm:h-[12px] movil-smm:w-[12px] flex items-center justify-center movil-smm:text-[9px] movil-smm:top-[22px] movil-smm:flex">
+                <span className="border-[#345e37] absolute mb-8 border movil-smm:pb-[2px] pt-1 text-xs rounded-full h-[15px] w-[15px] movil-smm:h-[12px] movil-smm:w-[12px] flex items-center justify-center movil-smm:text-[9px] movil-smm:top-[22px] movil-smm:flex">
                   {Contadorprod}
                 </span>
               )}

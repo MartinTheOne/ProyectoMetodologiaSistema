@@ -94,7 +94,7 @@ const NuevoProducto = ({traerProducto}) => {
                     <div>
                         <button
                             onClick={handlerClickGuardar}
-                            className="bg-[#9BC885] font-julius font-bold text-white text-[18px] h-11 w-32 rounded hover:bg-[#8AB775] transition-colors">
+                            className="bg-[#1e5e39] font-julius font-bold text-white text-[18px] h-11 w-32 rounded hover:bg-[#347c52] transition-colors">
                             Guardar
                         </button>
                     </div>

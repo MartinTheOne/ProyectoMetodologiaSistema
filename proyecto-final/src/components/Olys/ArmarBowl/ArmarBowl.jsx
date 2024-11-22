@@ -123,13 +123,13 @@ const ArmarBowl = () => {
             <PeladoComponent />
 
             <div className="flex justify-center mt-[100px]">
-                <h2 className='font-julius text-[#0E3C09] text-6xl movil-sm:text-4xl movil-s:text-5xl movil-m:text-5xl font-extrabold'>
+                <h2 className='font-julius text-[#e0e0e0] text-6xl movil-sm:text-4xl movil-s:text-5xl movil-m:text-5xl font-extrabold'>
                     ARMA TU BOWL
                 </h2>
             </div>
 
             <div className="flex justify-center mt-[60px]">
-                <h3 className='font-julius text-[#0E3C09] text-5xl movil-m:text-3xl  movil-s:text-3xl movil-sm:text-2xl font-extrabold text-center'>
+                <h3 className='font-julius text-[#e0e0e0] text-5xl movil-m:text-3xl  movil-s:text-3xl movil-sm:text-2xl font-extrabold text-center'>
                     COMO MAS TE GUSTE <br /> EN 6 PASOS
                 </h3>
             </div>
@@ -162,14 +162,14 @@ const ArmarBowl = () => {
                 />
             </div>
 
-            <div className="flex mt-[30px] justify-center">
+            <div className="flex mt-[30px] justify-center text-[#e0e0e0]">
                 <button
                     onClick={agregarAlCarrito}
-                    className='glow-on-hover relative w-56 h-12 movil-s:w-[200px] bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none font-julius'
+                    className=' relative w-56 h-12 movil-s:w-[200px] border-[2px] border-[#1e5e39] hover:scale-105 hover:border-[#e0e0e0] rounded-lg transition-transform duration-300 focus:outline-none font-julius'
                 >
                     Agregar al carrito
                 </button>
-                <div className='glow-on-hover flex items-center justify-center relative w-56 h-12 movil-sm:w-[200px] bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none ml-[20px] font-julius'>
+                <div className=' flex items-center justify-center relative w-56 h-12 movil-sm:w-[200px] border-[2px] border-[#1e5e39]  rounded-lg transition-colors duration-300 focus:outline-none ml-[20px] font-julius'>
                     Precio: $6500
                 </div>
             </div>

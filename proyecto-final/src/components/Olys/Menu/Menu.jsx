@@ -162,7 +162,7 @@ const Menu = () => {
             <PeladoComponent />
 
             <div className="flex justify-center mt-[100px]">
-                <h2 className='font-julius text-[#0E3C09] text-6xl movil-s:text-4xl  movil-sm:text-3xl font-extrabold'>
+                <h2 className='font-julius text-6xl movil-s:text-4xl  movil-sm:text-3xl font-extrabold text-[#e0e0e0]'>
                     ENSALADAS DEL DIA
                 </h2>
             </div>

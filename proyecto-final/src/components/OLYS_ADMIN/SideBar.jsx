@@ -43,14 +43,14 @@ const Sidebar = () => {
 
             {/* Sidebar */}
             <div
-                className={`fixed inset-y-0 left-0 w-60 transform ${isOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:translate-x-0 transition duration-200 ease-in-out z-10 bg-[#9BC885] shadow`}
+                className={`fixed inset-y-0 left-0 w-60 transform ${isOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:translate-x-0 transition duration-200 ease-in-out z-10 bg-[#1e5e39] shadow`}
             >
                 <div className="flex flex-col h-full border-r-2 border-[#0e3c09] border-opacity-40 p-3">
                     <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-bold font-julius text-[#0E3C09]">Gestion OLYS</h2>
+                            <h2 className="text-xl font-bold font-julius text-[#e0e0e0]">Gestion OLYS</h2>
                             <button
-                                className="md:hidden p-2 rounded-md bg-[#9BC885] text-gray-300 hover:text-white focus:outline-none"
+                                className="md:hidden p-2 rounded-md bg-[#358b59] text-[#e0e0e0]  hover:text-white focus:outline-none"
                                 onClick={toggleSidebar}
                                 aria-label="Close sidebar"
                             >
@@ -63,7 +63,7 @@ const Sidebar = () => {
                                 {menuItems.map((item) => (
                                     <li key={item.name}>
                                         <a                                         
-                                            className={`flex items-center p-2 space-x-3 rounded-md text-[#0E3C09] ${activeItem === item.name ? "border-2 border-[#0E3C09] border-opacity-40 text-gray-800" : "hover:bg-[#7ab35e]"} focus:outline-none`}
+                                            className={`flex items-center p-2 space-x-3 rounded-md text-[#cfcece]  ${activeItem === item.name ? " border-opacity-40 bg-[#173f28]" : "hover:bg-[#173f28]"} focus:outline-none`}
                                             onClick={() => handleItemClick(item.name)}
                                         >
                                             <item.icon className="w-6 h-6 text-black text-opacity-80" />
@@ -75,7 +75,7 @@ const Sidebar = () => {
                         </nav>
                     </div>
 
-                    <div className="mt-auto flex items-center p-2 space-x-3 rounded-md text-[#0E3C09] hover:bg-[#7ab35e] focus:outline-none">
+                    <div className="mt-auto flex items-center p-2 space-x-3 rounded-md text-[#e0e0e0] hover:bg-[#173f28] focus:outline-none">
                         <button onClick={handlerLogOut} className="flex gap-2">
                             <FaSignOutAlt className="w-6 h-6 text-black text-opacity-80" />
                             <h1>Cerrar Sesion</h1>

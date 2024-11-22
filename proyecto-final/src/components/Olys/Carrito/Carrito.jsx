@@ -143,17 +143,17 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
 
     return (
         <div
-            className={`fixed top-0 right-0 w-[450px] movil-smm:w-[350px] h-full bg-[#72bf78] shadow-lg transform ${cartOpen ? "translate-x-0" : "translate-x-full"
+            className={`fixed top-0 right-0 w-[450px] movil-smm:w-[350px] h-full bg-[#1e5e39] shadow-lg transform ${cartOpen ? "translate-x-0" : "translate-x-full"
                 } transition-transform duration-300 ease-in-out z-20`}
         >
             <div className="p-4 font-julius">
                 <button
-                    className="text-black text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow"
+                    className="text-black text-opacity-70 float-right w-7 h-7 text-[13px] rounded-md shadow shadow-gray-900 hover:scale-105 transition-transform duration-300"
                     onClick={() => setCartOpen(false)}
                 >
                     ✕
                 </button>
-                <h2 className="text-2xl font-julius mb-4 text-center">
+                <h2 className="text-2xl font-julius mb-4 text-center ">
                     {currentStep === 1 ? "Carrito" : currentStep === 2 ? "Registro" : "Pago"}
                 </h2>
 
@@ -161,21 +161,21 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                 {currentStep === 1 && productos && productos.length > 0 ? (
                     <div>
                         {productos.map((producto, index) => (
-                            <div id="Estructuracarta" key={index} className="flex -ml-[5px] mb-2 rounded-lg shadow justify-between items-center h-[120px] w-[430px]">
+                            <div id="Estructuracarta" key={index} className="flex -ml-[5px] mb-2 rounded-lg shadow justify-between items-center h-[120px] border border-[#0A4B2E] w-[430px] text-[#e0e0e0]">
                                 <div className="ml-1">
-                                    <img className="rounded-md" src={producto.img} alt="ensalada" width="80px" />
+                                    <img className="rounded-md " src={producto.img} alt="ensalada" width="80px" />
                                 </div>
 
                                 <div id="PPPPP" className="">
                                     <div className="acomodadordecantidadtrashmasymenos flex-col mb-1">
                                         <h3 className="mb-2 text-center text-lg">Cantidad</h3>
                                         <div className="flex justify-center">
-                                            <button onClick={() => handleClickRestar(producto)} className="text-black text-opacity-70 float-right w-7 rounded-md shadow mr-1">-</button>
+                                            <button onClick={() => handleClickRestar(producto)} className="text-[#e0e0e0] text-opacity-70 float-right w-7 rounded-md shadow mr-1">-</button>
                                             <p>{producto.cantidad}</p>
-                                            <button onClick={() => handleClickSumar(producto)} className="text-black text-opacity-70 float-right w-7 text-center rounded-md shadow ml-1">+</button>
+                                            <button onClick={() => handleClickSumar(producto)} className="text-[#e0e0e0] text-opacity-70 float-right w-7 text-center rounded-md shadow ml-1">+</button>
                                         </div>
                                         <div className="text-center mt-2">
-                                            <button className="shadow w-[60px] rounded-xl text-[12px]" onClick={() => handlerClickDelete(producto)}>Eliminar</button>
+                                            <button className=" shadow w-[60px] rounded-xl text-[12px] " onClick={() => handlerClickDelete(producto)}>Eliminar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                         <div className="flex justify-center mt-6">
                             <button
                                 onClick={() => handleNext("primer Siguiente")}
-                                className="glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
+                                className=" relative w-56 h-12 border text-[#e0e0e0] border-[#e0e0e0] rounded-lg hover:scale-105 transition-transform duration-300 focus:outline-none"
                             >
                                 Siguiente
                             </button>
@@ -206,27 +206,27 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                 {currentStep === 2 && (
                     <div>
                         <div id="Registro" className="inputs text-center mt-6 font-julius">
-                            <h3 className="mb-4 text-xl">Por favor ingrese sus datos</h3>
+                            <h3 className="mb-4 text-xl text-[#e0e0e0] font-bold">Por favor ingrese sus datos</h3>
 
-                            <h3 className="text-xl mb-2">Nombre</h3>
-                            <input  onChange={(e) => setNombre(e.target.value)} className="rounded-lg outline-none bg-[#6cb472] shadow-inner h-[35px] w-[250px] text-center" type="text" value={nombre} />
+                            <h3 className="text-xl mb-2 text-[#e0e0e0]">Nombre</h3>
+                            <input  onChange={(e) => setNombre(e.target.value)} className="rounded-lg outline-none bg-[#267447] shadow-inner h-[35px] w-[250px] text-center" type="text" value={nombre} />
 
-                            <div>
+                            <div className="text-[#e0e0e0]">
 
                                 <h3 className="mt-4 text-xl mb-2">Numero de celular</h3>
                                 <div className="flex flex-col justify-center items-center">
-                                    <input onChange={(e) => validarCelular(e)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center " type="text" value={celular} />
+                                    <input onChange={(e) => validarCelular(e)} className="rounded-lg outline-none h-[35px] bg-[#267447] shadow-inner w-[250px] text-center " type="text" value={celular} />
                                     {errorTel && <span className="font-sans text-[13px]">Debe tener 10 digitos</span>}
                                 </div>
                             </div>
-                            <div className="flex justify-center mt-2 items-center">
-                                <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true)} else { setCheckedDom(false); setDomicilio("") } }} className="appearance-none h-4 w-4 bg-[#77c77d] shadow mr-1 rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
+                            <div className="flex justify-center mt-2 items-center text-[#e0e0e0]">
+                                <input onClick={(e) => { if (e.currentTarget.checked) { setCheckedDom(true)} else { setCheckedDom(false); setDomicilio("") } }} className="appearance-none h-4 w-4 bg-[#47804a] shadow mr-1 rounded checked:bg-[#dde2dd] cursor-pointer checked:border checked:border-[#2b8135]" type="checkbox" />
                                 <h3>Envio a domicilio</h3>
                             </div>
                             {CheckedDom &&
                                 <>
                                     <h3 className="mt-4 text-xl mb-2">Direccion</h3>
-                                    <input onChange={(e) => setDomicilio(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#6cb472] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
+                                    <input onChange={(e) => setDomicilio(e.target.value)} className="rounded-lg outline-none h-[35px] bg-[#267447] shadow-inner w-[250px] text-center" type="text" value={domicilio} />
                                 </>
                             }
 
@@ -235,13 +235,13 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                         <div className="flex justify-between mt-6 movil-smm:gap-2">
                             <button
                                 onClick={handleBack}
-                                className="glow-on-hover relative w-48 h-12  bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
+                                className=" relative text-[#e0e0e0] w-48 h-12  border border-[#e0e0e0] hover:scale-105  transition-transform rounded-lg  duration-300 focus:outline-none"
                             >
                                 Volver
                             </button>
                             <button
                                 onClick={() => {if(celular.length==10){handleNext("Finalizar Pedido")}else{setErrorTel(true)}}}
-                                className="glow-on-hover relative w-48 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
+                                className="relative text-[#e0e0e0] w-48 h-12 border border-[#e0e0e0] hover:scale-105  transition-transform rounded-lg duration-300 focus:outline-none"
                             >
                                 Finalizar Pedido
                             </button>
@@ -253,7 +253,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                 {currentStep === 3 && (
                     <div>
                         <div id="MercadoPago" className="flex flex-col items-center mt-10">
-                            <span className="text-[12px] mb-1">De click para ir a Mercado Pago</span>
+                            <span className="text-[12px] mb-1 text-[#e0e0e0]">De click para ir a Mercado Pago</span>
                             {botonMercadoPago == "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=" ? <p className="font-bold ">Cargando...</p>
                                 : <>
                                     <button
@@ -267,7 +267,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                                             setCurrentStep(1)
                                             setContadorProd(0)
                                         }}
-                                        className="bg-[#009EE3] text-white font-bold glow-on-hover relative w-56 h-12 hover:bg-[#007bbd] rounded-lg transition-colors duration-300 focus:outline-none"
+                                        className="bg-[#009EE3] text-white font-bold  relative w-56 h-12 hover:bg-[#007bbd] rounded-lg transition-colors duration-300 focus:outline-none"
                                     >
                                         Mercado Pago
                                     </button>
@@ -280,7 +280,7 @@ const Carrito = ({ cartOpen, setCartOpen, SetNotifiqueishon, setContadorProd }) 
                         <div className="flex justify-center mt-6">
                             <button
                                 onClick={handleBack}
-                                className="glow-on-hover relative w-56 h-12 bg-[#72bf78] rounded-lg transition-colors duration-300 focus:outline-none"
+                                className="text-[#e0e0e0] relative w-56 h-12 border border-[#e0e0e0] hover:scale-105  transition-transform   rounded-lg duration-300 focus:outline-none"
                             >
                                 Volver
                             </button>

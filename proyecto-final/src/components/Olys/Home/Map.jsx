@@ -73,7 +73,7 @@ const Map = () => {
 
       <div className="h-[46px] flex justify-end ">
         <select 
-          className="bg-[#6cb472] h-8 rounded-md text-[18px] mt-2 focus:outline-none shadow font-julius" 
+          className="bg-[#1e5e39] h-8 rounded-md text-[18px] mt-2 focus:outline-none shadow font-julius" 
           name="sucursales" 
           onChange={cambiarPosicion}
         >

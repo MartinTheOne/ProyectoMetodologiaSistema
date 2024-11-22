@@ -119,7 +119,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                     maxHeight: '85vh',
                     margin: '20px auto',
                     padding: '20px',
-                    backgroundColor: "#72bf78",
+                    backgroundColor: "#1e5e39",
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -131,13 +131,13 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
             }}
         >
             <button
-                className="absolute top-3 right-3 w-7 h-7 text-[13px] rounded-md shadow flex justify-center items-center cursor-pointer"
+                className="absolute top-3 right-3 w-7 h-7 text-[13px] rounded-md shadow shadow-gray-900 hover:scale-105 flex justify-center items-center cursor-pointer"
                 onClick={onRequestClose}
             >
                 ✕
             </button>
 
-            <h2 className="font-julius text-2xl mb-5 text-center mt-2">
+            <h2 className="font-julius text-2xl mb-5 text-center mt-2 text-[#e0e0e0]">
                 {tipoProducto}
             </h2>
 
@@ -146,11 +146,11 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                 <div className="text-[#6fbb76] text-center">Oliva limon & sal</div>
             </div>
 
-            <h3 className="font-julius text-xl mb-4">
+            <h3 className="font-julius text-xl mb-4 text-[#e0e0e0]">
                 Elegi {cantidadElegir}
             </h3>
 
-            <div className="w-full px-4 mb-4">
+            <div className="w-full px-4 mb-4 text-[#e0e0e0]">
                 <div className="flex flex-col gap-4 font-julius">
                     <div className="flex flex-col">
                         {productos.map((prod) => {
@@ -158,7 +158,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
                             return (
                                 <div key={prod.id} className="flex items-center mb-3 ml-4">
                                     <input
-                                        className={`${opacidad} mr-2 appearance-none h-4 w-4 bg-[#77c77d] shadow rounded checked:bg-[#1d5222] cursor-pointer checked:border checked:border-[#2b8135]`}
+                                        className={`${opacidad} mr-2 appearance-none h-4 w-4 bg-[#47804a] shadow rounded checked:bg-[#e5e9e5] cursor-pointer checked:border checked:border-[#2b8135]`}
                                         type="checkbox"
                                         id={prod.id}
                                         checked={selectedIds.includes(prod.id)}
@@ -176,7 +176,7 @@ const ArmarBowlInfo = ({ isOpen, setIsOpen, onRequestClose, productos, tipoProdu
             </div>
 
             <button
-                className="rounded-md shadow text-[16px] p-2 font-julius  hover:bg-[#77c77d] transition-colors mb-2"
+                className="rounded-md text-[16px] p-2 font-julius border border-[#e0e0e0] hover:scale-105 transition-transform duration-300 mb-2 text-[#e0e0e0]"
                 onClick={handlerClick}
             >
                 Confirmar

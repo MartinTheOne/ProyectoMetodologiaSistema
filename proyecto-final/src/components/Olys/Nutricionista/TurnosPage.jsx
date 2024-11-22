@@ -180,19 +180,19 @@ const TurnosPage = () => {
     <>
       <PeladoComponent />
 
-      <div className="flex justify-center mt-[100px]">
-        <h1 className="font-julius text-[#0E3C09]  text-4xl movil-sm:text-[25px] movil-smm:text-[18px] font-extrabold mb-8">
+      <div className="flex justify-center mt-[100px] ">
+        <h1 className="font-julius text-[#e0e0e0]  text-4xl movil-sm:text-[25px] movil-smm:text-[18px] font-extrabold mb-8">
           Turnos Disponibles - {diaFormateado}
         </h1>
       </div>
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center ">
         {turnosDisponibles
           .filter(turno => turno.disponible && tieneTurnosDisponibles(turno))
           .map((turno) => (
             <button
               key={turno.id}
-              className="flex justify-center h-[150px] w-[600px] movil-sm:w-[320px] movil-sm:h-[120px] movil-s:w-[470px] movil-m:w-[500px] mt-[100px] bg-[#6cb472] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center hover:bg-[#5da363] transition-colors"
+              className="flex justify-center h-[150px] w-[600px] movil-sm:w-[320px] movil-sm:h-[120px] movil-s:w-[470px] movil-m:w-[500px] mt-[100px] bg-[#246b42] hover:scale-105 transition-transform duration-300 rounded-xl shadow-2xl items-center hover:bg-[#2e8151] "
               onClick={() => handleDateClick(turno)}
             >
               <h2 className="font-julius text-[#0E3C09] text-3xl movil-sm:text-2xl font-extrabold">
@@ -218,7 +218,7 @@ const TurnosPage = () => {
             height: "500px",
             margin: 'auto',
             padding: '20px',
-            backgroundColor: "#72bf78",
+            backgroundColor: "#1e5e39",
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -234,10 +234,10 @@ const TurnosPage = () => {
           ✕
         </button>
 
-        <h2 className="font-julius text-2xl mb-4">Seleccione un horario</h2>
-        <p className="font-julius mb-4">{selectedDate}</p>
+        <h2 className="font-julius text-2xl mb-4 text-[#e0e0e0]">Seleccione un horario</h2>
+        <p className="font-julius mb-4 text-[#e0e0e0]">{selectedDate}</p>
         
-        <div className="grid grid-cols-3 gap-4 w-full max-h-[300px] overflow-y-auto p-4">
+        <div className="grid grid-cols-3 gap-4 w-full max-h-[300px] overflow-y-auto p-4 text-[#e0e0e0]">
           {Object.entries(horariosDisponibles).map(([hora, disponible]) => (
             <button
               key={hora}
@@ -247,9 +247,9 @@ const TurnosPage = () => {
                 p-2 rounded-lg font-julius
                 ${disponible 
                   ? selectedTime === hora 
-                    ? 'bg-[#4a8a4f] text-white' 
-                    : 'bg-[#6cb472] hover:bg-[#5da363]' 
-                  : 'bg-[#4a6e4d] cursor-not-allowed opacity-50'
+                    ? 'bg-[#235527] text-white' 
+                    : 'bg-[#508d55] hover:bg-[#386b3c]' 
+                  : 'bg-[#2d4d30] cursor-not-allowed opacity-50'
                 }
               `}
             >
@@ -262,7 +262,7 @@ const TurnosPage = () => {
           <button
             onClick={handleHorariosConfirm}
             disabled={!selectedTime}
-            className="font-julius rounded-md shadow bg-[#4a8a4f]  px-6 py-2 disabled:opacity-60"
+            className="font-julius rounded-md shadow text-[#e0e0e0] border border-[#e0e0e0] transition-transform duration-300 hover:scale-105 cursor-pointer px-6 py-2 disabled:opacity-60"
           >
             Aceptar
           </button>
