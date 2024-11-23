@@ -1,3 +1,3 @@
 export default {
-    urlKey: "https://protective-love-production.up.railway.app"
+    urlKey: "https://protective-heart-production.up.railway.app"
 }
