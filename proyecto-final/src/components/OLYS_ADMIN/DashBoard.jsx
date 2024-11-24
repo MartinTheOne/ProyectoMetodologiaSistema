@@ -140,7 +140,7 @@ const Dashboard = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="Ventas" fill="#9BC885" />
+              <Bar dataKey="sales" fill="#9BC885" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -153,7 +153,7 @@ const Dashboard = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="Ventas" stroke="#9BC885" />
+              <Line type="monotone" dataKey="sales" stroke="#9BC885" />
             </LineChart>
           </ResponsiveContainer>
         </div>
